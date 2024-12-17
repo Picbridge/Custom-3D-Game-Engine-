@@ -1,0 +1,42 @@
+{
+  "dropdown_menu": {
+    "name": "Windows",
+    "type": "toggle",
+    "save_path": "..\\..\\content\\code\\json_files\\ButtonStates.json",
+    "item_names": [
+      "Node Tree",
+      "Node Inspector",
+      "Console"
+    ]
+  },
+  "dropdown_menu": {
+    "name": "Debug Options",
+    "type": "toggle",
+    "save_path": "..\\..\\content\\code\\json_files\\ButtonStates.json",
+    "item_names": [
+      "Wireframes",
+      "Colliders",
+      "Normals",
+      "Velocities",
+      "ShadowMap"
+    ]
+  },
+  "button": {
+    "name": "Invert Camera Y-Axis",
+    "save_path": "..\\..\\content\\code\\json_files\\ButtonStates.json"
+  },
+  "dropdown_menu": {
+    "name": "Volume Settings",
+    "type": "slider",
+    "save_path": "..\\..\\content\\code\\json_files\\ButtonStates.json",
+    "item_names": [
+      "Master",
+      "Music",
+      "SFX"
+    ]
+  },
+  "button": {
+    "name": "Mute",
+    "save_path": "..\\..\\content\\code\\json_files\\ButtonStates.json"
+  }
+}

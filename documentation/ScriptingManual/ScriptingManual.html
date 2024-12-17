@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scripting Manual</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js" defer></script>
+  <script src="scripts.js" defer></script>  
+</head>
+<body>
+  <div class="container">
+    <div class="category">
+      <h3>Scripting Manual</h3>
+      
+      <details>
+        <summary>Stolen Engine User Manual</summary>
+        <ul class="indented-list">
+          <li><a href="#" onclick="showContent('addinggame')">Adding a New Game</a></li>
+          <li><a href="#"  onclick="showContent('definecomponents')">Defining a New Component</a></li>
+          <li><a href="#"  onclick="showContent('importingcomponents')">Importing Components</a></li>
+        </ul>
+      </details>
+      
+      <details>
+        <summary>API Reference</summary>
+        <ul>
+          <li><details>
+            <summary>Singletons</summary>
+            <ul class="indented-list">
+              <li><a href="#" onclick="showContent('engine')">Engine</a></li>
+              <li><a href="#" onclick="showContent('serviceLocator')">ServiceLocator</a></li>
+            </ul>
+          </details></li>
+          
+          <li><details>
+            <summary>Services</summary>
+            <ul class="indented-list">
+              <li><a href="#" onclick="showContent('renderer')">Renderer</a></li>
+              <li><a href="#" onclick="showContent('windowHandler')">WindowHandler</a></li>
+              <li><a href="#" onclick="showContent('input')">Input</a></li>
+              <li><a href="#" onclick="showContent('ui')">UI</a></li>
+              <li><a href="#" onclick="showContent('time')">Time</a></li>
+              <li><a href="#" onclick="showContent('physicsManager')">PhysicsManager</a></li>
+              <li><a href="#" onclick="showContent('collisionManager')">CollisionManager</a></li>
+              <li><a href="#" onclick="showContent('eventHandler')">EventHandler</a></li>
+              <li><a href="#" onclick="showContent('scriptManager')">ScriptManager</a></li>
+              <li><a href="#" onclick="showContent('sceneManager')">SceneManager</a></li>
+              <li><a href="#" onclick="showContent('resourceFactory')">ResourceFactory</a></li>
+              <li><a href="#" onclick="showContent('resourceManager')">ResourceManager</a></li>
+              <li><a href="#" onclick="showContent('gameObjectFactory')">GameObjectFactory</a></li>
+              <li><a href="#" onclick="showContent('gameObjectManager')">GameObjectManager</a></li>
+            </ul>
+          </details></li>
+
+          <li><details>
+            <summary>GameResourses</summary>
+            <ul class="indented-list">
+              <li><a href="#" onclick="showContent('shader')">Shader</a></li>
+              <li><a href="#" onclick="showContent('texture')">Texture</a></li>
+              <li><a href="#" onclick="showContent('material')">Material</a></li>
+              <li><a href="#" onclick="showContent('geometry')">Geometry</a></li>
+              <li><a href="#" onclick="showContent('transform')">Transform</a></li>
+              <li><a href="#" onclick="showContent('scene')">Scene</a></li>
+              <li><a href="#" onclick="showContent('node')">Node</a></li>
+              <li><a href="#" onclick="showContent('gameObject')">GameObject</a></li>
+            </ul>
+          </details>
+
+          <li><details>
+            <summary>Components</summary>
+            <ul class="indented-list">
+              <li><a href="#" onclick="showContent('component')">Component</a></li>
+              <li><a href="#" onclick="showContent('renderComponent')">RenderComponent</a></li>
+              <li><a href="#" onclick="showContent('transformComponent')">TransformComponent</a></li>
+              <li><a href="#" onclick="showContent('transformComponent')">TransformComponent</a></li>
+              <li><a href="#" onclick="showContent('physicsComponent')">PhysicsComponent</a></li>
+              <li><a href="#" onclick="showContent('collisionComponent')">CollisionComponent</a></li>
+              <li><a href="#" onclick="showContent('controllerComponent')">ControllerComponent</a></li>
+              <li><a href="#" onclick="showContent('scriptComponent')">ScriptComponent</a></li>
+            </ul>
+          </details>
+
+          <li><details>
+            <summary>Utils</summary>
+            <ul class="indented-list">
+              <li><a href="#" onclick="showContent('game')">Game</a></li>
+              <li><a href="#" onclick="showContent('utils')">Utils</a></li>
+              <li><a href="#" onclick="showContent('time')">Time</a></li>
+              <li><a href="#" onclick="showContent('vectorCalculations')">VectorCalculations</a></li>
+            </ul>
+          </details>
+        </ul>
+      </details>
+
+    </div>
+    <div class="content" id="content">
+      <h3>Welcome to Stolen Engine Manual</h3>
+      <p>Select a category from the sidebar to view details.</p>
+    </div>
+  </div>
+</body>
+</html>

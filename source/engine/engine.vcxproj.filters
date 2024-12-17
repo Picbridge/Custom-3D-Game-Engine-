@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Application">
+      <UniqueIdentifier>{b78cbbad-3605-4606-9f35-1756b95000bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Render">
+      <UniqueIdentifier>{4dd749ca-a699-45d2-8bea-144b574aa5fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Application">
+      <UniqueIdentifier>{3638f7f3-e6df-45d8-892a-1f9d622609b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Render">
+      <UniqueIdentifier>{cfaef404-384c-438a-80ac-f0e0fd6371d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{f3aaf0f7-8a84-42e7-9821-157e0375a12a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{bd2860d1-0d5c-4ba1-93e0-2f03c319b38a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Render\Material">
+      <UniqueIdentifier>{deb64dbe-7063-4001-acce-e6b50076a59e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Render\Scenegraph">
+      <UniqueIdentifier>{22145620-51e6-4bb0-8cca-7bcde8b737bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Render\Material">
+      <UniqueIdentifier>{2155a894-ee9d-47d6-afeb-b0aaf378e859}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Render\Scenegraph">
+      <UniqueIdentifier>{eec11555-f599-44de-a488-26035322d3d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Application\Window">
+      <UniqueIdentifier>{1dff72bd-2931-4a71-b14d-d6f88e8f2e06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Application\Window">
+      <UniqueIdentifier>{e103c4ad-44b0-4fc1-b8c2-bc008dd3e960}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameManagement">
+      <UniqueIdentifier>{54f51fb6-8aca-4d31-9d2c-b6cdeec0d8b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameManagement\Engine">
+      <UniqueIdentifier>{fb54ee5e-1a75-4b93-9dfa-2cbb1c6b339f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameManagement\GameObject">
+      <UniqueIdentifier>{4004d291-0f45-4a29-84d4-e5ed394ff69a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameManagement\Utility">
+      <UniqueIdentifier>{617998b7-7986-45df-bbfa-73cf81294d9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameManagement\Camera">
+      <UniqueIdentifier>{1741e96b-31d9-4533-9147-fb562050df8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameManagement">
+      <UniqueIdentifier>{47f592ae-a38c-43cf-9169-03b4f2ed9513}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameManagement\Engine">
+      <UniqueIdentifier>{e9d10cc6-7728-43bf-be7c-d512e344a8d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameManagement\GameObject">
+      <UniqueIdentifier>{615deab4-a378-4b5e-afd2-df67b7080194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameManagement\Utility">
+      <UniqueIdentifier>{73362382-12c0-41a1-a38b-6556b1ceff57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameManagement\Camera">
+      <UniqueIdentifier>{c2a84a71-39a1-46a6-96a4-08879c050f35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Render\Shader">
+      <UniqueIdentifier>{bc3a91bf-3698-4d9a-b916-96d11a9d754d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Render\Shader">
+      <UniqueIdentifier>{1c491f27-9568-40dc-8370-298c50a35331}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameManagement\Component">
+      <UniqueIdentifier>{bcf27f00-4bdf-48fb-8896-8db4475b989c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameManagement\Component">
+      <UniqueIdentifier>{0a427de6-00c0-462c-9613-1bae84e1ae66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Render\Scenegraph\Geometry">
+      <UniqueIdentifier>{7f5ea82b-e1e5-4708-8d33-b08b7813df1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Render\Scenegraph\Transform">
+      <UniqueIdentifier>{50c88b08-3688-4fe2-bea5-1660f398def2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Render\Scenegraph\Geometry">
+      <UniqueIdentifier>{88fd917e-d6ad-4f09-8828-5ad732f52fe7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Render\Scenegraph\Transform">
+      <UniqueIdentifier>{d5fe3416-8758-456e-865e-da0753a5d0fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Application\Game">
+      <UniqueIdentifier>{067e3077-6575-4e32-9cf8-defb18715e29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Application\Game">
+      <UniqueIdentifier>{092938b3-4aad-4f71-8315-413989034469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SampleCodes">
+      <UniqueIdentifier>{4acbc444-23c2-4f6f-9ed8-d9da7ef5289a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SampleCodes">
+      <UniqueIdentifier>{88ccb3ef-7196-4e24-91e7-d20e35eab793}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{1dc18c7c-c994-457f-b0a7-62e06f20e0e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics">
+      <UniqueIdentifier>{59fcf04c-3fa2-4047-9a04-3f0cee5bba2f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="StolenEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Source Files\Application\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Source Files\GameManagement\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjLoader.cpp">
+      <Filter>Source Files\GameManagement\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLoader.cpp">
+      <Filter>Source Files\GameManagement\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files\Render\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\GameManagement\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Source Files\Render\Scenegraph</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source Files\Render\Scenegraph\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Source Files\GameManagement\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="scenemanager\Scene.cpp">
+      <Filter>Source Files\Render\Scenegraph</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry.cpp">
+      <Filter>Source Files\Render\Scenegraph\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceLocator.cpp">
+      <Filter>Source Files\GameManagement\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Source Files\Render\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\Render\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="lodepng.cpp">
+      <Filter>Source Files\GameManagement\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\Application\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderComponent.cpp">
+      <Filter>Source Files\GameManagement\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformComponent.cpp">
+      <Filter>Source Files\GameManagement\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="TestCamera.cpp">
+      <Filter>Source Files\SampleCodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\GameManagement\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Skybox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\PhysicsManager.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\PhysicsComponent.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\CollisionShape_Sphere.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\CollisionShape.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\CollisionManager.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\CollisionComponent.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\backends\imgui_impl_glfw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\backends\imgui_impl_opengl3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_demo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_tables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_widgets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bone.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorCalculations.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VQS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="physics\CollisionShape.cpp" />
+    <ClCompile Include="physics\CollisionShape_Sphere.cpp" />
+    <ClCompile Include="physics\CollisionComponent.cpp" />
+    <ClCompile Include="physics\CollisionManager.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ControllerComponent.cpp" />
+    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Geometry.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="lodepng.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="ObjLoader.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="physics\PhysicsComponent.cpp" />
+    <ClCompile Include="physics\PhysicsManager.cpp" />
+    <ClCompile Include="RenderComponent.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="ServiceLocator.cpp" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="ShaderLoader.cpp" />
+    <ClCompile Include="Skybox.cpp" />
+    <ClCompile Include="StolenEngine.cpp" />
+    <ClCompile Include="TestCamera.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="TransformComponent.cpp" />
+    <ClCompile Include="VectorCalculations.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="..\..\external\imgui\backends\imgui_impl_glfw.cpp" />
+    <ClCompile Include="..\..\external\imgui\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="..\..\external\imgui\imgui.cpp" />
+    <ClCompile Include="..\..\external\imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\..\external\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\..\external\imgui\imgui_tables.cpp" />
+    <ClCompile Include="..\..\external\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="ui\UI.cpp" />
+    <ClCompile Include="DeserializeJSON.cpp" />
+    <ClCompile Include="SampleGame\SampleGame.cpp" />
+    <ClCompile Include="objectmanager\GameObjectManager.cpp" />
+    <ClCompile Include="objectmanager\GameObjectFactory.cpp" />
+    <ClCompile Include="events\Event.cpp" />
+    <ClCompile Include="events\EventHandler.cpp" />
+    <ClCompile Include="events\EventListener.cpp" />
+    <ClCompile Include="ScriptComponent.cpp" />
+    <ClCompile Include="ScriptManager.cpp" />
+    <ClCompile Include="resourcemanager\ResourceFactory.cpp" />
+    <ClCompile Include="resourcemanager\ResourceManager.cpp" />
+    <ClCompile Include="SampleAnimation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="scenemanager\SceneManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FBO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StressTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\CollisionShape_Cuboid.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\CollisionChecks.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Header Files\Application\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Header Files\GameManagement\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjLoader.h">
+      <Filter>Header Files\GameManagement\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Definitions.h">
+      <Filter>Header Files\GameManagement\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLoader.h">
+      <Filter>Header Files\GameManagement\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files\Render\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Header Files\GameManagement\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Header Files\Render\Scenegraph</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Header Files\Render\Scenegraph\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="scenemanager\Scene.h">
+      <Filter>Header Files\Render\Scenegraph</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry.h">
+      <Filter>Header Files\Render\Scenegraph\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Header Files\Render\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files\Render\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="lodepng.h">
+      <Filter>Header Files\GameManagement\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ServiceLocator.h">
+      <Filter>Header Files\GameManagement\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\RenderComponent.h">
+      <Filter>Header Files\GameManagement\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\TransformComponent.h">
+      <Filter>Header Files\GameManagement\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Game.h">
+      <Filter>Header Files\Application\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="TestCamera.h">
+      <Filter>Header Files\SampleCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Component.h">
+      <Filter>Header Files\GameManagement\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameObject.h">
+      <Filter>Header Files\GameManagement\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\GameManagement\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorCalculations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VQS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Component.h" />
+    <ClInclude Include="..\include\Game.h" />
+    <ClInclude Include="..\include\GameObject.h" />
+    <ClInclude Include="..\include\RenderComponent.h" />
+    <ClInclude Include="..\include\ServiceLocator.h" />
+    <ClInclude Include="..\include\TransformComponent.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="physics\CollisionShape.h" />
+    <ClInclude Include="physics\CollisionShape_Sphere.h" />
+    <ClInclude Include="physics\CollisionComponent.h" />
+    <ClInclude Include="physics\CollisionManager.h" />
+    <ClInclude Include="ControllerComponent.h" />
+    <ClInclude Include="Definitions.h" />
+    <ClInclude Include="Engine.h" />
+    <ClInclude Include="Geometry.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="lodepng.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="physics\PhysicsComponent.h" />
+    <ClInclude Include="physics\PhysicsManager.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="ShaderLoader.h" />
+    <ClInclude Include="ObjLoader.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Skybox.h" />
+    <ClInclude Include="TestCamera.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="Time.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="Utils.h" />
+    <ClInclude Include="VectorCalculations.h" />
+    <ClInclude Include="Window.h" />
+    <ClInclude Include="ui\UI.h" />
+    <ClInclude Include="DeserializeJSON.h" />
+    <ClInclude Include="SampleGame\SampleGame.h" />
+    <ClInclude Include="objectmanager\GameObjectManager.h" />
+    <ClInclude Include="objectmanager\GameObjectFactory.h" />
+    <ClInclude Include="objectmanager\GameObjectSystemComponentConstants.h" />
+    <ClInclude Include="events\Event.h" />
+    <ClInclude Include="events\EventHandler.h" />
+    <ClInclude Include="events\EventListener.h" />
+    <ClInclude Include="ScriptComponent.h" />
+    <ClInclude Include="ScriptManager.h" />
+    <ClInclude Include="resourcemanager\ResourceFactory.h" />
+    <ClInclude Include="resourcemanager\ResourceManager.h" />
+    <ClInclude Include="SampleAnimation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="scenemanager\SceneManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FBO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StressTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\PhysicsManager.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\PhysicsComponent.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerComponent.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\CollisionShape_Sphere.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\CollisionShape_Cuboid.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\CollisionShape.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\CollisionManager.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\CollisionComponent.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\CollisionChecks.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\content\code\shader\FragmentShader.fs" />
+    <None Include="..\..\content\code\shader\VertexShader.vs" />
+    <None Include="..\..\.gitignore" />
+    <None Include="sample-1.lua" />
+    <None Include="..\..\content\code\json_files\UI.json" />
+    <None Include="..\..\content\code\shader\DeferredFragmentShader.frag" />
+    <None Include="..\..\content\code\shader\DeferredVertexShader.vert" />
+    <None Include="..\..\content\code\shader\ShadowFragmentShader.frag" />
+    <None Include="..\..\content\code\shader\ShadowVertexShader.vert" />
+    <None Include="SampleGame\SampleGameGameObject.json" />
+    <None Include="SampleGame\SampleGameResource.json" />
+    <None Include="SampleGame\StressTestGameObject.json" />
+    <None Include="SampleGame\StressTestGameObject_100.json" />
+    <None Include="SampleGame\GeneratedGameObjects.json" />
+    <None Include="SampleGame\GeneratedGameObjectsUnique.json" />
+    <None Include="..\..\content\code\shader\Debug.frag" />
+    <None Include="..\..\content\code\shader\Debug.vert" />
+    <None Include="physics_test_environment.json" />
+  </ItemGroup>
+</Project>

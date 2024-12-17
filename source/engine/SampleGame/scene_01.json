@@ -1,0 +1,316 @@
+{
+    "scene_01": {
+        "GameObject": {
+            "WoodenHorse": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                -3.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                90.0,
+                                180.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Wood"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Horse"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "GreenBunny": {
+                "Children": {},
+              "Components": {
+                "TransformComponent": {
+                  "position": [
+                    "vec3",
+                    [
+                      3.0,
+                      0.0,
+                      0.0
+                    ]
+                  ],
+                  "rotation": [
+                    "vec3",
+                    [
+                      0.0,
+                      0.0,
+                      0.0
+                    ]
+                  ],
+                  "scale": [
+                    "vec3",
+                    [
+                      1.0,
+                      1.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "RenderComponent": {
+                  "color": [
+                    "vec3",
+                    [
+                      1.0,
+                      1.0,
+                      1.0
+                    ]
+                  ],
+                  "shader": [
+                    "string",
+                    "Default"
+                  ],
+                  "material": [
+                    "string",
+                    "Plain"
+                  ],
+                  "geometry": [
+                    "string",
+                    "Bunny"
+                  ],
+                  "uvType": [
+                    "uvType",
+                    3
+                  ]
+                },
+                "ScriptComponent": {
+                  "scriptFilepath": [
+                    "string",
+                    "sample-1.lua"
+                  ]
+                }
+              }
+            },
+            "RandomSphere": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -5.0,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Default"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    },
+                    "CollisionComponent": {
+                        "collisionShape": [
+                            "CollisionShape",
+                            {
+                                "radius": [
+                                    "double",
+                                    1.0
+                                ],
+                                "shapeType": [
+                                    "string",
+                                    "CollisionShape_Sphere"
+                                ]
+                            }
+                        ],
+                        "collisionLayer": [
+                            "int",
+                            1
+                        ],
+                        "collisionMask": [
+                            "int",
+                            2
+                        ]
+                    }
+                }
+            },
+            "SampleObject": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Default"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    },
+                    "ControllerComponent": {},
+                    "PhysicsComponent": {
+                        "velocity": [
+                            "dvec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "mass": [
+                            "double",
+                            1.0
+                        ],
+                        "drag": [
+                            "double",
+                            0.0
+                        ],
+                        "gravityMultiplier": [
+                            "double",
+                            0.01
+                        ],
+                        "grounded": [
+                            "bool",
+                            false
+                        ]
+                    },
+                    "CollisionComponent": {
+                        "collisionShape": [
+                            "CollisionShape",
+                            {
+                                "radius": [
+                                    "double",
+                                    1.0
+                                ],
+                                "shapeType": [
+                                    "string",
+                                    "CollisionShape_Sphere"
+                                ]
+                            }
+                        ],
+                        "collisionLayer": [
+                            "int",
+                            2
+                        ],
+                        "collisionMask": [
+                            "int",
+                            1
+                        ]
+                    }
+                }
+            }
+        },
+        "Skybox": {
+            "SampleSkybox": {}
+        }
+    }
+}

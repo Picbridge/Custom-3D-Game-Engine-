@@ -1,0 +1,11 @@
+.vs
+source/.vs
+source/engine/x64/
+source/engine/imgui.ini
+source/x64
+source/engine/x64/Debug/
+source/vcpkg_installed/
+source/engine/engine.vcxproj.user
+source/engine/imgui.ini
+source/enc_temp_folder/
+/content/code/json_files/ButtonStates.json

@@ -1,0 +1,10 @@
+{
+  "music\\dragon_soul.mp3": {
+    "mode": "loop",
+    "volume": 0.5
+  },
+  "sound_effects\\banana_bread.mp3": {
+    "mode": "3D",
+    "volume": 1.0
+  }
+}

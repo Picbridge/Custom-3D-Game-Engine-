@@ -1,0 +1,5709 @@
+{
+    "scene_03_updated": {
+        "GameObject": {
+            "Block1": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block2": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block3": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block4": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block5": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block6": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block7": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block8": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block9": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block10": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block11": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block12": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block13": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block14": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block15": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block16": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block17": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block18": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block19": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block20": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block21": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block22": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block23": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block24": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block25": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block26": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block27": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block28": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block29": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block30": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block31": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block32": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block33": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block34": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block35": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block36": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block37": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block38": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block39": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block40": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block41": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block42": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block43": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block44": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block45": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block46": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block47": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block48": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block49": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block50": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block51": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block52": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block53": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block54": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block55": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block56": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block57": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block58": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block59": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block60": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block61": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block62": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block63": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block64": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block65": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block66": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block67": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block68": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block69": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block70": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block71": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block72": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block73": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block74": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block75": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block76": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block77": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block78": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block79": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block80": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block81": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block82": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block83": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block84": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block85": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block86": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block87": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block88": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block89": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block90": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block91": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block92": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block93": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block94": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block95": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block96": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block97": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block98": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block99": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            },
+            "Block100": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                -2.5,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "shader": [
+                            "string",
+                            "Default"
+                        ],
+                        "material": [
+                            "string",
+                            "Default"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "uvType": [
+                            "uvType",
+                            2
+                        ]
+                    }
+                }
+            }
+        },
+        "Skybox": {
+            "SampleSkybox": {}
+        }
+    }
+}

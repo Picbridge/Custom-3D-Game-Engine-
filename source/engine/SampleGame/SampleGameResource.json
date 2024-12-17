@@ -1,0 +1,81 @@
+{
+    "Texture": {
+		    "Brick_diff": {
+                "path": "../../content/art/texture/brick_diff.png"
+            },
+            "Brick_spec": {
+                "path": "../../content/art/texture/brick_spec.png"
+            },
+            "Wood_diff": {
+                "path": "../../content/art/texture/wood_diff.png"
+            }
+    },
+  "Shader": {
+    "Default": {
+      "vert": "../../content/code/shader/VertexShader.vs",
+      "frag": "../../content/code/shader/FragmentShader.fs"
+    },
+    "Skybox": {
+      "vert": "../../content/code/shader/skybox.vs",
+      "frag": "../../content/code/shader/skybox.fs"
+    },
+    "Shadow": {
+      "vert": "../../content/code/shader/ShadowVertexShader.vert",
+      "frag": "../../content/code/shader/ShadowFragmentShader.frag"
+    },
+    "Debug": {
+      "vert": "../../content/code/shader/Debug.vert",
+      "frag": "../../content/code/shader/Debug.frag"
+    },
+    "Particle": {
+      "vert": "../../content/code/shader/Particle.vert",
+      "frag": "../../content/code/shader/Particle.frag"
+    },
+    "ShadowDebug": {
+      "vert": "../../content/code/shader/ShadowDebug.vert",
+      "frag": "../../content/code/shader/ShadowDebug.frag"
+    },
+    "Line": {
+      "vert": "../../content/code/shader/line.vert",
+      "frag": "../../content/code/shader/line.frag"
+    }
+  },
+    "Material": {
+        "Default": {
+            "shader": "Default",
+            "texture": {
+                "diff": "Brick_diff",
+                "spec": "Brick_spec"
+            }
+        },
+        "Plain": {
+            "shader": "Default",
+            "texture": {
+                "diff": "Brick_diff"
+            }
+        },
+        "Wood": {
+            "shader": "Default"
+        }
+    },
+    "Geometry": {
+        "Default": {
+            "path": "../../content/art/obj/teapot_mid_poly.obj"
+        },
+        "Bunny": {
+            "path": "../../content/art/obj/bunny_high_poly.obj"
+        },
+        "Horse": {
+            "path": "../../content/art/obj/horse_high_poly.obj"
+        },
+        "Skybox": {
+            "path": "../../content/art/obj/cube_low_poly.obj"
+        },
+      "Sphere": {
+        "path": "../../content/art/obj/sphere_mid_poly.obj"
+      },
+      "Cube": {
+        "path":  "../../content/art/obj/cube_low_poly.obj"
+      }
+    }
+}

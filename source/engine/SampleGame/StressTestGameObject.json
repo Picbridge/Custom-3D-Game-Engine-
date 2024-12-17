@@ -1,0 +1,20 @@
+{
+  "GameObjects": {
+    "RandomSphere_01": {
+      "Components": {
+        "RenderComponent": {
+          "material": "Default",
+          "geometry": "Default",
+          "shader": "Default"
+        },
+        "TransformComponent": {
+          "position": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    }
+  }
+}
