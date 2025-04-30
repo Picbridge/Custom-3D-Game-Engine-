@@ -1,159 +1,143 @@
 #include "../pch.h"
 #include "PhysicsComponent.h"
+class Component;
 #include "CollisionComponent.h"
 #include "PhysicsManager.h"
 
-PhysicsComponent::PhysicsComponent(double mass, double gravityMultiplyer, double bounciness, double drag, double rotationalDrag) : Component(),
+PhysicsComponent::PhysicsComponent(double mass, double gravityMultiplyer, double bounciness, double drag, double rotationalDrag, double friction) : Component(),
 	m_velocity(glm::dvec3(0)), m_rotationalVelocity(glm::dvec3(0)),
-	m_acceleration(glm::dvec3(0)), m_rotationalAcceleration(glm::dvec3(0)),
-	m_mass(mass), m_inverseMass(1 / m_mass), m_drag(drag), m_rotationalDrag(rotationalDrag),
-	m_gravityMultiplier(gravityMultiplyer), m_bounciness(bounciness), m_grounded(false)
+	m_acceleration(glm::dvec3(0)), m_rotationalAcceleration(glm::dvec3(0)), m_mass(mass), m_inverseMass(1 / m_mass),
+    m_frictionCoefficient(friction), m_dragCoefficient(drag), m_rotationalDragCoefficient(rotationalDrag),
+	m_gravityMultiplier(gravityMultiplyer), m_bounciness(bounciness), m_groundedOn(nullptr)
 {
-	SERVICE_LOCATOR.GetPhysicsManager()->AddPhysicsComponent(this);
-	Init();
+    defineMember();
 }
 
 PhysicsComponent::~PhysicsComponent()
 {
-	SERVICE_LOCATOR.GetPhysicsManager()->RemovePhysicsComponent(this);
 }
 
 void PhysicsComponent::Init()
 {
-	defineMember();
 }
+
+void PhysicsComponent::Update() { Update(SERVICE_LOCATOR.GetTime()->GetDeltaTime()); }
 
 void PhysicsComponent::Update(double deltaTime)
 {
-	m_velocity += m_acceleration;
-	m_rotationalVelocity += m_rotationalAcceleration;
-	m_acceleration = glm::dvec3(0);
-	m_rotationalAcceleration = glm::dvec3(0);
+    // Grounded Checks and Responses
+    if (CheckForGround()) { TransitionToGround(); GroundedResponse(deltaTime); }
+    else { UngroundedResponse(deltaTime); }
 
-	GroundedResponse();
+    // Apply acceleration to velocity
+    glm::dvec3 newVelocity = GetVelocity() + GetAcceleration();
+    double minVelocity = 0.001;
+    newVelocity = glm::length(newVelocity) < minVelocity ? glm::dvec3(0) : newVelocity;
+    SetVelocity(newVelocity);
+    SetAcceleration(glm::dvec3(0));
+    // Apply rotational acceleration to rotational velocity
+    SetRotationalVelocity(GetRotationalVelocity() + GetRotationalAcceleration());
+    SetRotationalAcceleration(glm::dvec3(0));
 
-	glm::dvec3 pos = pOwner->GetTransform()->GetPosition();
-	pOwner->GetTransform()->SetPosition(pos + (m_velocity * deltaTime));
-	glm::dvec3 rotation = pOwner->GetTransform()->GetRotation();
-	pOwner->GetTransform()->SetRotation(rotation + (m_rotationalVelocity * deltaTime));
+    // Apply velocity to position
+    Transform* transform = pOwner->GetTransform();
+	glm::dvec3 pos = transform->GetPosition();
+	transform->SetPosition(pos + (GetVelocity() * deltaTime));
+    // Apply rotational velocity to rotation
+	glm::dvec3 rotation = transform->GetRotation();
+	transform->SetRotation(rotation + (GetRotationalVelocity() * deltaTime));
 }
 
 void PhysicsComponent::Shutdown()
 {
 }
 
-void PhysicsComponent::GroundedResponse()
+void PhysicsComponent::GroundedResponse(double deltaTime)
 {
-	glm::dvec3 gravity = SERVICE_LOCATOR.GetPhysicsManager()->GetGravity();
-	glm::dvec3 grav_dir = glm::normalize(gravity);
-
-	if (!m_grounded)
-	{
-		auto groundCheck = CheckForGround();
-		if (groundCheck)	// Transition to grounded state
-		{
-			if (m_bounciness > 0)	// Bounce off the ground; if velocity still too low, set grounded to true
-			{
-				// TODO: Implement bouncing off the ground
-				// glm::dvec3 normal = groundCheck->first.GetCollisionShape()->GetNormal(grav_dir);
-				// m_velocity = m_velocity - 2.0 * glm::dot(m_velocity, normal) * normal * m_bounciness;
-			}
-			double parallel_to_gravity = glm::dot(glm::normalize(m_velocity), grav_dir);
-			if (parallel_to_gravity >= 0)	// If the velocity is aligned with gravity, the object is grounded
-			{
-				m_grounded = true;
-				CollisionComponent* collisionComponent = this->GetComponent<CollisionComponent>();
-				CollisionComponent tempComponent = groundCheck->first;
-				glm::dvec3 startPos = tempComponent.GetCollisionShape()->GetPosition();
-				glm::dvec3 endPos = collisionComponent->GetCollisionShape()->GetPosition();
-				glm::dvec3 newPos = tempComponent.Cast_FirstAvailablePosition(startPos, endPos, 10); // TODO maybe change iterations to depend on velocity
-
-				glm::dvec3 rotation = groundCheck->first.GetCollisionShape()->GetRotation();
-
-				glm::dvec3 projection = (glm::dot(m_velocity, gravity) / glm::length2(gravity)) * gravity;
-				m_velocity -= projection; // Remove velocity component aligned with gravity
-				m_rotationalVelocity = glm::dvec3(0);
-				// still need to set position and rotation to the ground
-				collisionComponent->GetCollisionShape()->SetPosition(newPos);
-				collisionComponent->GetCollisionShape()->SetRotation(rotation);
-				pOwner->GetTransform()->SetPosition(newPos);
-				pOwner->GetTransform()->SetRotation(rotation);
-				m_velocity = ApplyDrag();
-			}
-		}
-	}
-	else	// grounded
-	{
-		m_grounded = IsStillGrounded();
-		if (m_grounded)	// continue to be grounded
-		{
-			return; // TODO: Can move left or right and be inside the ground
-		}
-	}
-
-	if (!m_grounded)
-	{
-		m_velocity += gravity * m_gravityMultiplier;
-		m_velocity = ApplyDrag();
-		m_rotationalVelocity = ApplyRotationalDrag();
-	}
+    ApplyFriction(deltaTime);
+    ApplyDrag(deltaTime);
 }
 
-void PhysicsComponent::Update() 
-{ Update(SERVICE_LOCATOR.GetTime()->GetDeltaTime()); }
-
-
-glm::dvec3 PhysicsComponent::ApplyDrag()
+void PhysicsComponent::UngroundedResponse(double deltaTime)
 {
-	glm::dvec3 drag = m_velocity * (1 - m_drag);
-	return drag;
+    ApplyGravity(deltaTime);
+    ApplyDrag(deltaTime);
+	//ApplyRotationalDrag(deltaTime);
 }
 
-glm::dvec3 PhysicsComponent::ApplyRotationalDrag()
+void PhysicsComponent::TransitionToGround()
 {
-	glm::dvec3 drag = m_rotationalVelocity * (1 - m_rotationalDrag);
-	return drag;
+    SetGrounded(true);
 }
 
-std::optional<std::pair<CollisionComponent,CollisionComponent>> PhysicsComponent::CheckForGround()
+glm::dvec3 PhysicsComponent::GetGroundedNormal() const
 {
-	CollisionComponent* collisionComponent = this->GetComponent<CollisionComponent>();
-	if (!collisionComponent) { return std::nullopt; }	// If this has no collision component, this cannot be grounded
-	glm::dvec3 gravity = SERVICE_LOCATOR.GetPhysicsManager()->GetGravity();
-	glm::dvec3 gravDir = glm::normalize(gravity);
-	double  gravityDot = glm::dot(glm::normalize(m_velocity), gravDir);
-	if (gravityDot <= 0) { return std::nullopt; } // If this is moving upwards, this is not grounded
-	double deltaTime = SERVICE_LOCATOR.GetTime()->GetDeltaTime();
-	glm::dvec3 startPosition = collisionComponent->GetCollisionShape()->GetPosition();
-	glm::dvec3 endPosition = startPosition + (m_velocity * deltaTime);
-	glm::dvec3 startRotation = collisionComponent->GetCollisionShape()->GetRotation();
-	glm::dvec3 endRotation = startRotation + (m_rotationalVelocity * deltaTime);
+    if (!Grounded()) { return glm::dvec3(0); }
+    CollisionShape* groundedCollider = GetGroundedCollider();
+    glm::dvec3 thisPosition = pOwner->GetComponent<CollisionComponent>()->GetCollisionShape()->GetPosition();
+    glm::dvec3 otherPosition = groundedCollider->GetPosition();
+    glm::dvec3 diff = thisPosition - otherPosition;
+    double dist = glm::length(diff);
+    glm::dvec3 dir = glm::normalize(diff);
+    glm::dvec3 otherToThis = glm::normalize(thisPosition - otherPosition);
 
-	auto castResult = collisionComponent->Cast_FirstCollision(startPosition, endPosition, startRotation, endRotation, 10);
-	CollisionComponent* collidedComponent = castResult.second;
-	if (!collidedComponent) { return std::nullopt; }	// If no collision occurred, the object is not grounded
-	if (collidedComponent->HasComponent<PhysicsComponent>()) { return std::nullopt; }	// If the collided object has no physics component, this cannot be grounded
-	return std::pair<CollisionComponent, CollisionComponent> {castResult.first, *castResult.second};
+    return groundedCollider->GetNormal(otherToThis);
 }
 
-bool PhysicsComponent::IsStillGrounded()
+void PhysicsComponent::ApplyGravity(double deltaTime)
 {
-    CollisionComponent* collisionComponent = this->GetComponent<CollisionComponent>();
-    if (!collisionComponent) { return false; }	// If this has no collision component, this cannot be grounded
-	
-    glm::dvec3 gravity = SERVICE_LOCATOR.GetPhysicsManager()->GetGravity();
-	double gravityDot = glm::dot(m_velocity, gravity); // how much of the velocity is aligned with gravity
-	if (gravityDot < 0) { return false; } // If dot product is negative, the object is moving upwards and not grounded
+    ApplyForce(SERVICE_LOCATOR.GetPhysicsManager()->GetGravity() * GetGravityMultiplyer() * deltaTime);
+}
 
-    glm::dvec3 startPosition = collisionComponent->GetCollisionShape()->GetPosition();
-	glm::dvec3 endPosition = startPosition + (glm::normalize(gravity) * s_offset);	// Small offset in the direction of gravity
-    glm::dvec3 startRotation = collisionComponent->GetCollisionShape()->GetRotation();
-    glm::dvec3 endRotation = startRotation;
+void PhysicsComponent::ApplyFriction(double deltaTime)
+{
+    glm::dvec3 velocity = GetVelocity();
+    double frictionCoefficient = GetFrictionCoefficient();
+    glm::dvec3 frictionForce = -velocity * frictionCoefficient * deltaTime;
+    ApplyForce(frictionForce);
+}
 
-    auto castResult = collisionComponent->Cast_FirstCollision(startPosition, endPosition, startRotation, endRotation);
-    CollisionComponent* collidedComponent = castResult.second;
-    if (!collidedComponent) { return false; }	// If no collision occurred, the object is not grounded
-    if (collidedComponent->HasComponent<PhysicsComponent>()) { return false; } // If the collided object has no physics component, this cannot be grounded
+void PhysicsComponent::ApplyDrag(double deltaTime)
+{
+    glm::dvec3 velocity = GetVelocity();
+    double dragCoefficient = GetDrag();
+    glm::dvec3 dragForce = -velocity * dragCoefficient * deltaTime;
+    ApplyForce(dragForce);
+}
 
+void PhysicsComponent::ApplyRotationalDrag(double deltaTime)
+{
+    glm::dvec3 rotationalVelocity = GetRotationalVelocity();
+    double dragCoefficient = GetRotationalDrag();
+	glm::dvec3 dragForce = -rotationalVelocity * dragCoefficient * deltaTime;
+    ApplyTorque(dragForce);
+}
+
+bool PhysicsComponent::StillGrounded()
+{
+    return CheckForGround();
+}
+
+bool PhysicsComponent::CheckForGround()
+{
+    CollisionManager* collisionManager = SERVICE_LOCATOR.GetCollisionManager();
+    PhysicsManager* physicsManager = SERVICE_LOCATOR.GetPhysicsManager();
+    CollisionComponent* collisionComponent = pOwner->GetComponent<CollisionComponent>();
+    CollisionShape* collisionShape = collisionComponent->GetCollisionShape();
+    // Check if velocity is moving with or against gravity
+    glm::dvec3 gravDir = physicsManager->GetGravityDir();
+    // Raycast down from the object to check for the ground
+    glm::dvec3 bottomPoint = collisionShape->GetEdgePoint(gravDir);
+    int mask = collisionComponent->GetCollisionMask();
+    Raycast cast = collisionManager->CastRay(bottomPoint, gravDir, mask, s_grounded_offset);
+    if (!cast.Hit()) { m_groundedOn = nullptr;  return false; }
+    // Check if the object is moving away from the ground
+    glm::dvec3 thisFrameVelocity = GetVelocity() + GetAcceleration();
+    glm::dvec3 velocityDir = thisFrameVelocity != glm::dvec3(0) ? glm::normalize(thisFrameVelocity) : glm::dvec3(0);
+    glm::dvec3 groundedNormal = cast.GetHitNormal();
+    double groundedDot = glm::dot(groundedNormal, velocityDir);
+    const double groundedThreshold = 0.002;
+    if (groundedDot > groundedThreshold) { m_groundedOn = nullptr; return false; }
+    m_groundedOn = cast.GetShapeHit();
     return true;
 }

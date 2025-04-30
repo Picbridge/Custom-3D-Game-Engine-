@@ -1,13 +1,13 @@
 #include "pch.h"
 #include "headers.h"
 
-Geometry::Geometry() : m_VAO(0), m_VBO(0), m_IBO(0), m_UV(0), m_NORMALBUFFER(0), m_uvType(PLANAR)
+Geometry::Geometry() : m_VAO(0), m_VBO(0), m_IBO(0), m_UV(0), m_NORMALBUFFER(0), m_uvType(SPHERICAL)
 {
 	glDisable(GL_DEBUG_OUTPUT);
 	genBuffers();
 }
 
-Geometry::Geometry(const char* path) : m_VAO(0), m_VBO(0), m_IBO(0), m_UV(0), m_NORMALBUFFER(0), m_uvType(PLANAR)
+Geometry::Geometry(const char* path) : m_VAO(0), m_VBO(0), m_IBO(0), m_UV(0), m_NORMALBUFFER(0), m_uvType(SPHERICAL)
 {
 	glDisable(GL_DEBUG_OUTPUT);
 	if (!LoadGeometry(path))
@@ -67,22 +67,22 @@ void Geometry::Bind(Shader* shader)
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_UV); // Bind the buffer for UV coordinates
 		// Set the correct UV buffer based on the mapping type
-		switch (m_uvType)
-		{
-		case CYLINDRICAL:
-			glBufferData(GL_ARRAY_BUFFER, m_uvInfo.Cylindrical.size() * sizeof(glm::vec2), &m_uvInfo.Cylindrical[0], GL_STATIC_DRAW);
-			break;
-		case SPHERICAL:
-			glBufferData(GL_ARRAY_BUFFER, m_uvInfo.Spherical.size() * sizeof(glm::vec2), &m_uvInfo.Spherical[0], GL_STATIC_DRAW);
-			break;
-		case PLANAR:
-			glBufferData(GL_ARRAY_BUFFER, m_uvInfo.Planar.size() * sizeof(glm::vec2), &m_uvInfo.Planar[0], GL_STATIC_DRAW);
-			break;
-		case CUBE:
-			glBufferData(GL_ARRAY_BUFFER, m_uvInfo.Cube.size() * sizeof(glm::vec2), &m_uvInfo.Cube[0], GL_STATIC_DRAW);
-			break;
-		}
-
+		//switch (m_uvType)
+		//{
+		//case CYLINDRICAL:
+		//	glBufferData(GL_ARRAY_BUFFER, m_uvInfo.Cylindrical.size() * sizeof(glm::vec2), &m_uvInfo.Cylindrical[0], GL_STATIC_DRAW);
+		//	break;
+		//case SPHERICAL:
+		//	glBufferData(GL_ARRAY_BUFFER, m_uvInfo.Spherical.size() * sizeof(glm::vec2), &m_uvInfo.Spherical[0], GL_STATIC_DRAW);
+		//	break;
+		//case PLANAR:
+		//	glBufferData(GL_ARRAY_BUFFER, m_uvInfo.Planar.size() * sizeof(glm::vec2), &m_uvInfo.Planar[0], GL_STATIC_DRAW);
+		//	break;
+		//case CUBE:
+		//	glBufferData(GL_ARRAY_BUFFER, m_uvInfo.Cube.size() * sizeof(glm::vec2), &m_uvInfo.Cube[0], GL_STATIC_DRAW);
+		//	break;
+		//}
+		glBufferData(GL_ARRAY_BUFFER, m_uvInfo.Planar.size() * sizeof(glm::vec2), &m_uvInfo.Planar[0], GL_STATIC_DRAW);
 		glEnableVertexAttribArray(texCoordLocation);
 		glVertexAttribPointer(
 			texCoordLocation,

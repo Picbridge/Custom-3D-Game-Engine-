@@ -44,7 +44,6 @@ protected:
     GLuint m_IBO;
     GLuint m_UV;
     GLuint m_NORMALBUFFER;
-
     VERTEX_DATA m_vertexData;
 	NORMAL_DATA m_normalData;
     UV_INFO m_uvInfo;

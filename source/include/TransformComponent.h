@@ -32,6 +32,8 @@ public:
 	//@param scale : New scale of the GameObject
 	void SetScale(float scale);
 
+	void SetPositionWithForwardVec(glm::vec3 forward);
+
 	//-------------------
 	//Getters
 	//-------------------

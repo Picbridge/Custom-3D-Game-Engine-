@@ -1,0 +1,277 @@
+{
+    "controls_menu": {
+        "GameObject": {
+            "Camera": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ]
+                    },
+                    "CameraComponent": {
+                        "nearPlane": [
+                            "float",
+                            0.10000000149011612
+                        ],
+                        "fov": [
+                            "float",
+                            45.0
+                        ],
+                        "farPlane": [
+                            "float",
+                            1000.0
+                        ],
+                        "viewport": [
+                            "Viewport",
+                            [
+                                0,
+                                0,
+                                1080,
+                                1055
+                            ]
+                        ]
+                    }
+                }
+            }
+        },
+        "UI": {
+            "Text_0": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.49300000071525574,
+                                0.23899999260902405,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                2.200000047683716,
+                                0.0,
+                                0.0
+                            ]
+                        ]
+                    },
+                    "UITextComponent": {
+                        "text": [
+                            "const char*",
+                            "Controls"
+                        ],
+                        "active": [
+                            "bool",
+                            true
+                        ],
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                0.7300000190734863,
+                                0.0
+                            ]
+                        ],
+                        "font": [
+                            "const char*",
+                            "SuperShiny.ttf"
+                        ]
+                    }
+                }
+            },
+            "Directions": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.5379999876022339,
+                                0.3700000047683716,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.6499999761581421,
+                                0.0,
+                                0.0
+                            ]
+                        ]
+                    },
+                    "UITextComponent": {
+                        "text": [
+                            "const char*",
+                            "\n- WASD: Move\n- Space: Jump\n- Hold Left Click: Attach grapple at the sphere marker\n- Release Left Click: Release grapple\n- Q: Reel Out the grapple rope\n- E: Reel In the grapple rope\n- Backspace: Reset the player at the start position"
+                        ],
+                        "active": [
+                            "bool",
+                            true
+                        ],
+                        "color": [
+                            "vec3",
+                            [
+                                0.2199999988079071,
+                                0.3700000047683716,
+                                0.5899999737739563
+                            ]
+                        ],
+                        "font": [
+                            "const char*",
+                            "MouldyCheeseRegular.ttf"
+                        ]
+                    }
+                }
+            },
+            "Invert Y-Axis": {
+                "Children": {},
+                "Components": {
+                    "UIComponent": {
+                        "elementType": [
+                            "int",
+                            1
+                        ],
+                        "saveFilePath": [
+                            "string",
+                            "Invert Y-Axis"
+                        ],
+                        "color": [
+                            "vec3",
+                            [
+                                0.2199999988079071,
+                                0.3700000047683716,
+                                0.5899999737739563
+                            ]
+                        ],
+                        "font": [
+                            "const char*",
+                            "MouldyCheeseRegular.ttf"
+                        ]
+                    },
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5210000276565552,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                320.0,
+                                60.0,
+                                0.0
+                            ]
+                        ]
+                    }
+                }
+            },
+            "Back": {
+                "Children": {},
+                "Components": {
+                    "UIComponent": {
+                        "elementType": [
+                            "int",
+                            0
+                        ],
+                        "saveFilePath": [
+                            "string",
+                            "Back"
+                        ],
+                        "color": [
+                            "vec3",
+                            [
+                                0.2199999988079071,
+                                0.3700000047683716,
+                                0.5899999737739563
+                            ]
+                        ],
+                        "font": [
+                            "const char*",
+                            "MouldyCheeseRegular.ttf"
+                        ]
+                    },
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5960000157356262,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                320.0,
+                                60.0,
+                                0.0
+                            ]
+                        ]
+                    }
+                }
+            }
+        },
+        "Skybox": {
+            "SampleSkybox": {}
+        }
+    }
+}

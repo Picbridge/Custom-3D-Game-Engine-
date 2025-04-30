@@ -1,0 +1,14 @@
+{
+    "Shader": "Default",
+    "Textures": {
+        "Diffuse": "pattern_15",
+        "Specular": "Default_spec"
+    },
+    "Color": [
+        1.0,
+        1.0,
+        1.0
+    ],
+    "Shininess": 1.0,
+    "Alpha": 1.0
+}

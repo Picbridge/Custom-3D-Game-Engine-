@@ -1,7 +1,19 @@
 #include "../pch.h"
 #include "SceneManager.h"
+#include "../ui/UITextComponent.h"
+#include "../cameramanager/CameraManager.h"
 
 std::unique_ptr<SceneManager> SceneManager::instance = nullptr;
+
+Scene* SceneManager::FindScene(const std::string& name)
+{
+	auto it = m_scenes.find(name);
+	if (it != m_scenes.end())
+	{
+		return it->second;
+	}
+	return nullptr;
+}
 
 SceneManager* SceneManager::GetInstance()
 {
@@ -11,14 +23,26 @@ SceneManager* SceneManager::GetInstance()
 	return instance.get();
 }
 
-SceneManager::SceneManager() : m_pCurrentScene(nullptr), m_currentSceneIndex(-1) 
+SceneManager::SceneManager() : m_pCurrentScene(nullptr), m_currentSceneIndex(-1)
 {
 }
 
 SceneManager::~SceneManager()
+{}
+
+void SceneManager::Shutdown()
 {
-	for (auto& scene : m_scenes)
+	// Commented out because deletion logic
+	// in Scene class doesn't work for tree structure
+
+	// Don't really need to do this anyway tbh because
+	// the OS will handle it for us since scene deletion only
+	// happens when the program is closed
+
+	/*for (auto& scene : m_scenes)
+	{
 		delete scene.second;
+	}*/
 
 	instance = nullptr;
 }
@@ -51,11 +75,29 @@ void SceneManager::ExportScene(Scene* scene)
 		processNode(node, nodeJson, allocator);
 		classes[className].AddMember(rapidjson::Value(node->GetName().c_str(), allocator).Move(), nodeJson, allocator);
 	}
+
+	// Add the UI nodes to the sceneJson
+	if (!scene->GetUINode()->GetChildren().empty())
+	{
+		std::string className = "UI";
+		rapidjson::Value classJson(rapidjson::kObjectType);
+		classes[className] = classJson;
+
+		for (auto& node : scene->GetUINode()->GetChildren())
+		{
+			// Array of components in the node
+			rapidjson::Value nodeJson(rapidjson::kObjectType);
+			// Export the scene as a json file by going through each node and its components
+			processNode(node, nodeJson, allocator);
+			classes[className].AddMember(rapidjson::Value(node->GetName().c_str(), allocator).Move(), nodeJson, allocator);
+		}
+	}
+
 	//iterate through classes 
 	for (auto& [key, val] : classes)
 		sceneJson.AddMember(rapidjson::Value(key.c_str(), allocator).Move(), val, allocator);
-	
-    document.AddMember(rapidjson::Value(sceneName.c_str(), allocator).Move(), sceneJson, allocator);
+
+	document.AddMember(rapidjson::Value(sceneName.c_str(), allocator).Move(), sceneJson, allocator);
 
 	// Serialize the JSON document to a string
 	rapidjson::StringBuffer buffer;
@@ -78,9 +120,9 @@ void SceneManager::ExportScene(Scene* scene)
 
 	// Save the JSON string to the file
 	std::ofstream outFile(sourcePath); // Open the file for writing
-	if (!outFile) 
+	if (!outFile)
 		throw std::runtime_error("Failed to create the JSON file: " + sourcePath.string());
-	
+
 	outFile << buffer.GetString(); // Write the JSON string to the file
 	outFile.close(); // Close the file
 
@@ -88,7 +130,7 @@ void SceneManager::ExportScene(Scene* scene)
 	std::cout << "Scene exported to file: " << sourcePath.filename() << " in path: " << directory << std::endl;
 }
 
-void SceneManager::AddScene(std::string name, const std::source_location& location)
+void SceneManager::AddScene(std::string name)
 {
 	auto scene = new Scene();
 	auto tempName = name;
@@ -97,7 +139,7 @@ void SceneManager::AddScene(std::string name, const std::source_location& locati
 		tempName = "EmptyScene";
 		name = tempName;
 	}
-	
+
 	int count = 1;
 	while (m_scenes.find(tempName) != m_scenes.end())
 		tempName = name + " (" + std::to_string(count++) + ")";
@@ -106,9 +148,8 @@ void SceneManager::AddScene(std::string name, const std::source_location& locati
 	m_sceneMap[tempName] = m_sceneOrder.size();
 	m_sceneOrder.push_back(tempName);
 
-
-	std::filesystem::path callerPath(location.file_name());
-	std::filesystem::path directory = callerPath.parent_path(); // Get the directory of the caller's source file
+	std::filesystem::path gamePath = Utils::GetExecutableDirectory().parent_path().parent_path().parent_path() / "content" / "game";
+	std::filesystem::path directory(gamePath);
 	std::string fileName = tempName + ".json";
 
 	// Try to load in the path
@@ -138,8 +179,8 @@ void SceneManager::RemoveScene(const Scene* scene)
 void SceneManager::RemoveScene(const std::string& name)
 {
 	auto it = m_scenes.find(name);
-	if (name == m_pCurrentScene->GetName())
-		throw std::runtime_error("Cannot delete the current scene");
+	//if (name == m_pCurrentScene->GetName())
+	//	throw std::runtime_error("Cannot delete the current scene");
 
 	if (it != m_scenes.end())
 	{
@@ -170,7 +211,7 @@ void SceneManager::SetSceneName(const Scene* scene, const std::string& name)
 	m_sceneMap[name] = index;
 
 	m_sceneOrder[index] = name;
-	
+
 	auto updatedScene = m_scenes[originalName];
 	m_scenes.erase(originalName);
 	m_scenes[name] = updatedScene;
@@ -201,29 +242,37 @@ void SceneManager::SetCurrentScene(const std::string& name)
 {
 	auto it = m_scenes.find(name);
 
-	if (m_pCurrentScene)
-		m_pCurrentScene->Shutdown();
-
+	SERVICE_LOCATOR.GetCameraManager()->ClearActiveCameras();
 	if (it != m_scenes.end())
 	{
 		m_currentSceneIndex = m_sceneMap[name];
 		m_pCurrentScene = it->second;
 
 		// Initialize the new current scene
-		if (m_pCurrentScene)
+		if (!m_pCurrentScene->IsInitialized())
 			m_pCurrentScene->Init();
+
+#ifndef _DEBUG 
+		// Update system settings UI elements
+		assignSettingsUIElements(m_pCurrentScene->GetUINode());
+#endif
 	}
+#ifndef _DEBUG
+	SERVICE_LOCATOR.GetCameraManager()->InflateActiveCameras(m_pCurrentScene->GetNodes());
+#endif // !_DEBUG
+	SERVICE_LOCATOR.GetParticleManager()->Clear();
 }
 
 void SceneManager::MoveToNextScene()
 {
 	if (m_currentSceneIndex < m_sceneOrder.size() - 1)
 	{
-		if (m_pCurrentScene)
-			m_pCurrentScene->Shutdown();
+		/*if (m_pCurrentScene)
+			m_pCurrentScene->Shutdown();*/
 		m_currentSceneIndex++;
 		m_pCurrentScene = m_scenes[m_sceneOrder[m_currentSceneIndex]];
-		m_pCurrentScene->Init();
+		if (!m_pCurrentScene->IsInitialized())
+			m_pCurrentScene->Init();
 	}
 }
 
@@ -231,11 +280,13 @@ void SceneManager::MoveToPreviousScene()
 {
 	if (m_currentSceneIndex > 0)
 	{
-		if (m_pCurrentScene)
-			m_pCurrentScene->Shutdown();
+		/*if (m_pCurrentScene)
+			m_pCurrentScene->Shutdown();*/
 		m_currentSceneIndex--;
 		m_pCurrentScene = m_scenes[m_sceneOrder[m_currentSceneIndex]];
-		m_pCurrentScene->Init();
+		if (!m_pCurrentScene->IsInitialized())
+			m_pCurrentScene->Init();
+		//m_pCurrentScene->Init();
 	}
 }
 
@@ -246,10 +297,38 @@ std::string SceneManager::toLower(const std::string& str)
 	return lower;
 }
 
+void SceneManager::assignSettingsUIElements(Node* node)
+{
+	for (auto& child : node->GetChildren())
+	{
+		assignSettingsUIElements(child);
+	}
+	UIComponent* uiComp = node->GetComponent<UIComponent>();
+	if (!uiComp) 
+	{ 
+		uiComp = node->GetComponent<UITextComponent>();
+	}
+	if (uiComp)
+	{
+		uiComp->UpdateSettingsElement();
+	}
+}
+
 void SceneManager::processNode(Node* node, rapidjson::Value& nodeJson, rapidjson::Document::AllocatorType& allocator)
 {
 	if (!node || node->GetComponents().empty())
 		return;
+
+	// Saves UI element state if it has a save path
+	UIComponent* uiComp = node->GetComponent<UIComponent>();
+	if (!uiComp)
+	{
+		uiComp = node->GetComponent<UITextComponent>();
+	}
+	if (uiComp)
+	{
+		uiComp->Shutdown();
+	}
 
 	rapidjson::Value children(rapidjson::kObjectType);
 	for (auto& child : node->GetChildren())
@@ -261,7 +340,7 @@ void SceneManager::processNode(Node* node, rapidjson::Value& nodeJson, rapidjson
 	nodeJson.AddMember(rapidjson::Value("Children", allocator).Move(), children, allocator);
 
 	rapidjson::Value componentGroupJson(rapidjson::kObjectType);
-    for (auto& [name, component] : node->GetComponents())
+	for (auto& [name, component] : node->GetComponents())
 	{
 		// json object for component
 		rapidjson::Value componentJson(rapidjson::kObjectType);
@@ -332,6 +411,11 @@ void SceneManager::handleGetters(std::unordered_map<std::string, std::function<s
 						array.PushBack(vec.w, allocator);
 						variable.PushBack(array, allocator);
 					}
+					else if constexpr (std::is_same_v<T, const char*>)
+					{
+						const char* strValue = std::any_cast<const char*>(value);
+						variable.PushBack(rapidjson::Value(strValue, allocator).Move(), allocator);
+					}
 					else if constexpr (std::is_same_v<T, std::string>)
 					{
 						std::string strValue = std::any_cast<std::string>(value);
@@ -344,6 +428,16 @@ void SceneManager::handleGetters(std::unordered_map<std::string, std::function<s
 						auto subGetters = obj->GetGetters();
 						handleGetters(subGetters, subVariable, allocator);
 						variable.PushBack(subVariable, allocator);
+					}
+					else if constexpr (std::is_same_v<T, Viewport>)
+					{
+						Viewport viewport = std::any_cast<Viewport>(value);
+						rapidjson::Value array(rapidjson::kArrayType);
+						array.PushBack(viewport.X, allocator);
+						array.PushBack(viewport.Y, allocator);
+						array.PushBack(viewport.W, allocator);
+						array.PushBack(viewport.H, allocator);
+						variable.PushBack(array, allocator);
 					}
 					else
 						variable.PushBack(rapidjson::Value(std::any_cast<T>(value)).Move(), allocator);

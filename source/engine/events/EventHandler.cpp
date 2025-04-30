@@ -16,7 +16,7 @@ void EventHandler::Update()
 {
 	while (!eventQueue.empty())
 	{
-		Event* event = eventQueue.front();
+		Event* event = &*eventQueue.front();
 
 		for (auto& subscription : subscriptionMap)
 		{
@@ -31,7 +31,7 @@ void EventHandler::Update()
 
 void EventHandler::AddEvent(Event* event)
 {
-	this->eventQueue.push(event);
+	this->eventQueue.push(std::unique_ptr<Event>(event));
 }
 
 void EventHandler::AddSubscription(std::string name, EventListener* eventListener)

@@ -11,16 +11,15 @@ public:
 	void SetGame(Game* game);
 	//@brief pushes Game to game vector
 	void PushGame(Game* game);
-	Game* FindGame(std::string name);
+    inline Game* GetGame() { return m_pGame; }
+	void DrawCredits();
 
 	//@brief Runs the engine
 	void Run();
 
 private:
-	unsigned int m_prevGameIndex = 0;
 	static std::unique_ptr<Engine> instance;
 	Game* m_pGame = nullptr;
-	std::vector<Game*> m_games;
 
 	//@brief Initializes the engine
 	void init();

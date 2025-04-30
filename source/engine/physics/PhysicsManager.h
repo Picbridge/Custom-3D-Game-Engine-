@@ -30,21 +30,19 @@ public:
 	//@brief Returns the gravity
 	//@return double : The gravity
 	inline glm::dvec3 GetGravity() const { return m_gravity; }
+	//@brief Return the normlaized gravity vector
+	inline glm::dvec3 GetGravityDir() const { return m_gravity != glm::dvec3(0) ? glm::normalize(m_gravity) : glm::dvec3(0); }
 	//@brief Sets the gravity
 	//@param g : The gravity to set
 	inline void SetGravity(glm::vec3 g) { m_gravity = g; }
 
 	// ****** Collision Response ****** //
 	//@brief Loops through all collisions and handles them
-	void CollisionRouting(std::vector<std::pair<GameObject*,GameObject*>> collisions);
-	//@brief Handles a collision between two physics components
-	void CollisionResponse(GameObject* obj1, GameObject* obj2);
+	void CollisionResponse(std::vector<Collision*> collisions);
 	//@brief Handles a collision between a static and dynamic physics component
-	void StaticDynamicResponse(GameObject* staticObject, GameObject* dynamicObject);
+	void StaticDynamicResponse(Collision* collision);
 	//@brief Handles a collision between two dynamic physics components
-	void DynamicDynamicCollision(GameObject* obj1, GameObject* obj2);
-	//@brief Handles the bounce between two dynamic physics components
-	void DynamicBounce(GameObject* shape1, GameObject* shape2);
+	//void DynamicDynamicCollision(Collision* collision);
 
 
 private:

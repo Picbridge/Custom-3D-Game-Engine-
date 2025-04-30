@@ -1,6 +1,6 @@
 #include "pch.h"
-
-#include "Camera.h"
+#include "cameramanager/CameraManager.h"
+#include "cameramanager/CameraComponent.h"
 #include "resourcemanager/ResourceManager.h"
 #include "ServiceLocator.h"
 #include "TransformComponent.h"
@@ -12,17 +12,15 @@ Skybox::Skybox(const char* filename)
 	//TODO: load skybox from resource manager->texture manager using input string
 	m_pShader = SERVICE_LOCATOR.GetResourceManager()->GetShader("Skybox");
 	// Skybox cube
-	m_pGeometry = SERVICE_LOCATOR.GetResourceManager()->GetGeometry("Skybox");
+	m_pGeometry = SERVICE_LOCATOR.GetResourceManager()->GetGeometry("Cube");
 	m_skybox.resize(6);
 	LoadSkybox(filename);
-	SERVICE_LOCATOR.GetSceneManager()->GetCurrentScene()->AddNode(this);
+	//SERVICE_LOCATOR.GetSceneManager()->GetCurrentScene()->AddNode(this);
 	RemoveComponent<TransformComponent>();
 }
 
 Skybox::~Skybox()
 {
-	delete m_pShader;
-	delete m_pGeometry;
 }
 
 void Skybox::LoadSkybox(const char* filename)
@@ -90,43 +88,55 @@ void Skybox::LoadSkybox(const char* filename)
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, faceWidth, faceHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, face.data());
 
 		// Assign the texture unit to the uniform
-		m_pShader->SetUniform(cubeMapFaces[i], i);
+		m_pShader->PassShaderData(cubeMapFaces[i], i);
 	}
 	m_pShader->Unuse();
 }
 
 void Skybox::Render()
 {
-	// TODO: Maybe skybox should follow the camera? How mauch to scale? Need to discuss.
-	auto model = glm::translate(glm::mat4((1.f)), glm::vec3(0, 0, 0)) *
-		glm::scale(glm::mat4((1.f)), glm::vec3(200.f));
+	auto cameras = SERVICE_LOCATOR.GetCameraManager()->GetCamerasForRendering();
+	auto frameBuffer = SERVICE_LOCATOR.GetWindowHandler()->FrameBuffer;
 
-	m_pShader->Use();
-	m_pGeometry->Bind(m_pShader);
-
-	m_pShader->SetUniform("model", model);
-	m_pShader->SetUniform("view", Camera::GetInstance()->m_worldView);
-	m_pShader->SetUniform("projection", Camera::GetInstance()->m_worldProjection);
-
-	for (GLuint i = 0; i < 6; ++i)
+	for (const auto& camera : cameras)
 	{
-		glActiveTexture(GL_TEXTURE0 + i);
-		glBindTexture(GL_TEXTURE_2D, m_skybox[i]);
-	}
+		if (!camera->IsActive())
+		{
+			continue;
+		}
+		auto viewport = camera->GetViewport();
+		glViewport(viewport.X, viewport.Y, viewport.W, viewport.H);
+		// TODO: Maybe skybox should follow the camera? How mauch to scale? Need to discuss.
+		auto model = glm::translate(glm::mat4((1.f)), glm::vec3(0, 0, 0)) *
+			glm::scale(glm::mat4((1.f)), glm::vec3(200.f));
 
-	m_pGeometry->Render();
-	m_pGeometry->Unbind();
-	m_pShader->Unuse();
+		m_pShader->Use();
+		m_pGeometry->Bind(m_pShader);
+
+		m_pShader->PassShaderData("model", model, "view", camera->GetViewMatrix(), "projection", camera->GetProjectionMatrix());
+
+		for (GLuint i = 0; i < 6; ++i)
+		{
+			glActiveTexture(GL_TEXTURE0 + i);
+			glBindTexture(GL_TEXTURE_2D, m_skybox[i]);
+		}
+
+		m_pGeometry->Render();
+		m_pGeometry->Unbind();
+		m_pShader->Unuse();
+
+		glViewport(0, 0, frameBuffer.Width, frameBuffer.Height);
+	}
 }
 
 void Skybox::extractFace(
-	std::vector<unsigned char>& face, 
-	unsigned faceWidth, 
-	unsigned faceHeight, 
-	unsigned startX, 
-	unsigned startY, 
-	unsigned imageWidth, 
-	const std::vector<unsigned char>& image) 
+	std::vector<unsigned char>& face,
+	unsigned faceWidth,
+	unsigned faceHeight,
+	unsigned startX,
+	unsigned startY,
+	unsigned imageWidth,
+	const std::vector<unsigned char>& image)
 {
 	for (unsigned y = 0; y < faceHeight; ++y)
 		for (unsigned x = 0; x < faceWidth; ++x)

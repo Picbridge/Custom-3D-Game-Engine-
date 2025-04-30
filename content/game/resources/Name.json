@@ -1,0 +1,13 @@
+{
+    "Shader": "Default",
+    "Textures": {
+        "Diffuse": "Default_diff"
+    },
+    "Color": [
+        0.0,
+        0.0,
+        0.0
+    ],
+    "Shininess": 0.0,
+    "Alpha": 0.3400000035762787
+}

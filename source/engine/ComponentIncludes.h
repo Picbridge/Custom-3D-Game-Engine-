@@ -1,0 +1,12 @@
+#pragma once
+#include "RenderComponent.h"
+#include "TransformComponent.h"
+#include "physics/CollisionComponent.h"
+#include "physics/PhysicsComponent.h"
+#include "scripting/ScriptComponent.h"
+#include "CameraControllerComponent.h"
+#include "cameramanager/CameraComponent.h"
+#include "ParticleComponent.h"
+#include "LightComponent.h"
+#include "ui/UITextComponent.h"
+#include "GrappleComponent.h"

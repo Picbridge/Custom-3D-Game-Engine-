@@ -1,8 +1,17 @@
 #pragma once
-class Component;
+#include <unordered_map>
+#include <vector>
+#include <string>
+#include <memory>
+#include <cassert>
+#include "Component.h"
+#include "Transform.h"
+#include "shaders/Shader.h"
+#include "TransformComponent.h"
 
 class Node
 {
+	friend class UI;
 public:
 	Node();
 	virtual ~Node();
@@ -15,6 +24,7 @@ public:
 	virtual void Update() {};
 	virtual void PostUpdate() {};
 	virtual void Render() {};
+	virtual void Render(Shader* shader) {};
 	virtual void Shutdown() {};
 
 	//@brief Add a child node to current node
@@ -33,21 +43,27 @@ public:
 	virtual void Destroy();
 
 	//@brief  Flushes the node from the memory if it needs to be deleted
-	void Flush();
+	void Flush(Node* parent = nullptr);
 
 	//@brief Set the current object name
 	void SetName(std::string name);
 
 	//@brief Add a component to the current object
+	//@param addToManager : Add the component to its manager if true
 	template <typename DataType>
-	typename std::enable_if_t<std::is_base_of<Component, DataType>::value, DataType*> AddComponent()
+	typename std::enable_if_t<std::is_base_of<Component, DataType>::value, DataType*> AddComponent(bool addToManager = false)
 	{
 		std::string dataType = Utils::GetClassName<DataType>();
 		// assign new component
-		m_components[dataType] = new DataType();
-		setOwner(m_components[dataType]);
-		initComponent(m_components[dataType]);
-		return static_cast<DataType*>(m_components[dataType]);
+		DataType* comp = new DataType();
+		assert(!m_components.contains(dataType) && "Component already Added");
+		m_components[dataType] = comp;
+		setOwner(comp);
+
+		if (addToManager) 
+			addComponentToManager(comp);
+
+		return comp;
 	}
 
 	template <typename DataType, typename... Args>
@@ -73,6 +89,8 @@ public:
 
 		return nullptr;
 	}
+
+	void RemoveComponent(std::unordered_map<std::string, Component*>::iterator compItr);
 
 	//@brief Get a component from the current object
 	template <typename DataType>
@@ -110,11 +128,10 @@ public:
 	//@return glm::mat4 : World transform matrix
 	inline const glm::mat4 GetWorldTransform()
 	{
-		glm::mat4 parentTransform = (m_pParent == nullptr) ? glm::mat4(1.f) : m_pParent->GetWorldTransform();
+		glm::mat4 parentTransform = m_pParent ? m_pParent->GetWorldTransform() : glm::mat4(1.0f);
 		m_worldTransform = parentTransform * m_pTransform->GetModel();
 		return m_worldTransform;
 	}
-
 
 	//@brief Returns the parent node
 	//@return Node* : Parent node
@@ -122,7 +139,7 @@ public:
 
 	//@brief Returns the children nodes
 	//@return std::unordered_map<int, Node*> : Children nodes
-	inline std::vector<Node*> GetChildren() const { return m_children; }
+	std::vector<Node*>& GetChildren() { return m_children; }
 
 	//@brief Returns whether the node needs to be deleted
 	const bool NeedsDeletion() const { return m_needsDeletion; }
@@ -133,16 +150,17 @@ public:
 
 	//@brief Get the current object components
 	//@return std::unordered_map<std::string, Component*> : object components
-	const std::unordered_map<std::string, Component*> GetComponents() const { return m_components; }
+	std::unordered_map<std::string, Component*>& GetComponents() { return m_components; }
+
 protected:
-	//ID for node entity control
-	size_t m_id;
+	std::unordered_map<std::string, Component*> m_components;
+	glm::mat4 m_worldTransform;
 	std::string m_name;
+	std::vector<Node*> m_children;
 	std::unique_ptr<Transform> m_pTransform;
 	Node* m_pParent;
-	glm::mat4 m_worldTransform;
-	std::unordered_map<std::string, Component*> m_components;
-	std::vector<Node*> m_children;
+	//ID for node entity control
+	size_t m_id;
 	bool m_needsDeletion;
 	
 private:
@@ -150,5 +168,7 @@ private:
 	void setOwner(Component* sub);
 	// @brief Initialize the component when added
 	void initComponent(Component* sub);
+	// @brief add component to its manager
+	void addComponentToManager(Component* comp);
 };
 

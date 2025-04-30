@@ -1,0 +1,2313 @@
+{
+    "scene_jihoon": {
+        "GameObject": {
+            "Room_1": {
+                "Children": {
+                    "MainBound": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        4.099999904632568,
+                                        -7.099999904632568,
+                                        -9.5
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        0.30000001192092896,
+                                        5.800000190734863,
+                                        13.199999809265137
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "Name"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        18.0,
+                                        3.5209999084472656
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.0,
+                                        0.0
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                4.099999904632568,
+                                                -7.099999904632568,
+                                                -9.5
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                0.30000001192092896,
+                                                5.800000190734863,
+                                                13.199999809265137
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    true
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "FirstSwing": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        16.299999237060547,
+                                        3.9000000953674316,
+                                        -9.399999618530273
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        0.30000001192092896,
+                                        0.2999999225139618,
+                                        0.30000001192092896
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "Grappleable"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        1.0,
+                                        1.840999960899353
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.0,
+                                        0.0
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                16.299999237060547,
+                                                3.9000000953674316,
+                                                -9.399999618530273
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                0.30000001192092896,
+                                                0.2999999225139618,
+                                                0.30000001192092896
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    6
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "MainFloor": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        2.299999952316284,
+                                        -1.0,
+                                        -9.5
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        4.599999904632568,
+                                        0.30000001192092896,
+                                        13.199999809265137
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "BrokenFloorTile"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        10.0,
+                                        3.0
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.0,
+                                        0.0
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                2.299999952316284,
+                                                -1.0,
+                                                -9.5
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                4.599999904632568,
+                                                0.30000001192092896,
+                                                13.199999809265137
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "MainWallBack": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        -2.0,
+                                        2.9000000953674316,
+                                        -3.0999999046325684
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        0.0,
+                                        -90.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        3.5999999046325684,
+                                        0.30000001192092896,
+                                        6.199999809265137
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "NonRustyWall"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        10.152999877929688,
+                                        5.0
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.10400000214576721,
+                                        0.004000000189989805
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                -2.0,
+                                                2.9000000953674316,
+                                                -3.0999999046325684
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                0.0,
+                                                -90.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                3.5999999046325684,
+                                                0.30000001192092896,
+                                                6.199999809265137
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "MainWallLeft": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        2.299999952316284,
+                                        2.9000000953674316,
+                                        -22.399999618530273
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        4.599999904632568,
+                                        3.5999999046325684,
+                                        0.30000001192092896
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "SemiRustyWall"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        10.0,
+                                        5.0
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.0,
+                                        0.0
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                2.299999952316284,
+                                                2.9000000953674316,
+                                                -22.399999618530273
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                4.599999904632568,
+                                                3.5999999046325684,
+                                                0.30000001192092896
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "MainWallMid": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        2.299999952316284,
+                                        2.9000000953674316,
+                                        -9.600000381469727
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        4.599999904632568,
+                                        3.5999999046325684,
+                                        0.30000001192092896
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "SemiRustyWall"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        10.0,
+                                        5.0
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.2809999883174896,
+                                        0.4909999966621399
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                2.299999952316284,
+                                                2.9000000953674316,
+                                                -9.600000381469727
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                4.599999904632568,
+                                                3.5999999046325684,
+                                                0.30000001192092896
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "MainWallRight": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        2.299999952316284,
+                                        2.9000000953674316,
+                                        3.4000000953674316
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        180.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        4.599999904632568,
+                                        3.5999999046325684,
+                                        0.30000001192092896
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "SemiRustyWall"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        10.0,
+                                        5.0
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.16200000047683716,
+                                        0.49000000953674316
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                2.299999952316284,
+                                                2.9000000953674316,
+                                                3.4000000953674316
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                180.0,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                4.599999904632568,
+                                                3.5999999046325684,
+                                                0.30000001192092896
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "SecondFloor": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        -19.799999237060547,
+                                        -3.5999999046325684,
+                                        -16.100000381469727
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        3.299999952316284,
+                                        0.30000001192092896,
+                                        3.4000000953674316
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "MetalScaffold"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        5.0,
+                                        5.0
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.0,
+                                        0.0
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                -19.799999237060547,
+                                                -3.5999999046325684,
+                                                -16.100000381469727
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                3.299999952316284,
+                                                0.30000001192092896,
+                                                3.4000000953674316
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "SecondWall": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        -23.399999618530273,
+                                        -1.100000023841858,
+                                        -16.100000381469727
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        0.0,
+                                        -90.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        2.799999952316284,
+                                        0.2999999225139618,
+                                        3.4000000953674316
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "CementWall"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        5.0,
+                                        5.0
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.0,
+                                        0.1459999978542328
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                -23.399999618530273,
+                                                -1.100000023841858,
+                                                -16.100000381469727
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                0.0,
+                                                -90.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                2.799999952316284,
+                                                0.2999999225139618,
+                                                3.4000000953674316
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "SecondSwing": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        -33.0,
+                                        -4.300000190734863,
+                                        0.800000011920929
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        0.30000001192092896,
+                                        0.2999999225139618,
+                                        0.30000001192092896
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "Grappleable"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        1.0,
+                                        1.840999960899353
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.0,
+                                        0.0
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                -33.0,
+                                                -4.300000190734863,
+                                                0.800000011920929
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                0.30000001192092896,
+                                                0.2999999225139618,
+                                                0.30000001192092896
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    6
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "LastFloor": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        -18.700000762939453,
+                                        -9.899999618530273,
+                                        4.800000190734863
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        4.0,
+                                        0.30000001192092896,
+                                        4.0
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "MetalScaffold"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        5.0,
+                                        5.0
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.0,
+                                        0.0
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                -18.700000762939453,
+                                                -9.899999618530273,
+                                                4.800000190734863
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                4.0,
+                                                0.30000001192092896,
+                                                4.0
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "Finish_Line": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        -44.20000076293945,
+                                        -8.699999809265137,
+                                        -2.5999999046325684
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        20.799999237060547,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        1.7000000476837158,
+                                        0.30000001192092896,
+                                        2.5
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                -44.20000076293945,
+                                                -8.699999809265137,
+                                                -2.5999999046325684
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                20.799999237060547,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                1.7000000476837158,
+                                                0.30000001192092896,
+                                                2.5
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    true
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            },
+                            "ScriptComponent": {
+                                "scriptFilepath": [
+                                    "string",
+                                    "CollisionBlock.lua"
+                                ]
+                            }
+                        }
+                    },
+                    "exit_cover": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        -44.29999923706055,
+                                        -5.400000095367432,
+                                        -2.700000047683716
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        200.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        1.899999976158142,
+                                        0.10000000149011612,
+                                        2.9000000953674316
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "Name"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        7.3520002365112305,
+                                        3.5209999084472656
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.0,
+                                        0.0
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                -44.29999923706055,
+                                                -5.400000095367432,
+                                                -2.700000047683716
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                200.0,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                1.899999976158142,
+                                                0.10000000149011612,
+                                                2.9000000953674316
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "exitfloor": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        -44.29999923706055,
+                                        -9.0,
+                                        -2.700000047683716
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        200.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        1.7000000476837158,
+                                        0.10000000149011612,
+                                        2.9000000953674316
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "Test"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        20.0,
+                                        20.0
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.0,
+                                        0.0
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                -44.29999923706055,
+                                                -9.0,
+                                                -2.700000047683716
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                200.0,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                1.7000000476837158,
+                                                0.10000000149011612,
+                                                2.9000000953674316
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "GoalWallBack": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        -45.29999923706055,
+                                        -7.300000190734863,
+                                        -5.400000095367432
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        110.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        0.10000000149011612,
+                                        1.7999999523162842,
+                                        1.899999976158142
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "Name"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        7.3520002365112305,
+                                        3.5209999084472656
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.0,
+                                        0.0
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                -45.29999923706055,
+                                                -7.300000190734863,
+                                                -5.400000095367432
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                110.0,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                0.10000000149011612,
+                                                1.7999999523162842,
+                                                1.899999976158142
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "GoalWallLeft": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        -42.599998474121094,
+                                        -7.300000190734863,
+                                        -3.299999952316284
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        200.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        0.10000000149011612,
+                                        1.7999999523162842,
+                                        2.9000000953674316
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "Name"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        7.3520002365112305,
+                                        3.5209999084472656
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.0,
+                                        0.0
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                -42.599998474121094,
+                                                -7.300000190734863,
+                                                -3.299999952316284
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                200.0,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                0.10000000149011612,
+                                                1.7999999523162842,
+                                                2.9000000953674316
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "GoalWallRight": {
+                        "Children": {},
+                        "Components": {
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        -46.0,
+                                        -7.300000190734863,
+                                        -2.0999999046325684
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        200.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        0.10000000149011612,
+                                        1.7999999523162842,
+                                        2.9000000953674316
+                                    ]
+                                ]
+                            },
+                            "RenderComponent": {
+                                "material": [
+                                    "string",
+                                    "Name"
+                                ],
+                                "geometry": [
+                                    "string",
+                                    "Cube"
+                                ],
+                                "textureTilingScale": [
+                                    "vec2",
+                                    [
+                                        7.3520002365112305,
+                                        3.5209999084472656
+                                    ]
+                                ],
+                                "textureTilingPos": [
+                                    "vec2",
+                                    [
+                                        0.0,
+                                        0.0
+                                    ]
+                                ]
+                            },
+                            "CollisionComponent": {
+                                "collisionShape": [
+                                    "CollisionShape",
+                                    {
+                                        "position": [
+                                            "dvec3",
+                                            [
+                                                -46.0,
+                                                -7.300000190734863,
+                                                -2.0999999046325684
+                                            ]
+                                        ],
+                                        "rotation": [
+                                            "dvec3",
+                                            [
+                                                0.0,
+                                                200.0,
+                                                0.0
+                                            ]
+                                        ],
+                                        "scale": [
+                                            "dvec3",
+                                            [
+                                                0.10000000149011612,
+                                                1.7999999523162842,
+                                                2.9000000953674316
+                                            ]
+                                        ],
+                                        "shapeType": [
+                                            "string",
+                                            "CollisionShape_Cuboid"
+                                        ]
+                                    }
+                                ],
+                                "collisionLayer": [
+                                    "int",
+                                    2
+                                ],
+                                "IsTrigger": [
+                                    "bool",
+                                    false
+                                ],
+                                "collisionMask": [
+                                    "int",
+                                    1
+                                ]
+                            }
+                        }
+                    }
+                },
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ]
+                    }
+                }
+            },
+            "Sun": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                -8.5,
+                                61.400001525878906,
+                                21.200000762939453
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ]
+                    },
+                    "LightComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                18.899999618530273,
+                                13.199999809265137,
+                                8.5
+                            ]
+                        ],
+                        "ambient": [
+                            "vec3",
+                            [
+                                0.4000000059604645,
+                                0.4000000059604645,
+                                0.4000000059604645
+                            ]
+                        ],
+                        "diffuse": [
+                            "vec3",
+                            [
+                                0.699999988079071,
+                                0.699999988079071,
+                                0.699999988079071
+                            ]
+                        ],
+                        "specular": [
+                            "vec3",
+                            [
+                                0.4000000059604645,
+                                0.4000000059604645,
+                                0.4000000059604645
+                            ]
+                        ]
+                    }
+                }
+            },
+            "Player": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.10000000149011612,
+                                -0.5999999642372131,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                -1.3000004291534424,
+                                1875.9981689453125,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.10000000149011612,
+                                0.10000000149011612,
+                                0.10000000149011612
+                            ]
+                        ]
+                    },
+                    "ScriptComponent": {
+                        "scriptFilepath": [
+                            "string",
+                            "PlayerMovement.lua"
+                        ]
+                    },
+                    "PhysicsComponent": {
+                        "velocity": [
+                            "dvec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "mass": [
+                            "double",
+                            1.0
+                        ],
+                        "drag": [
+                            "double",
+                            0.0
+                        ],
+                        "gravityMultiplier": [
+                            "double",
+                            1.0
+                        ],
+                        "frictionCoefficient": [
+                            "double",
+                            0.0
+                        ]
+                    },
+                    "CollisionComponent": {
+                        "collisionShape": [
+                            "CollisionShape",
+                            {
+                                "position": [
+                                    "dvec3",
+                                    [
+                                        0.10000000149011612,
+                                        -0.5999999642372131,
+                                        0.0
+                                    ]
+                                ],
+                                "rotation": [
+                                    "dvec3",
+                                    [
+                                        -1.3000004291534424,
+                                        1875.9981689453125,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "dvec3",
+                                    [
+                                        0.10000000149011612,
+                                        0.10000000149011612,
+                                        0.10000000149011612
+                                    ]
+                                ],
+                                "shapeType": [
+                                    "string",
+                                    "CollisionShape_Sphere"
+                                ]
+                            }
+                        ],
+                        "collisionLayer": [
+                            "int",
+                            1
+                        ],
+                        "IsTrigger": [
+                            "bool",
+                            false
+                        ],
+                        "collisionMask": [
+                            "int",
+                            2
+                        ]
+                    },
+                    "CameraComponent": {
+                        "fov": [
+                            "float",
+                            85.0
+                        ],
+                        "nearPlane": [
+                            "float",
+                            0.10000000149011612
+                        ],
+                        "farPlane": [
+                            "float",
+                            1000.0
+                        ],
+                        "viewport": [
+                            "Viewport",
+                            [
+                                0,
+                                0,
+                                1100,
+                                1100
+                            ]
+                        ]
+                    },
+                    "GrappleComponent": {
+                        "MinLength": [
+                            "float",
+                            0.20000000298023224
+                        ],
+                        "MaxLength": [
+                            "float",
+                            20.0
+                        ],
+                        "ReelSpeed": [
+                            "float",
+                            3.0
+                        ],
+                        "CollisionLayer": [
+                            "int",
+                            4
+                        ]
+                    }
+                }
+            },
+            "GUN": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.3029979467391968,
+                                -0.5943281054496765,
+                                0.18209902942180634
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                1.3000004291534424,
+                                -1875.9981689453125,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.05000000074505806,
+                                0.05000000074505806,
+                                0.30000001192092896
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "material": [
+                            "string",
+                            "GUN"
+                        ],
+                        "geometry": [
+                            "string",
+                            "Cube"
+                        ],
+                        "textureTilingScale": [
+                            "vec2",
+                            [
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "textureTilingPos": [
+                            "vec2",
+                            [
+                                0.0,
+                                0.0
+                            ]
+                        ]
+                    },
+                    "CollisionComponent": {
+                        "collisionShape": [
+                            "CollisionShape",
+                            {
+                                "position": [
+                                    "dvec3",
+                                    [
+                                        0.3029979467391968,
+                                        -0.5943281054496765,
+                                        0.18209902942180634
+                                    ]
+                                ],
+                                "rotation": [
+                                    "dvec3",
+                                    [
+                                        1.3000004291534424,
+                                        -1875.9981689453125,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "dvec3",
+                                    [
+                                        0.05000000074505806,
+                                        0.05000000074505806,
+                                        0.30000001192092896
+                                    ]
+                                ],
+                                "shapeType": [
+                                    "string",
+                                    "CollisionShape_Cuboid"
+                                ]
+                            }
+                        ],
+                        "collisionLayer": [
+                            "int",
+                            0
+                        ],
+                        "IsTrigger": [
+                            "bool",
+                            false
+                        ],
+                        "collisionMask": [
+                            "int",
+                            0
+                        ]
+                    }
+                }
+            },
+            "Coin": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                100.0,
+                                115.031982421875,
+                                100.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                367854.84375,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.5,
+                                0.5
+                            ]
+                        ]
+                    },
+                    "RenderComponent": {
+                        "material": [
+                            "string",
+                            "GUN"
+                        ],
+                        "geometry": [
+                            "string",
+                            "coin"
+                        ],
+                        "textureTilingScale": [
+                            "vec2",
+                            [
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "textureTilingPos": [
+                            "vec2",
+                            [
+                                0.0,
+                                0.0
+                            ]
+                        ]
+                    },
+                    "CollisionComponent": {
+                        "collisionShape": [
+                            "CollisionShape",
+                            {
+                                "position": [
+                                    "dvec3",
+                                    [
+                                        100.0,
+                                        115.031982421875,
+                                        100.0
+                                    ]
+                                ],
+                                "rotation": [
+                                    "dvec3",
+                                    [
+                                        0.0,
+                                        367853.3125,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "dvec3",
+                                    [
+                                        0.5,
+                                        0.5,
+                                        0.5
+                                    ]
+                                ],
+                                "shapeType": [
+                                    "string",
+                                    "CollisionShape_Cuboid"
+                                ]
+                            }
+                        ],
+                        "collisionLayer": [
+                            "int",
+                            2
+                        ],
+                        "IsTrigger": [
+                            "bool",
+                            true
+                        ],
+                        "collisionMask": [
+                            "int",
+                            1
+                        ]
+                    },
+                    "ParticleComponent": {
+                        "velocity": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "position": [
+                            "vec3",
+                            [
+                                100.0,
+                                115.031982421875,
+                                100.0
+                            ]
+                        ],
+                        "velocityVariation": [
+                            "vec3",
+                            [
+                                2.0,
+                                2.0,
+                                2.0
+                            ]
+                        ],
+                        "colorEnd": [
+                            "vec4",
+                            [
+                                0.9960784316062927,
+                                0.4274509847164154,
+                                0.16078431904315948,
+                                1.0
+                            ]
+                        ],
+                        "colorBegin": [
+                            "vec4",
+                            [
+                                0.9960784316062927,
+                                0.8313725590705872,
+                                0.48235294222831726,
+                                1.0
+                            ]
+                        ],
+                        "sizeVariation": [
+                            "float",
+                            0.30000001192092896
+                        ],
+                        "sizeEnd": [
+                            "float",
+                            0.0
+                        ],
+                        "sizeBegin": [
+                            "float",
+                            0.009999999776482582
+                        ],
+                        "lifetime": [
+                            "float",
+                            2.5
+                        ]
+                    },
+                    "ScriptComponent": {
+                        "scriptFilepath": [
+                            "string",
+                            "Coin.lua"
+                        ]
+                    }
+                }
+            }
+        },
+        "UI": {
+            "Timer": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.8100000023841858,
+                                0.06599999964237213,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                3.0,
+                                0.0,
+                                0.0
+                            ]
+                        ]
+                    },
+                    "UITextComponent": {
+                        "active": [
+                            "bool",
+                            true
+                        ],
+                        "elementType": [
+                            "int",
+                            3
+                        ],
+                        "anchorLeft": [
+                            "bool",
+                            false
+                        ],
+                        "saveFilePath": [
+                            "string",
+                            "time: 60.35"
+                        ],
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ],
+                        "font": [
+                            "const char*",
+                            "Sacrifice.ttf"
+                        ],
+                        "text": [
+                            "const char*",
+                            "time: 60.35"
+                        ]
+                    },
+                    "ScriptComponent": {
+                        "scriptFilepath": [
+                            "string",
+                            "Timer.lua"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

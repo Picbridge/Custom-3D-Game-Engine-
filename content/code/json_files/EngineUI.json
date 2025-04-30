@@ -1,0 +1,51 @@
+{
+  "dropdown_menu": {
+    "name": "File",
+    "type": "action",
+    "item_names": [
+      "New Sphere",
+      "New Cube",
+      "Save Scene"
+    ]
+  },
+  "dropdown_menu": {
+    "name": "View",
+    "type": "toggle",
+    "save_path": "..\\..\\content\\code\\json_files\\EngineSettings.json",
+    "item_names": [
+      "Node Tree",
+      "Node Inspector",
+      "Console"
+    ]
+  },
+  "dropdown_menu": {
+    "name": "Debug Options",
+    "type": "toggle",
+    "save_path": "..\\..\\content\\code\\json_files\\EngineSettings.json",
+    "item_names": [
+      "Wireframes",
+      "Colliders",
+      "Normals",
+      "Velocities",
+      "ShadowMap"
+    ]
+  },
+  "button": {
+    "name": "Invert Y-Axis",
+    "save_path": "..\\..\\content\\code\\json_files\\EngineSettings.json"
+  },
+  "dropdown_menu": {
+    "name": "Volume Settings",
+    "type": "slider",
+    "save_path": "..\\..\\content\\code\\json_files\\EngineSettings.json",
+    "item_names": [
+      "Master Volume",
+      "Music Volume",
+      "SFX Volume"
+    ]
+  },
+  "button": {
+    "name": "Mute",
+    "save_path": "..\\..\\content\\code\\json_files\\EngineSettings.json"
+  }
+}

@@ -20,8 +20,6 @@ public:
 
 	void Shutdown() override;
 private:
-	//TODO: GameObjectMagager should be created to manage game objects
-	std::vector<GameObject*> m_gameObjects;
-	Skybox* m_pSkybox;
+
 };
 

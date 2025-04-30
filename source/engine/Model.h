@@ -22,7 +22,7 @@ public:
 	{
 		loadModel(path);
 	}
-	void Draw(Shader& shader, glm::mat4 projection, glm::mat4 view, glm::vec3 lightPos);
+	void Draw(Shader* shader, glm::mat4 projection, glm::mat4 view, glm::vec3 lightPos);
 	void DrawSkeleton(glm::mat4 projection, glm::mat4 view, ModelNode* node, glm::mat4 parentTransform = glm::mat4(1.0f));
 	void Update(float deltaTime);
 	ModelNode* origin;

@@ -1,9 +1,14 @@
 class Node;
 class Skybox;	
+class LightComponent;
+class UIComponent;
 
 #pragma once
 class Scene
 {
+	friend class SceneManager;
+	friend class UI;
+
 public:
 	Scene() : m_nodeCount(0) {};
 	~Scene();
@@ -16,7 +21,7 @@ public:
 
 	//@brief Adds node to the current scene
 	//@param node : Node to add
-	void AddNode(Node* node);
+	void AddNode(Node* node, Node* parent = nullptr);
 
 	//@brief Deletes the node from the scene
 	//@param node : Node to delete
@@ -37,7 +42,7 @@ public:
 
 	//@brief Returns the list of nodes
 	//@return std::vector<Node*> : List of nodes
-	std::vector<Node*> GetNodes() { return m_nodes; }
+	const std::vector<Node*>& GetNodes() { return m_nodes; }
 
 	//@brief Returns the scene name
 	//@return std::string : Scene name
@@ -47,19 +52,39 @@ public:
 	//@return std::string : Scene source
 	inline std::string GetSceneSource() const { return m_sceneSource; }
 
-	glm::vec3 lightPosition;
-	glm::vec3 lightSpecular;
-	glm::vec3 lightDiffuse;
-	glm::vec3 lightAmbient;
-	glm::mat4 lightSpaceMatrix;
-	float near_plane, far_plane;
-	unsigned int depthMap;
+	//@brief Returns if the scene is initialized
+	//@return bool : represents if the scene is initialized
+	inline bool IsInitialized() const { return m_init; }
+
+	//@brief Returns active light in the scene
+	//@return LightComponent* : Current active light
+	LightComponent* GetLight() { return light; }
+
+	//@brief Sets the active light in the scene
+	//@param light : Light to set
+	void SetLight(LightComponent* light) { this->light = light; }
+
+	//@brief Returns UI node used for rendering Game UI
+	//@return Node* : UI node
+	Node* GetUINode() { return m_pUINode.get(); }
+
+	UIComponent* FindUIComponent(const std::string& name, Node* parent = nullptr);
+
 private:
-	int m_nodeCount;
+	LightComponent* light;
+	unsigned int m_nodeCount;
 	std::string m_name;
 	std::string m_sceneSource;
 	std::vector<Node*> m_nodes;
+
+	std::vector<Node*> m_nonRenderableNodes;
+	std::vector<Node*> m_opaqueBucket;
+	std::vector<Node*> m_transparentBucket;
 	std::unique_ptr<Skybox> m_pSkybox;
-	const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
-	unsigned int depthMapFBO;
+
+	std::unique_ptr<Node> m_pUINode;
+	bool m_init = false;
+
+	void FlushNodes(Node* parent = nullptr);
+	void collectRenderableNodes(Node* node, std::vector<Node*>& nonRenderable, std::vector<Node*>& opaqueBucket, std::vector<Node*>& transparentBucket);
 };

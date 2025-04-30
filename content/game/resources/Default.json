@@ -1,0 +1,13 @@
+{
+    "Shader": "Cel",
+    "Textures": {
+        "Diffuse":"Default_diff",
+        "Specular":"Default_spec"
+    },
+    "Color": [
+        1.0,
+        1.0,
+        1.0
+    ],
+    "Shininess": 1.0
+}

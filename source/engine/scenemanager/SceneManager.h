@@ -7,12 +7,15 @@ public:
 	SceneManager();
 	~SceneManager();
 
+	//@brief Shuts down the scene manager
+	void Shutdown();
+
 	//@brief Exports the scene as a json file
 	//@param scene : Scene to export
 	void ExportScene(Scene* scene);
 
 	//@brief Adds a new scene to the list
-	void AddScene(std::string name = "", const std::source_location& location = std::source_location::current());
+	void AddScene(std::string name = "");
 
 	//@brief Deletes the scene from the list
 	//@param scene : Scene to delete
@@ -21,7 +24,7 @@ public:
 	//@brief Deletes the scene from the list by name
 	//@param name : Scene name
 	inline void RemoveScene(const std::string& name);
-	
+
 	//@brief Set name of the scene
 	// @param name : Scene name
 	void SetSceneName(const Scene* scene, const std::string& name);
@@ -40,17 +43,29 @@ public:
 
 	inline Scene* GetCurrentScene() { return m_pCurrentScene; }
 
+	//@brief Gets the list of scene names
+	//@return std::vector<std::string> : List of scene names
+	inline std::vector<std::string>& GetSceneNames() { return m_sceneOrder; }
+
+	//@brief Finds a scene by name
+	//@param name : Scene name
+	Scene* FindScene(const std::string& name);
+
+	//@brief Gets current scene index
+	//@return size_t : Current scene index
+	inline size_t GetCurrentSceneIndex() const { return m_currentSceneIndex; }
 
 private:
 	static SceneManager* GetInstance();
 	static std::unique_ptr<SceneManager> instance;
 
-	std::unordered_map<std::string , Scene*> m_scenes;
+	std::unordered_map<std::string, Scene*> m_scenes;
 	std::vector<std::string> m_sceneOrder;
 	std::unordered_map<std::string, size_t> m_sceneMap;
 	Scene* m_pCurrentScene;
 	size_t m_currentSceneIndex;
 
+	void assignSettingsUIElements(Node* node);
 	void processNode(Node* node, rapidjson::Value& nodeJson, rapidjson::Document::AllocatorType& allocator);
 	void processComponent(IHasGettersSetters* component, rapidjson::Value& componentJson, rapidjson::Document::AllocatorType& allocator);
 	void handleGetters(std::unordered_map<std::string, std::function<std::any()>> getters, rapidjson::Value& upperJson, rapidjson::Document::AllocatorType& allocator);
@@ -59,4 +74,3 @@ private:
 
 	friend class ServiceLocator;
 };
-

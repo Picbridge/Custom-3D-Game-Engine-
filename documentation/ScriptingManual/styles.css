@@ -1,57 +1,109 @@
+/* Layout (if you already have a container/column layout, adjust as necessary) */
 .container {
     display: flex;
     height: 100vh;
-  }
-  
-  /* Sidebar */
-  .category {
+}
+
+/* Sidebar styling */
+.category {
     font-family: Arial, sans-serif;
     width: 20%;
     padding: 10px;
     border-right: 1px solid #ddd;
     overflow-y: auto;
     background-color: #f9f9f9;
-  }
-  
-  .category ul {
+}
+.category ul {
     list-style-type: none;
     margin: 0;
     padding-left: 16px;
-  }
-  
-  /* Content area */
-  .content {
+}
+
+/* Main content area */
+.content {
     width: 80%;
     padding: 10px;
     overflow-y: auto;
-  }
-  
-  /* Headings */
-  h3 {
+}
+
+/* Headings */
+h2, h3 {
     font-family: Arial, sans-serif;
-    font-size: 24px;
     margin-bottom: 10px;
-  }
-  
-  p {
+}
+h2 {
+    font-size: 28px;
+}
+h3 {
+    font-size: 24px;
+}
+
+/* Paragraphs */
+p {
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.6;
-  }
-  
-  pre {
+}
+
+/* Indented list styling */
+.indented-list {
+    list-style: none; /* Remove bullet points */
+    padding-left: 30px; /* Indent the whole list */
+}
+.indented-list li {
+    padding-left: 10px; /* Indent individual items */
+}
+
+p code,
+li code {
     background-color: #f4f4f4;
+    color: #333; /* Default inline code color */
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.95em;
+}
+
+pre code.language-cpp {
+    background: #1e1e1e;   /* Dark background (VSCode-style) */
+    color: #dcdcdc;        /* Default text color */
+    font-family: Consolas, "Courier New", monospace;
     padding: 10px;
     border-radius: 4px;
     overflow-x: auto;
-  }
-  
-  .indented-list {
-    list-style: none; /* Remove bullet points */
-    padding-left: 30px; /* Indent the whole list */
-  }
-  
-  .indented-list li {
-    padding-left: 10px; /* Indent individual items */
-  }
-  
+    display: block;
+}
+
+.method summary {
+    font-family: Consolas, "Courier New", monospace;
+}
+
+.return-type {
+    color: #569CD6;  /* Light blue */
+    font-weight: bold;
+}
+
+.method-name {
+    color: #4EC9B0;  /* Aquamarine */
+    font-weight: bold;
+}
+
+.method summary code {
+    color: #C586C0; /* Purple for keywords like 'override' */
+}
+
+.method details p strong {
+    color: #dcdcdc;
+    background: #333;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.method details ul {
+    margin: 0 0 0 20px;
+    list-style-type: disc;
+}
+
+.method details ul li {
+    margin-bottom: 4px;
+}

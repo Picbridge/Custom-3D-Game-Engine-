@@ -1,0 +1,4 @@
+If you wanna build your own installer executable of Grappling With Ideas, the GAMEDIRECTORY structure is as follows:
+app/app/* - Grappling With Ideas.exe (found in source/x64/Release/), imgui.ini, and all DLLs go here. The exe is here in two subfolders because we hardcoded our game to get the content folder with ../../content/, which is relative to the exe's path... X(
+content/* - The content folder. This is gitignored due to the bulky files that go here.
+/* - Everything but the .cpp and .h files in /source/engine/SampleGame/ goes here.

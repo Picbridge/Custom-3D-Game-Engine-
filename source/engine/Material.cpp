@@ -1,20 +1,22 @@
 #include "pch.h"
 #include "resourcemanager/ResourceManager.h"
 
-Material::Material() : m_pDiffuse(nullptr), m_pShader(nullptr), m_pSpecular(nullptr)
+Material::Material() : m_pTexDiffuse(nullptr), m_pShader(nullptr), m_pTexSpecular(nullptr)
 {
 	//Set shader as default shader
 	ServiceLocator* serviceLocator = &SERVICE_LOCATOR;
 	m_pShader = SERVICE_LOCATOR.GetResourceManager()->GetShader("Default");
 	m_data.color = glm::vec3(1.0f);
 	m_data.shininess = 0.f;
+	m_data.alpha = 1.0f;
 }
 
-Material::Material(Shader* pShader) : m_pDiffuse(nullptr), m_pShader(nullptr), m_pSpecular(nullptr)
+Material::Material(Shader* pShader) : m_pTexDiffuse(nullptr), m_pShader(nullptr), m_pTexSpecular(nullptr)
 {
 	m_pShader = pShader;
 	m_data.color = glm::vec3(1.0f);
 	m_data.shininess = 0.f;
+	m_data.alpha = 1.0f;
 }
 
 Material::~Material()
@@ -33,11 +35,11 @@ void Material::SetShader(const std::string name)
 
 void Material::SetTextureDiffuse(Texture* texture)
 {
-	m_pDiffuse = texture;
+	m_pTexDiffuse = texture;
 
 	glm::vec3* dataDiff;
 
-	m_pDiffuse->AssignTextureToDest(dataDiff);
+	m_pTexDiffuse->AssignTextureToDest(dataDiff);
 	glGenTextures(1, &m_data.diffuse);
 	glBindTexture(GL_TEXTURE_2D, m_data.diffuse);
 
@@ -48,17 +50,17 @@ void Material::SetTextureDiffuse(Texture* texture)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_pDiffuse->GetWidth(), m_pDiffuse->GetHeight(), 0, GL_RGB, GL_FLOAT, dataDiff);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_pTexDiffuse->GetWidth(), m_pTexDiffuse->GetHeight(), 0, GL_RGB, GL_FLOAT, dataDiff);
 	glGenerateMipmap(GL_TEXTURE_2D);
 }
 
 void Material::SetTextureSpecular(Texture* texture)
 {
-	m_pSpecular = texture;
+	m_pTexSpecular = texture;
 
 	glm::vec3* dataSpec;
 
-	m_pSpecular->AssignTextureToDest(dataSpec);
+	m_pTexSpecular->AssignTextureToDest(dataSpec);
 	glGenTextures(1, &m_data.specular);
 	glBindTexture(GL_TEXTURE_2D, m_data.specular);
 
@@ -69,7 +71,7 @@ void Material::SetTextureSpecular(Texture* texture)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_pSpecular->GetWidth(), m_pSpecular->GetHeight(), 0, GL_RGB, GL_FLOAT, dataSpec);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_pTexSpecular->GetWidth(), m_pTexSpecular->GetHeight(), 0, GL_RGB, GL_FLOAT, dataSpec);
 	glGenerateMipmap(GL_TEXTURE_2D);
 }
 
@@ -89,27 +91,24 @@ void Material::SetShininess(float shininess)
 	m_data.shininess = shininess;
 }
 
-//This may be updated for general use of the custom shader
-void Material::SetupUniformData()
-{
-	m_pShader->SetUniform("material.color", m_data.color);
-	m_pShader->SetUniform("material.shininess", m_data.shininess);
-	m_pShader->SetUniform("hasDiffuse", m_pDiffuse != nullptr);
-	m_pShader->SetUniform("hasSpecular", m_pSpecular != nullptr);
-}
-
 void Material::Bind()
 {
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, m_data.diffuse);
-	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, m_data.specular);
+	if (m_pTexDiffuse == nullptr)
+	{
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
+	if (m_pTexSpecular == nullptr)
+	{
+		glActiveTexture(GL_TEXTURE2);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
 }
 
 void Material::Unbind()
 {
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, 0);
 	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	glActiveTexture(GL_TEXTURE2);
 	glBindTexture(GL_TEXTURE_2D, 0);
 }

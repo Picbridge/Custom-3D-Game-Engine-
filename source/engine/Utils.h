@@ -54,4 +54,8 @@ public:
 			std::cout << "OpenGL Error: " << errorString << std::endl;
 		}
 	}
+
+	static std::filesystem::path GetExecutableDirectory();
+
+	static std::filesystem::path GetProfileDirectory();
 };

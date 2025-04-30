@@ -2,12 +2,11 @@
 // Utility Headers
 //-----------------------
 #include "ObjLoader.h"
-#include "ShaderLoader.h"
+#include "shaders/ShaderLoader.h"
 //#include "Time.h"
 #include "VectorCalculations.h"
-#include "DeserializeJSON.h"
 #include "objectmanager/GameObjectSystemComponentConstants.h"
-#include "ScriptManager.h"
+#include "scripting/ScriptManager.h"
 //-----------------------
 // Event Headers
 //-----------------------
@@ -25,7 +24,8 @@
 //#include "Transform.h"
 //#include "SceneGraph.h"
 //#include "Renderer.h"
-#include "Camera.h"
+#include "cameramanager/CameraComponent.h"
+#include "cameramanager/CameraManager.h"
 //#include "Quaternion.h"
 //#include "VQS.h"
 //#include "Bone.h"
@@ -57,14 +57,14 @@
 //#include "Component.h"
 #include "RenderComponent.h"
 #include "TransformComponent.h"
-#include "ControllerComponent.h"
+#include "CameraControllerComponent.h"
 #include "physics/PhysicsComponent.h"
 #include "physics/CollisionComponent.h"
 #include "resourcemanager/ResourceManager.h"
 #include "resourcemanager/ResourceFactory.h"
 #include "objectmanager/GameObjectManager.h"
 #include "objectmanager/GameObjectFactory.h"
-#include "ScriptComponent.h"
+#include "scripting/ScriptComponent.h"
 //-----------------------
 // Game Headers
 //-----------------------

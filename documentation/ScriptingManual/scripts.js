@@ -3684,63 +3684,139 @@ const sections = {
         </code></pre>
         </div>
     `,
-    controllerComponent: `
+    cameraControllerComponent: `
         <div class="class">
-        <h2>ControllerComponent</h2>
-        <p>The <code>ControllerComponent</code> manages user input to control the movement and behavior of a <code>GameObject</code>. It supports keyboard and gamepad input for navigation and interaction.</p>
+        <h2>CameraControllerComponent</h2>
+        <p>The <code>CameraControllerComponent</code> manages user input to manipulate the camera's position, rotation, and field of view. It handles mouse and keyboard inputs, allowing users to rotate, pan, zoom, and move the camera through the scene.</p>
 
         <h3>Public Methods</h3>
 
+        <!-- Constructor -->
         <div class="method">
             <details>
             <summary>
-                <span class="return-type">void</span> 
+                <span class="return-type"></span>
+                <span class="method-name">CameraControllerComponent</span>()
+            </summary>
+            <p><strong>Description:</strong> Constructs the controller, initializing input-related fields, zoom value, and default movement settings.</p>
+            </details>
+        </div>
+
+        <!-- Destructor -->
+        <div class="method">
+            <details>
+            <summary>
+                <span class="return-type"></span>
+                <span class="method-name">~CameraControllerComponent</span>()
+            </summary>
+            <p><strong>Description:</strong> Default destructor; cleans up the component.</p>
+            </details>
+        </div>
+
+        <!-- Init -->
+        <div class="method">
+            <details>
+            <summary>
+                <span class="return-type">void</span>
                 <span class="method-name">Init</span>() <code>override</code>
             </summary>
-            <p><strong>Description:</strong> Initializes the component. Currently, this method is a placeholder.</p>
+            <p><strong>Description:</strong> Acquires references to the <code>CameraComponent</code> and <code>Transform</code> from the owning <code>GameObject</code>. Initializes position, rotation, and zoom settings based on existing camera values.</p>
             </details>
         </div>
 
+        <!-- Update -->
         <div class="method">
             <details>
             <summary>
-                <span class="return-type">void</span> 
+                <span class="return-type">void</span>
                 <span class="method-name">Update</span>() <code>override</code>
             </summary>
-            <p><strong>Description:</strong> Processes user input to update the position and state of the owning <code>GameObject</code>. Supports both keyboard and gamepad input.</p>
+            <p><strong>Description:</strong> Called every frame to update camera settings based on user input. Supports mouse rotation, panning, scroll zoom, and keyboard movement along <code>x</code>, <code>y</code>, and <code>z</code> axes.</p>
             </details>
         </div>
 
+        <!-- Shutdown -->
         <div class="method">
             <details>
             <summary>
-                <span class="return-type">void</span> 
+                <span class="return-type">void</span>
                 <span class="method-name">Shutdown</span>() <code>override</code>
             </summary>
-            <p><strong>Description:</strong> Cleans up the component's resources. Currently, this method is a placeholder.</p>
+            <p><strong>Description:</strong> Cleans up any resources owned by the controller. Currently empty, but provided for consistency with the base <code>Component</code> interface.</p>
+            </details>
+        </div>
+
+        <h3>Private Methods</h3>
+
+        <!-- updateMouseClick -->
+        <div class="method">
+            <details>
+            <summary>
+                <span class="return-type">void</span>
+                <span class="method-name">updateMouseClick</span>()
+            </summary>
+            <p><strong>Description:</strong> Checks and updates the state of mouse buttons (<code>GLFW_MOUSE_BUTTON_1</code>, <code>GLFW_MOUSE_BUTTON_2</code>, <code>GLFW_MOUSE_BUTTON_3</code>).</p>
+            </details>
+        </div>
+
+        <!-- updateMouseMovement -->
+        <div class="method">
+            <details>
+            <summary>
+                <span class="return-type">void</span>
+                <span class="method-name">updateMouseMovement</span>(<code>const double&amp; x</code>, <code>const double&amp; y</code>)
+            </summary>
+            <p><strong>Description:</strong> Adjusts the camera's rotation or position based on mouse movement. Left-click drags to rotate, right-click drags to pan.</p>
+            <p><strong>Parameters:</strong></p>
+            <ul>
+                <li><code>x</code>: The current mouse X position.</li>
+                <li><code>y</code>: The current mouse Y position.</li>
+            </ul>
+            </details>
+        </div>
+
+        <!-- updateKeyboardMovement -->
+        <div class="method">
+            <details>
+            <summary>
+                <span class="return-type">void</span>
+                <span class="method-name">updateKeyboardMovement</span>()
+            </summary>
+            <p><strong>Description:</strong> Moves the camera along the <code>x</code>, <code>y</code>, and <code>z</code> axes based on <code>W</code>, <code>A</code>, <code>S</code>, <code>D</code>, <code>Q</code>, and <code>E</code> keys.</p>
             </details>
         </div>
 
         <h3>Private Members</h3>
         <ul>
-            <li><code>const float m_speed</code>: The movement speed of the <code>GameObject</code>.</li>
-            <li><code>const Input* m_InputHandler</code>: Pointer to the input handler service for managing input events.</li>
-        </ul>
-
-        <h3>Details</h3>
-        <p>The <code>Update</code> method handles input from:</p>
-        <ul>
-            <li><strong>Keyboard:</strong> <code>W</code>, <code>A</code>, <code>S</code>, <code>D</code>, and <code>Space</code> keys for movement and jumping.</li>
-            <li><strong>Gamepad:</strong> Supports directional movement via D-pad and camera rotation via the right stick. Includes support for an inverted Y-axis toggle.</li>
+            <li><code>bool m_focussedOnUI</code>: Indicates if the cursor is currently focused on UI elements (disables camera control if true).</li>
+            <li><code>bool m_invert</code>: Toggles inversion of the mouse Y-axis.</li>
+            <li><code>bool m_leftDown</code>, <code>m_rightDown</code>, <code>m_middleDown</code>: Tracks the state of mouse buttons.</li>
+            <li><code>float m_speed</code>: Movement speed of the camera.</li>
+            <li><code>float m_prevMouseX</code>, <code>m_prevMouseY</code>: Stores the previous mouse position to calculate deltas.</li>
+            <li><code>float m_zoom</code>: Field of view used for zoom adjustments.</li>
+            <li><code>Input* m_pInputHandler</code>: Pointer to the engine's input system.</li>
+            <li><code>Transform* m_pTransform</code>: Pointer to the owning <code>GameObject</code>'s <code>Transform</code> for updating position and rotation.</li>
+            <li><code>CameraComponent* m_pCamera</code>: Pointer to the associated <code>CameraComponent</code> for field of view (zoom) control.</li>
+            <li><code>glm::vec3 m_pos</code>: Tracks the camera's position.</li>
+            <li><code>glm::vec3 m_rot</code>: Tracks the camera's rotation (in Euler angles).</li>
         </ul>
 
         <h3>Example Usage</h3>
         <pre><code class="language-cpp">
-        GameObject* player = new GameObject();
-        ControllerComponent* controller = player->AddComponent&lt;ControllerComponent&gt;();
-        player->Update();  // Processes input and updates position
+        GameObject* cameraObject = new GameObject();
+        CameraControllerComponent* controllerComp = cameraObject->AddComponent<CameraControllerComponent>();
+
+        // Initialize controller (acquires references to CameraComponent and Transform)
+        controllerComp->Init();
+
+        // In the main loop or scene update:
+        controllerComp->Update();
+
+        // Shut down controller once it's no longer needed
+        controllerComp->Shutdown();
         </code></pre>
-        </div>
+    </div>
+
     `,
     scriptComponent: `
         <div class="class">
@@ -4492,6 +4568,650 @@ const sections = {
         }
       </code></pre>
     `,
+    cameraComponent:`
+    <div class="class">
+    <h2>CameraComponent</h2>
+    <p>The <code>CameraComponent</code> handles all camera-related functionality within the engine. This includes setting and updating the camera's field of view, near/far clipping planes, viewport, position, and rotation. It also supports dynamic clipping, occlusion culling, and can be registered/unregistered to a <code>CameraManager</code> for scene management.</p>
+
+    <h3>Public Methods</h3>
+
+    <!-- Destructor -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type"></span>
+            <span class="method-name">~CameraComponent</span>()
+        </summary>
+        <p><strong>Description:</strong> Destroys the component, removing it from the <code>CameraManager</code>. Automatically called when the owning <code>GameObject</code> is destroyed.</p>
+        </details>
+    </div>
+
+    <!-- Init -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">Init</span>() <code>override</code>
+        </summary>
+        <p><strong>Description:</strong> Initializes the camera component by setting up its default viewport based on the current framebuffer size and registering the camera with the <code>CameraManager</code>.</p>
+        </details>
+    </div>
+
+    <!-- Update -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">Update</span>() <code>override</code>
+        </summary>
+        <p><strong>Description:</strong> Updates the camera every frame. If dynamic clipping is enabled, adjusts <code>nearPlane</code> and <code>farPlane</code> based on the camera's <code>z</code> position. Recomputes the projection and view matrices.</p>
+        </details>
+    </div>
+
+    <!-- Shutdown -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">Shutdown</span>() <code>override</code>
+        </summary>
+        <p><strong>Description:</strong> Cleans up any resources owned by the camera. Unused in this implementation but provided for consistency with the base <code>Component</code> interface.</p>
+        </details>
+    </div>
+
+    <!-- ToggleDynamicClipping -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">bool</span>
+            <span class="method-name">ToggleDynamicClipping</span>()
+        </summary>
+        <p><strong>Description:</strong> Toggles whether dynamic clipping is enabled or disabled for this camera.</p>
+        <p><strong>Returns:</strong> <code>true</code> if dynamic clipping is now enabled; <code>false</code> otherwise.</p>
+        </details>
+    </div>
+
+    <!-- ToggleOcclusionCulling -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">bool</span>
+            <span class="method-name">ToggleOcclusionCulling</span>()
+        </summary>
+        <p><strong>Description:</strong> Toggles occlusion culling on or off for this camera.</p>
+        <p><strong>Returns:</strong> <code>true</code> if occlusion culling is now enabled; <code>false</code> otherwise.</p>
+        </details>
+    </div>
+
+    <!-- ToggleActive -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">bool</span>
+            <span class="method-name">ToggleActive</span>()
+        </summary>
+        <p><strong>Description:</strong> Toggles whether this camera is currently active in the scene.</p>
+        <p><strong>Returns:</strong> <code>true</code> if the camera is now active; <code>false</code> otherwise.</p>
+        </details>
+    </div>
+
+    <!-- SetViewport (int, int, int, int) -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">SetViewport</span>(int x, int y, int width, int height)
+        </summary>
+        <p><strong>Description:</strong> Sets the camera's viewport using integer coordinates and dimensions.</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>x</code>: The left coordinate of the viewport.</li>
+            <li><code>y</code>: The top coordinate of the viewport.</li>
+            <li><code>width</code>: The width of the viewport.</li>
+            <li><code>height</code>: The height of the viewport.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- SetViewport (Viewport) -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">SetViewport</span>(Viewport viewport)
+        </summary>
+        <p><strong>Description:</strong> Sets the camera's viewport using a <code>Viewport</code> struct.</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>viewport</code>: A <code>Viewport</code> struct containing x, y, width, and height.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- SetPosition -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">SetPosition</span>(const glm::vec3 position)
+        </summary>
+        <p><strong>Description:</strong> Sets the camera's world position.</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>position</code>: The new position for the camera.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- SetRotation -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">SetRotation</span>(const glm::vec3 rotation)
+        </summary>
+        <p><strong>Description:</strong> Sets the camera's rotation, typically in Euler angles (pitch, yaw, roll).</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>rotation</code>: The new rotation (x=Pitch, y=Yaw, z=Roll) in degrees.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- SetFOV -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">SetFOV</span>(float fov)
+        </summary>
+        <p><strong>Description:</strong> Sets the camera's field of view (in degrees).</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>fov</code>: The field of view in degrees.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- SetNearPlane -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">SetNearPlane</span>(float nearPlane)
+        </summary>
+        <p><strong>Description:</strong> Sets the near clipping plane distance.</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>nearPlane</code>: The distance of the near clipping plane.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- SetFarPlane -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">SetFarPlane</span>(float farPlane)
+        </summary>
+        <p><strong>Description:</strong> Sets the far clipping plane distance.</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>farPlane</code>: The distance of the far clipping plane.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- IsDynamicClipping -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">bool</span>
+            <span class="method-name">IsDynamicClipping</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Checks if dynamic clipping is enabled.</p>
+        <p><strong>Returns:</strong> <code>true</code> if dynamic clipping is enabled; <code>false</code> otherwise.</p>
+        </details>
+    </div>
+
+    <!-- IsOcclusionCulling -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">bool</span>
+            <span class="method-name">IsOcclusionCulling</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Checks if occlusion culling is enabled.</p>
+        <p><strong>Returns:</strong> <code>true</code> if occlusion culling is enabled; <code>false</code> otherwise.</p>
+        </details>
+    </div>
+
+    <!-- IsActive -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">bool</span>
+            <span class="method-name">IsActive</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Checks if this camera is currently active.</p>
+        <p><strong>Returns:</strong> <code>true</code> if the camera is active; <code>false</code> otherwise.</p>
+        </details>
+    </div>
+
+    <!-- GetFOV -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">float</span>
+            <span class="method-name">GetFOV</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Retrieves the camera's field of view in degrees.</p>
+        </details>
+    </div>
+
+    <!-- GetNearPlane -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">float</span>
+            <span class="method-name">GetNearPlane</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Returns the distance of the near clipping plane.</p>
+        </details>
+    </div>
+
+    <!-- GetFarPlane -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">float</span>
+            <span class="method-name">GetFarPlane</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Returns the distance of the far clipping plane.</p>
+        </details>
+    </div>
+
+    <!-- GetPosition -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">const glm::vec3&amp;</span>
+            <span class="method-name">GetPosition</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Retrieves the camera's current world position.</p>
+        </details>
+    </div>
+
+    <!-- GetRotation -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">const glm::vec3&amp;</span>
+            <span class="method-name">GetRotation</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Retrieves the camera's rotation in Euler angles (x=Pitch, y=Yaw, z=Roll).</p>
+        </details>
+    </div>
+
+    <!-- GetViewMatrix -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">const glm::mat4&amp;</span>
+            <span class="method-name">GetViewMatrix</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Returns the current view matrix based on the camera's position and rotation.</p>
+        </details>
+    </div>
+
+    <!-- GetProjectionMatrix -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">const glm::mat4&amp;</span>
+            <span class="method-name">GetProjectionMatrix</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Returns the current projection matrix for this camera, recalculated each frame if necessary.</p>
+        </details>
+    </div>
+
+    <!-- GetViewport -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">Viewport</span>
+            <span class="method-name">GetViewport</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Returns the current viewport for this camera.</p>
+        </details>
+    </div>
+
+    <h3>Private Members</h3>
+    <ul>
+        <li><code>bool m_useDynamicClipping</code>: Indicates whether dynamic clipping is enabled.</li>
+        <li><code>bool m_occlusionCulling</code>: Indicates whether occlusion culling is enabled.</li>
+        <li><code>bool m_isActive</code>: Indicates whether the camera is active.</li>
+        <li><code>float m_nearPlane</code>: The near clipping plane distance.</li>
+        <li><code>float m_farPlane</code>: The far clipping plane distance.</li>
+        <li><code>float m_fov</code>: The camera's field of view, in degrees.</li>
+        <li><code>Transform* m_pTransform</code>: Pointer to the associated <code>Transform</code> for position/rotation and matrix generation.</li>
+        <li><code>Viewport m_viewport</code>: The current viewport configuration for this camera.</li>
+    </ul>
+
+    <h3>Example Usage</h3>
+    <pre><code class="language-cpp">
+    GameObject* obj = new GameObject();
+    CameraComponent* cameraComp = obj->AddComponent<CameraComponent>();
+
+    // Initialize the camera (sets up default viewport and registers with CameraManager)
+    cameraComp->Init();
+
+    // Set camera properties
+    cameraComp->SetPosition(glm::vec3(0.0f, 1.0f, 5.0f));
+    cameraComp->SetRotation(glm::vec3(0.0f, 180.0f, 0.0f));
+    cameraComp->SetFOV(60.0f);
+
+    // Toggle dynamic clipping and update
+    cameraComp->ToggleDynamicClipping();
+    cameraComp->Update();
+
+    // Shutdown camera when done
+    cameraComp->Shutdown();
+    </code></pre>
+</div>
+`,
+cameraManager:`
+<div class="class">
+    <h2>CameraManager</h2>
+    <p>The <code>CameraManager</code> is responsible for creating, tracking, and updating all cameras in the system. It manages a collection of active and inactive <code>CameraComponent</code> instances, along with a special "EngineCamera" for editor or debug use. The manager also allows toggling camera activation, snapping camera transforms to the EngineCamera, and designating a main camera.</p>
+
+    <h3>Public Methods</h3>
+
+    <!-- Constructor -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type"></span>
+            <span class="method-name">CameraManager</span>()
+        </summary>
+        <p><strong>Description:</strong> Constructs the <code>CameraManager</code> without any cameras. Initialization of internal structures takes place in <code>Init</code>.</p>
+        </details>
+    </div>
+
+    <!-- Destructor -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type"></span>
+            <span class="method-name">~CameraManager</span>()
+        </summary>
+        <p><strong>Description:</strong> Destructs the manager, ensuring any owned resources are properly cleaned up.</p>
+        </details>
+    </div>
+
+    <!-- Init -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">Init</span>()
+        </summary>
+        <p><strong>Description:</strong> Initializes any necessary data structures or state for camera management. Currently empty in this implementation.</p>
+        </details>
+    </div>
+
+    <!-- Update -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">Update</span>()
+        </summary>
+        <p><strong>Description:</strong> Updates the active cameras each frame. If the EngineCamera is active, only it is updated; otherwise, all active cameras are updated.</p>
+        </details>
+    </div>
+
+    <!-- Shutdown -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">Shutdown</span>()
+        </summary>
+        <p><strong>Description:</strong> Cleans up camera-related resources, called when the manager is no longer needed. Currently empty in this implementation.</p>
+        </details>
+    </div>
+
+    <!-- AddCamera (std::string name) -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">AddCamera</span>(<code>const std::string&amp; name</code> = <code>""</code>)
+        </summary>
+        <p><strong>Description:</strong> Creates a new <code>GameObject</code>, adds a <code>CameraComponent</code> to it, and names the <code>GameObject</code> either using the passed-in name or a default "CameraX" format.</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>name</code> (optional): The desired name for the new camera; if empty, a default name is generated.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- RegisterCameraComponent -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">RegisterCameraComponent</span>(<code>CameraComponent*</code> camera)
+        </summary>
+        <p><strong>Description:</strong> Registers an existing <code>CameraComponent</code> with the manager. If this is the first registered camera, it becomes the default main camera. If the camera is already active, it's also added to the active camera list.</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>camera</code>: A pointer to the camera to register.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- RemoveCamera -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">RemoveCamera</span>(<code>CameraComponent*</code> camera)
+        </summary>
+        <p><strong>Description:</strong> Unregisters and destroys the specified camera by deleting the associated <code>GameObject</code>. Also removes it from the active camera list if it was active.</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>camera</code>: The camera to remove and destroy.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- ToggleCamera -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">bool</span>
+            <span class="method-name">ToggleCamera</span>(<code>CameraComponent*</code> camera)
+        </summary>
+        <p><strong>Description:</strong> Toggles the active state of the given camera. If toggled inactive, it's removed from the active camera list.</p>
+        <p><strong>Returns:</strong> The new active state (<code>false</code> means inactive, <code>true</code> means active).</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>camera</code>: The camera to be toggled.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- SetMainCamera -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">SetMainCamera</span>(<code>CameraComponent*</code> camera)
+        </summary>
+        <p><strong>Description:</strong> Sets the provided camera as the main camera for operations outside rendering (e.g., physics, audio). This does not necessarily affect rendering order unless the EngineCamera is inactive.</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>camera</code>: The camera to be designated as main.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- GetCamerabyName -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">CameraComponent*</span>
+            <span class="method-name">GetCamerabyName</span>(<code>const std::string&amp;</code> name) <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Searches through all registered cameras by the owning <code>GameObject</code>'s name.</p>
+        <p><strong>Returns:</strong> A pointer to the matching <code>CameraComponent</code>, or <code>nullptr</code> if not found.</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>name</code>: The name of the camera's <code>GameObject</code>.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- GetActiveCameras -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">std::vector&lt;CameraComponent*&gt;</span>
+            <span class="method-name">GetActiveCameras</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Returns all currently active cameras, excluding the EngineCamera if it's active.</p>
+        </details>
+    </div>
+
+    <!-- AddEngineCamera -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">CameraComponent*</span>
+            <span class="method-name">AddEngineCamera</span>()
+        </summary>
+        <p><strong>Description:</strong> Creates a special "EngineCamera" (if it doesn't already exist), attaches both <code>CameraComponent</code> and <code>CameraControllerComponent</code> to it, and returns the camera.</p>
+        <p><strong>Returns:</strong> The <code>CameraComponent</code> associated with the new or existing EngineCamera.</p>
+        </details>
+    </div>
+
+    <!-- ToggleEngineCamera -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">bool</span>
+            <span class="method-name">ToggleEngineCamera</span>()
+        </summary>
+        <p><strong>Description:</strong> Toggles the active state of the EngineCamera, if it exists.</p>
+        <p><strong>Returns:</strong> <code>true</code> if the EngineCamera is active after toggling; <code>false</code> otherwise.</p>
+        </details>
+    </div>
+
+    <!-- SnapToEngineCamera (GameObject*) -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">SnapToEngineCamera</span>(<code>GameObject*</code> camera)
+        </summary>
+        <p><strong>Description:</strong> Copies the position, rotation, field of view, near, and far planes from the EngineCamera to the target camera's <code>CameraComponent</code>.</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>camera</code>: The <code>GameObject</code> whose <code>CameraComponent</code> should match the EngineCamera's transform and settings.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- SnapToEngineCamera (CameraComponent*) -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">void</span>
+            <span class="method-name">SnapToEngineCamera</span>(<code>CameraComponent*</code> camera)
+        </summary>
+        <p><strong>Description:</strong> Overload for snapping directly to a <code>CameraComponent</code>.</p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>camera</code>: The camera to match the EngineCamera's transform and settings.</li>
+        </ul>
+        </details>
+    </div>
+
+    <!-- GetEngineCamera -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">CameraComponent*</span>
+            <span class="method-name">GetEngineCamera</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Retrieves the <code>CameraComponent</code> of the internal "EngineCamera" if it exists, otherwise returns <code>nullptr</code>.</p>
+        </details>
+    </div>
+
+    <!-- GetCamerasForRendering -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">std::vector&lt;CameraComponent*&gt;</span>
+            <span class="method-name">GetCamerasForRendering</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Provides a list of cameras that should be used for rendering. If the EngineCamera is active, it's returned as the sole camera in this list; otherwise, all active cameras are returned.</p>
+        </details>
+    </div>
+
+    <!-- GetMainCamera -->
+    <div class="method">
+        <details>
+        <summary>
+            <span class="return-type">CameraComponent*</span>
+            <span class="method-name">GetMainCamera</span>() <code>const</code>
+        </summary>
+        <p><strong>Description:</strong> Gets the current main camera. If the EngineCamera is active, it's returned instead of any designated main camera.</p>
+        </details>
+    </div>
+
+    <h3>Private Members</h3>
+    <ul>
+        <li><code>static CameraManager* GetInstance()</code>: Internal singleton getter. Not typically called directly outside of <code>ServiceLocator</code>.</li>
+        <li><code>static std::unique_ptr&lt;CameraManager&gt; instance</code>: Holds the singleton instance of <code>CameraManager</code>.</li>
+        <li><code>std::vector&lt;CameraComponent*&gt; m_cameras</code>: A list of all registered cameras.</li>
+        <li><code>std::vector&lt;CameraComponent*&gt; m_activeCameras</code>: A subset of <code>m_cameras</code> containing only active cameras.</li>
+        <li><code>std::shared_ptr&lt;GameObject&gt; m_pEngineCamera</code>: The special engine camera object, if any.</li>
+        <li><code>CameraComponent* m_pMainCamera</code>: Pointer to the main camera used for external scene behaviors, unless the EngineCamera is active.</li>
+        <li><code>friend class ServiceLocator</code>: Allows the <code>ServiceLocator</code> to manage this singleton instance.</li>
+    </ul>
+
+    <h3>Example Usage</h3>
+    <pre><code class="language-cpp">
+    // Acquire the CameraManager via the service locator or direct call.
+    CameraManager* camManager = SERVICE_LOCATOR.GetCameraManager();
+
+    // Initialize camera manager
+    camManager->Init();
+
+    // Create a new camera
+    camManager->AddCamera("MyNewCamera");
+
+    // Get a reference to the newly created camera
+    CameraComponent* myCamera = camManager->GetCamerabyName("MyNewCamera");
+
+    // Toggle its active state
+    bool isNowActive = camManager->ToggleCamera(myCamera);
+
+    // Retrieve the main camera (or engine camera if it is active)
+    CameraComponent* mainCam = camManager->GetMainCamera();
+
+    // Update the manager (updates camera(s))
+    camManager->Update();
+
+    // Shutdown when done
+    camManager->Shutdown();
+    </code></pre>
+</div>
+`
 };
 
 // Function to display content dynamically

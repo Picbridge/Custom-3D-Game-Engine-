@@ -3,32 +3,51 @@
 
 bool ObjLoader::LoadObj(const char* path, VERTEX_DATA& vertexData, NORMAL_DATA& normalData, UV_INFO& uv_info)
 {
+    // Clear output buffers
     vertexData.vertex_buffer.clear();
     vertexData.index_buffer.clear();
     normalData.center.clear();
     normalData.face_normal_buffer.clear();
+    normalData.vertex_normal_buffer.clear();
+    uv_info.Cylindrical.clear();
+    uv_info.Spherical.clear();
+    uv_info.Planar.clear();
+    uv_info.Cube.clear();
 
+    // Temporary storage for file data
+    std::vector<glm::vec3> temp_positions;
+    std::vector<glm::vec2> temp_texcoords;
+
+    // For faces: we store the indices read from the file.
+    std::vector<unsigned int> positionIndices;
+    std::vector<unsigned int> texcoordIndices;
+
+    // For centering/normalizing model
     glm::vec3 pos_min(std::numeric_limits<float>::max());
     glm::vec3 pos_max(-std::numeric_limits<float>::max());
 
+    // Read the OBJ file
     std::ifstream file(path);
-    if (!file.is_open()) 
+    if (!file.is_open())
     {
         std::cerr << "Failed to open OBJ file: " << path << std::endl;
         return false;
     }
 
     std::string line;
-    while (std::getline(file, line)) 
+    while (std::getline(file, line))
     {
+        if (line.empty())
+            continue;
         std::istringstream ss(line);
         std::string header;
         ss >> header;
 
-        if (header == "v") {  // Vertex
+        if (header == "v")  // Vertex
+        {
             glm::vec3 vertex;
             ss >> vertex.x >> vertex.y >> vertex.z;
-            vertexData.vertex_buffer.push_back(vertex);
+            temp_positions.push_back(vertex);
 
             pos_max.x = std::max(pos_max.x, vertex.x);
             pos_max.y = std::max(pos_max.y, vertex.y);
@@ -36,39 +55,141 @@ bool ObjLoader::LoadObj(const char* path, VERTEX_DATA& vertexData, NORMAL_DATA& 
             pos_min.x = std::min(pos_min.x, vertex.x);
             pos_min.y = std::min(pos_min.y, vertex.y);
             pos_min.z = std::min(pos_min.z, vertex.z);
-
-			// Compute UV coordinates on CPU
-			findCylindericalSphericalUV(uv_info, vertex);
-			findPlanerUV(uv_info, vertex);
-			findCubeUV(uv_info, vertex);
+        }
+        else if (header == "vt")  // Texcoordinate
+        {
+            glm::vec2 uv;
+            ss >> uv.x >> uv.y;
+            temp_texcoords.push_back(uv);
+        }
+        else if (header == "vn")  // Normal (ignored)
+        {
+			// Calculate normals manually for consistent shading
+            continue;
         }
         else if (header == "f") // Face
-        {  
-            int vertexIndex[3];
-            ss >> vertexIndex[0] >> vertexIndex[1] >> vertexIndex[2];
-            vertexData.index_buffer.push_back(vertexIndex[0] - 1);
-            vertexData.index_buffer.push_back(vertexIndex[1] - 1);
-            vertexData.index_buffer.push_back(vertexIndex[2] - 1);
+        {
+            std::vector<std::string> tokens;
+            std::string token;
+            while (ss >> token)
+                tokens.push_back(token);
+
+            std::vector<unsigned int> face_pIndices;
+            std::vector<unsigned int> face_tIndices;
+
+            for (const auto& tok : tokens)
+            {
+                int pIndex, tIndex, nIndex;
+                parseFaceToken(tok, pIndex, tIndex, nIndex);
+                if (pIndex != 0)
+                    pIndex = (pIndex > 0) ? pIndex - 1 : static_cast<int>(temp_positions.size()) + pIndex;
+                if (tIndex != 0)
+                    tIndex = (tIndex > 0) ? tIndex - 1 : static_cast<int>(temp_texcoords.size()) + tIndex;
+                face_pIndices.push_back(static_cast<unsigned int>(pIndex));
+                face_tIndices.push_back(static_cast<unsigned int>(tIndex));
+            }
+
+            // Triangulate the face if it has more than 3 vertices
+            for (size_t i = 1; i + 1 < face_pIndices.size(); ++i)
+            {
+                positionIndices.push_back(face_pIndices[0]);
+                positionIndices.push_back(face_pIndices[i]);
+                positionIndices.push_back(face_pIndices[i + 1]);
+
+                if (!temp_texcoords.empty())
+                {
+                    texcoordIndices.push_back(face_tIndices[0]);
+                    texcoordIndices.push_back(face_tIndices[i]);
+                    texcoordIndices.push_back(face_tIndices[i + 1]);
+                }
+                else
+                {
+                    texcoordIndices.push_back(0);
+                    texcoordIndices.push_back(0);
+                    texcoordIndices.push_back(0);
+                }
+            }
+        }
+    }
+    file.close();
+
+    // Center and normalize model
+    glm::vec3 center = (pos_max + pos_min) / 2.f;
+    float ABSMax = -std::numeric_limits<float>::max();
+    for (auto& vertex : temp_positions)
+    {
+        vertex -= center;
+        ABSMax = std::max(ABSMax, std::max({ std::abs(vertex.x), std::abs(vertex.y), std::abs(vertex.z) }));
+    }
+    if (ABSMax != 0)
+        for (auto& vertex : temp_positions)
+            vertex /= ABSMax;
+
+    // Precompute UVs for vertices if texture coordinates are not provided
+    std::vector<glm::vec2> precomputed_uvs;
+    if (temp_texcoords.empty())
+    {
+        precomputed_uvs.resize(temp_positions.size());
+        for (size_t i = 0; i < temp_positions.size(); ++i)
+        {
+            const glm::vec3& vertex = temp_positions[i];
+            glm::vec2 uv;
+            uv.x = -vertex.x;
+            uv.y = vertex.y;
+            precomputed_uvs[i] = uv;
         }
     }
 
-    // Center the model and normalize its size
-    pos_max = (pos_max + pos_min) / 2.f;
-    float ABSMax = -std::numeric_limits<float>::max();
-    for (glm::vec3& vertex : vertexData.vertex_buffer) 
+    // Build final arrays
+    struct VertexKey {
+        unsigned int posIndex;
+        unsigned int texIndex;
+        bool operator<(const VertexKey& other) const {
+            if (posIndex != other.posIndex) return posIndex < other.posIndex;
+            return texIndex < other.texIndex;
+        }
+    };
+
+    std::map<VertexKey, unsigned int> vertexMap;
+    std::vector<glm::vec3> final_positions;
+    std::vector<glm::vec2> final_uvs;
+    std::vector<unsigned int> final_indices;
+
+    for (size_t i = 0; i < positionIndices.size(); ++i)
     {
-        vertex -= pos_max;  // Centering the model
-        ABSMax = std::max(ABSMax, std::max({ std::abs(vertex.x), std::abs(vertex.y), std::abs(vertex.z) }));
+        VertexKey key = { positionIndices[i], texcoordIndices[i] };
+        auto it = vertexMap.find(key);
+        unsigned int index;
+
+        if (it != vertexMap.end())
+        {
+            index = it->second;
+        }
+        else
+        {
+            index = static_cast<unsigned int>(final_positions.size());
+            vertexMap[key] = index;
+
+            final_positions.push_back(temp_positions[key.posIndex]);
+            if (!temp_texcoords.empty() && key.texIndex < temp_texcoords.size())
+                final_uvs.push_back(temp_texcoords[key.texIndex]);
+            else
+                final_uvs.push_back(precomputed_uvs[key.posIndex]);
+        }
+
+        final_indices.push_back(index);
     }
 
-	if (ABSMax != 0) // Avoid division by zero
-        for (glm::vec3& vertex : vertexData.vertex_buffer)
-            vertex /= ABSMax;  // Normalizing the size
+    // Set vertex buffer and index buffer
+    vertexData.vertex_buffer = std::move(final_positions);
+    vertexData.index_buffer = std::move(final_indices);
+    uv_info.Planar = std::move(final_uvs);
 
-    // Compute vertex normals
-	findFaceNormal(vertexData, normalData);
+    // Compute face normals
+    findFaceNormal(vertexData, normalData);
+    // Compute vertex normals based on shading mode
+    normalData.vertex_normal_buffer.resize(vertexData.vertex_buffer.size());
     findVertexNormal(vertexData, normalData);
-    file.close();
 
     std::cout << "Loaded OBJ file " << path << "...\n";
     return true;
@@ -76,126 +197,78 @@ bool ObjLoader::LoadObj(const char* path, VERTEX_DATA& vertexData, NORMAL_DATA& 
 
 void ObjLoader::findFaceNormal(VERTEX_DATA& vertexData, NORMAL_DATA& normalData)
 {
-    std::vector<glm::vec3> vertex, v1, v2;
+    normalData.center.clear();
+    normalData.face_normal_buffer.clear();
+    normalData.face_normal_buffer.reserve(vertexData.index_buffer.size() / 3);
 
-    for (unsigned int i = 0; i < vertexData.index_buffer.size(); ++i)
+    for (size_t i = 0; i < vertexData.index_buffer.size(); i += 3)
     {
-        vertex.push_back(vertexData.vertex_buffer[vertexData.index_buffer[i]]);
-    }
-    for (unsigned int i = 0; i < vertex.size(); i += 3)
-    {
-        normalData.center.push_back(glm::vec3((vertex[i] + vertex[i + 1] + vertex[i + 2]) / 3.f));
+        const glm::vec3& v0 = vertexData.vertex_buffer[vertexData.index_buffer[i]];
+        const glm::vec3& v1 = vertexData.vertex_buffer[vertexData.index_buffer[i + 1]];
+        const glm::vec3& v2 = vertexData.vertex_buffer[vertexData.index_buffer[i + 2]];
 
-        v1.push_back(vertex[i + 1] - vertex[i]);
-        v2.push_back(vertex[i + 2] - vertex[i]);
-    }
-    for (unsigned int i = 0; i < v2.size(); ++i)
-    {
-        normalData.face_normal_buffer.push_back(glm::normalize(glm::cross(v1[i], v2[i])));
+        normalData.center.push_back((v0 + v1 + v2) / 3.f);
+        glm::vec3 faceNormal = glm::normalize(glm::cross(v1 - v0, v2 - v0));
+        normalData.face_normal_buffer.push_back(faceNormal);
     }
 }
 
 void ObjLoader::findVertexNormal(VERTEX_DATA& vertexData, NORMAL_DATA& normalData)
 {
-    normalData.vertex_normal_buffer.clear();
-    normalData.vertex_normal_buffer.resize(vertexData.vertex_buffer.size());
+    std::vector<glm::vec3>& normals = normalData.vertex_normal_buffer;
+    std::vector<float> weights(vertexData.vertex_buffer.size(), 0.f);
 
-    std::vector<std::vector<glm::vec3>> vertexNormals(vertexData.vertex_buffer.size());
-
-    // Iterate over the index buffer and associate face normals with each vertex
     for (size_t i = 0; i < vertexData.index_buffer.size(); i += 3)
     {
         int v0 = vertexData.index_buffer[i];
         int v1 = vertexData.index_buffer[i + 1];
         int v2 = vertexData.index_buffer[i + 2];
+        const glm::vec3& faceNormal = normalData.face_normal_buffer[i / 3];
 
-        glm::vec3 faceNormal = normalData.face_normal_buffer[i / 3];
-
-        // Add the face normal to each vertex's normal list if it's not already there
-        auto& normalsV0 = vertexNormals[v0];
-        if (std::find(normalsV0.begin(), normalsV0.end(), faceNormal) == normalsV0.end())
-            normalsV0.push_back(faceNormal);
-
-        auto& normalsV1 = vertexNormals[v1];
-        if (std::find(normalsV1.begin(), normalsV1.end(), faceNormal) == normalsV1.end())
-            normalsV1.push_back(faceNormal);
-
-        auto& normalsV2 = vertexNormals[v2];
-        if (std::find(normalsV2.begin(), normalsV2.end(), faceNormal) == normalsV2.end())
-            normalsV2.push_back(faceNormal);
+        normals[v0] += faceNormal;
+        normals[v1] += faceNormal;
+        normals[v2] += faceNormal;
+        weights[v0] += 1.f;
+        weights[v1] += 1.f;
+        weights[v2] += 1.f;
     }
 
-    // Calculate the average normal for each vertex
-    for (size_t i = 0; i < vertexData.vertex_buffer.size(); ++i)
+    for (size_t i = 0; i < normals.size(); ++i)
     {
-        glm::vec3 averageNormal(0.f);
-
-        for (const auto& normal : vertexNormals[i])
-            averageNormal += normal;
-
-        if (!vertexNormals[i].empty())
-            averageNormal /= static_cast<float>(vertexNormals[i].size());
-
-        normalData.vertex_normal_buffer[i] = glm::normalize(averageNormal);
+        if (weights[i] > 0.f)
+        {
+            normals[i] /= weights[i];
+            normals[i] = glm::normalize(normals[i]);
+        }
     }
 }
 
-void ObjLoader::findPlanerUV(UV_INFO& uv_info, glm::vec3 vertex)
+void ObjLoader::parseFaceToken(const std::string& token, int& pIndex, int& tIndex, int& nIndex)
 {
-	glm::vec2 uv;
-	uv.x = -vertex.x;
-	uv.y = vertex.y;
-	uv_info.Planar.push_back(uv);
-}
-
-void ObjLoader::findCylindericalSphericalUV(UV_INFO& uv_info, glm::vec3 vertex)
-{
-	glm::vec2 uv;
-	float r = vertex.x * vertex.x + vertex.y * vertex.y;
-    float theta = (vertex.x != 0) ? std::atan(vertex.y / vertex.x) : (vertex.y > 0 ? PI / 2.f : -PI / 2.f);
-
-    uv.x = (theta + PI) / (2.f * PI);
-	uv.y = vertex.z;
-	uv_info.Cylindrical.push_back(uv);
-
-    r += vertex.z * vertex.z;
-    float phi = std::acos(vertex.z / r);
-
-    uv.y = phi / PI;
-    uv_info.Spherical.push_back(uv);
-}
-
-void ObjLoader::findCubeUV(UV_INFO& uv_info, glm::vec3 vertex)
-{
-    glm::vec2 uv;
-
-    float absX = std::abs(vertex.x);
-    float absY = std::abs(vertex.y);
-    float absZ = std::abs(vertex.z);
-
-    // Determine the major axis direction
-    if (absX >= absY && absX >= absZ)
+    pIndex = tIndex = nIndex = 0;
+    size_t firstSlash = token.find('/');
+    if (firstSlash == std::string::npos)
     {
-        //+X
-        uv.x = (vertex.x > 0) ? -vertex.z / absX : vertex.z / absX;
-        uv.y = vertex.y / absX;
-    }
-    else if (absY >= absX && absY >= absZ)
-    {
-        //+Y
-        uv.x = vertex.x / absY;
-        uv.y = (vertex.y > 0) ? -vertex.z / absY : vertex.z / absY;
+        pIndex = std::stoi(token);
     }
     else
     {
-        //+Z
-        uv.x = (vertex.z > 0) ? vertex.x / absZ : -vertex.x / absZ;
-        uv.y = vertex.y / absZ;
+        pIndex = std::stoi(token.substr(0, firstSlash));
+        size_t secondSlash = token.find('/', firstSlash + 1);
+        if (secondSlash != std::string::npos)
+        {
+            std::string tex = token.substr(firstSlash + 1, secondSlash - firstSlash - 1);
+            std::string norm = token.substr(secondSlash + 1);
+            if (!tex.empty())
+                tIndex = std::stoi(tex);
+            if (!norm.empty())
+                nIndex = std::stoi(norm);
+        }
+        else
+        {
+            std::string tex = token.substr(firstSlash + 1);
+            if (!tex.empty())
+                tIndex = std::stoi(tex);
+        }
     }
-
-    // Normalize UV to [0, 1] range
-    uv.x = (uv.x + 1.f) / 2.f;
-    uv.y = (uv.y + 1.f) / 2.f;
-
-    uv_info.Cube.push_back(uv);
 }

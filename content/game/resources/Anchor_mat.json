@@ -1,0 +1,14 @@
+{
+    "Shader": "Cel",
+    "Textures": {
+        "Diffuse": "pattern_45",
+        "Specular": "Default_spec"
+    },
+    "Color": [
+        0.05000000074505806,
+        0.05000000074505806,
+        0.05000000074505806
+    ],
+    "Shininess": 1.0,
+    "Alpha": 1.0
+}

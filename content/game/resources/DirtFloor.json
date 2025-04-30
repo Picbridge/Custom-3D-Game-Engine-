@@ -1,0 +1,13 @@
+{
+    "Shader": "Default",
+    "Textures": {
+        "Diffuse": "DirtFloor_diff"
+    },
+    "Color": [
+        0.05000000074505806,
+        0.05000000074505806,
+        0.05000000074505806
+    ],
+    "Shininess": 0.0,
+    "Alpha": 1.0
+}

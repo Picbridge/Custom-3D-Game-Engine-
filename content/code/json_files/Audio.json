@@ -1,10 +1,58 @@
 {
-  "music\\dragon_soul.mp3": {
+  "music\\StockMusic.net\\EF11-SR8-RonanDavey.mp3": {
     "mode": "loop",
     "volume": 0.5
   },
-  "sound_effects\\banana_bread.mp3": {
-    "mode": "3D",
-    "volume": 1.0
+  "sound_effects\\StockMusic.net\\Multimedia Effect 05.wav": {
+    "mode": "2D",
+    "volume": 0.5
+  },
+  "sound_effects\\StockMusic.net\\Multimedia Error Message 01.wav": {
+    "mode": "2D",
+    "volume": 0.5
+  },
+  "sound_effects\\Soundstorm\\Metal-ThudsClangRinging-_90.wav": {
+    "mode": "2D",
+    "volume": 0.5
+  },
+  "sound_effects\\Kenney\\impactPlate_heavy_002-grapplehit.ogg": {
+    "mode": "2D",
+    "volume": 0.5
+  },
+  "sound_effects\\Kenney\\laser4-teleport.ogg": {
+    "mode": "2D",
+    "volume": 0.5
+  },
+  "sound_effects\\Kenney\\mouseclick1.ogg": {
+    "mode": "2D",
+    "volume": 0.5
+  },
+  "sound_effects\\Kenney\\mouserelease1.ogg": {
+    "mode": "2D",
+    "volume": 0.5
+  },
+  "sound_effects\\Kenney\\click4.ogg": {
+    "mode": "2D",
+    "volume": 0.5
+  },
+  "sound_effects\\Kenney\\click5.ogg": {
+    "mode": "2D",
+    "volume": 0.5
+  },
+  "sound_effects\\Kenney\\confirmation_001.ogg": {
+    "mode": "2D",
+    "volume": 0.5
+  },
+  "sound_effects\\Kenney\\confirmation_002.ogg": {
+    "mode": "2D",
+    "volume": 0.5
+  },
+  "sound_effects\\Kenney\\confirmation_003.ogg": {
+    "mode": "2D",
+    "volume": 0.5
+  },
+  "sound_effects\\Kenney\\confirmation_004.ogg": {
+    "mode": "2D",
+    "volume": 0.5
   }
 }

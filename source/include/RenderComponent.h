@@ -13,6 +13,7 @@ public:
 
 	//@brief Render the 
 	// object
+	void Prepass(const CameraComponent* camera);
 	void Render();
 	void Render(Shader* shader);
 	void DrawCollider();
@@ -47,7 +48,7 @@ public:
 	//@brief Replace the cuurent geometry with user defined geometry
 	//@param pGeometry : the geometry to set
 	void SetGeometry(Geometry* pGeometry);
-
+	 
 	//@brief Geometry setter overload to set geometry by class name
 	//@param geometryName : Name of the geometry class to set
 	void SetGeometry(const std::string& geometryName);
@@ -55,6 +56,14 @@ public:
 	//@brief Set the UV type of the current geometry
 	//@param type : UV type of the geometry
 	void SetUVType(UV_TYPE type);
+
+	//@brief sets the tiling position of the texture
+	//@param pos : tiling position of the texture
+	void SetTexTilingPos(glm::vec2 pos) { m_texTilingPos = pos; }
+
+	//@brief sets the tiling size of the texture
+	//@param size : tiling size of the texture
+	void SetTexTilingScale(glm::vec2 size) { m_texTilingScale = size; }
 
 	//--------------------------------
 	//Getters
@@ -67,15 +76,33 @@ public:
 	//@brief Returns the shader of the current game object
 	Shader* GetShader() { return m_pMaterial->GetShader(); }
 
+	//@brief returns the tiling position of the texture
+	//@return glm::vec2 the tiling position of the texture
+	glm::vec2 GetTexTilingPos() { return m_texTilingPos; }
+
+	//@brief returns the tiling size of the texture
+	//@return glm::vec2 the tiling size of the texture
+	glm::vec2 GetTexTilingScale() { return m_texTilingScale; }
 
 private:
 	Geometry* m_pGeometry;
 	Material* m_pMaterial;
 	Model* m_pModel;
+	Shader* m_pPrepassShader;
+
+	glm::vec2 m_texTilingPos;
+	glm::vec2 m_texTilingScale;
+
+	int m_currentWidth;
+	int m_currentHeight;
+
+	GLuint m_prepassColorTex;
+	GLuint m_prepassFBO;
+	GLuint m_depthBuffer;
 
 	GLuint m_LineVAO, m_LineVBO;
 	glm::vec3 m_LineVertices[2];
-
+	glm::vec4 m_prepassColor;
 	void defineMember() override;
 };
 

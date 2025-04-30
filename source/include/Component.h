@@ -1,6 +1,6 @@
 #pragma once
 class Node;
-
+#include "GameObject.h"
 class Component : public IHasGettersSetters
 {
 public:
@@ -32,13 +32,7 @@ public:
 	
 	//@brief Get the owner of the component
 	//@return GameObject* The owner of the component
-	GameObject* GetOwnerAsGameObject() { return dynamic_cast<GameObject*>(pOwner); }
-
-	//@brief Get the component of the owner
-	template <typename DataType>
-	DataType* GetComponent() { return pOwner->GetComponent<DataType>(); }
-	template <typename DataType>
-	bool HasComponent() { return pOwner->HasComponent<DataType>(); }
+	GameObject* GetOwnerAsGameObject();
 
 protected:
 	Node* pOwner;

@@ -1,0 +1,10 @@
+{
+    "Shader": "Default",
+    "Color": [
+        1.0,
+        1.0,
+        1.0
+    ],
+    "Shininess": 0.0,
+    "Alpha": 0.5
+}

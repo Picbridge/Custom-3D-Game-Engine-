@@ -6,7 +6,6 @@
 #include <string>
 #include <thread>
 #include <vector>
-#include <unordered_set>
 #include <fstream> //File input
 #include <sstream> //File input
 #include <unordered_map> //Hash map for storing assets by id(GameObjects, shaders and materials)
@@ -21,9 +20,11 @@
 #include <source_location>
 #include <filesystem>
 #include <type_traits>
-#include <array>
 #include <random>
 #include <memory>
+#include <limits>
+#include <algorithm>
+#include <omp.h>
 //-----------------------
 // ImGui Library Headers
 //-----------------------
@@ -67,6 +68,7 @@
 //-----------------------
 // ServiceLocator Headers
 //-----------------------
+#include <../include/SystemSettings.h>
 #include "ServiceLocator.h"
 //-----------------------
 // Utility Headers
@@ -76,18 +78,19 @@
 #include "lodepng.h"
 #include "Definitions.h"
 #include "Utils.h"
-#include "objectmanager/GameObjectSystemComponentConstants.h"
 #include "Time.h"
 #include "Random.h"
 //-----------------------
-// Event Headers
+// EventHandler Headers
 //-----------------------
 #include "events/Event.h"
+#include "events/EventHandler.h"
+#include "events/EventListener.h"
 //-----------------------
 // Renderer Headers
 //-----------------------
 #include "Window.h"
-#include "Shader.h"
+#include "shaders/Shader.h"
 #include "Texture.h"
 #include "Material.h"
 #include "Geometry.h"
@@ -102,18 +105,33 @@
 //-----------------------
 // Physics Headers
 //-----------------------
-#include "ParticleSystem.h"
+#include "ParticleManager.h"
 #include "physics/CollisionShape.h"
 #include "physics/CollisionShape_Sphere.h"
 #include "physics/CollisionShape_Cuboid.h"
-#include "physics/CollisionChecks.h"
+#include "physics/ShapeHelper.h"
 #include "physics/CollisionManager.h"
+#include "physics/PhysicsManager.h"
 //-----------------------
 // GameObject Headers
 //-----------------------
-#include "Node.h"
+#include "objectmanager/GameObjectSystemComponentConstants.h"
+//#include "Node.h"
 #include "GameObject.h"
 #include "Component.h"
+#include "scripting/ScriptComponent.h"
+#include "ui/UIComponent.h"
+#include "ui/UITextComponent.h"
+//-----------------------
+// Event Headers
+//-----------------------
+#include "events/ComponentItrEvent.h"
+#include "events/NodeEvent.h"
+#include "events/IndexEvent.h"
+#include "events/FloatEvent.h"
+#include "events/BoolEvent.h"
+#include "events/CollisionEvent.h"
+#include "events/StringEvent.h"
 //-----------------------
 // Game Headers
 //-----------------------
@@ -122,3 +140,7 @@
 // Engine Headers
 //-----------------------
 #include "Skybox.h"
+//-----------------------
+// JSON Serialization Headers
+//-----------------------
+#include "DeserializeJSON.h"

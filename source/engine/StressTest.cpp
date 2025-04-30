@@ -1,7 +1,5 @@
 #include "pch.h"
 #include "StressTest.h"
-#include "Camera.h"
-#include "DeserializeJSON.h"
 #include "VectorCalculations.h"
 #include "TransformComponent.h"
 #include "resourcemanager/ResourceFactory.h"
@@ -13,15 +11,10 @@
 
 void StressTest::Init()
 {
-	SERVICE_LOCATOR.GetResourceFactory()->CreateAllResources("SampleGame/SampleGameResource.json");
+	SERVICE_LOCATOR.GetResourceFactory()->CreateAllResources();
 	SERVICE_LOCATOR.GetSceneManager()->AddScene("GeneratedGameObjectsUnique");
 
-	Camera* cam = Camera::GetInstance();
-	cam->m_rot.z = 6.29f;
-	cam->m_rot.x = 33.48f;
-	//TestCamera::GetInstance()->Init();
-
-	DeserializeJSON::LoadImGui("../../content/code/json_files/UI.json");
+	DeserializeJSON::LoadEngineUI("../../content/code/json_files/EngineUI.json");
 
 	SERVICE_LOCATOR.GetSceneManager()->SetCurrentScene("GeneratedGameObjectsUnique");
 

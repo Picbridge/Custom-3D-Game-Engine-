@@ -12,7 +12,7 @@ out vec3 viewDir;      // View direction
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
-uniform vec3 viewPos;  // Camera position passed from application
+uniform vec3 viewPos;  // CameraComponent position passed from application
 
 void main()
 {

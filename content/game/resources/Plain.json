@@ -1,0 +1,13 @@
+{
+    "Shader": "Default",
+    "Textures": {
+        "Diffuse":"Brick_diff",
+        "Specular":"Brick_spec"
+    },
+    "Color": [
+        1.0,
+        1.0,
+        1.0
+    ],
+    "Shininess": 0.5
+}

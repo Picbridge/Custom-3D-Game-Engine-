@@ -14,7 +14,7 @@ Mesh::Mesh(std::vector<MeshVertex> _vertices, std::vector<unsigned int> _indices
     setupMesh();
 }
 
-void Mesh::Draw(Shader& shader, glm::mat4 projection, glm::mat4 view, glm::vec3 lightPos)
+void Mesh::Draw(Shader* shader, glm::mat4 projection, glm::mat4 view, glm::vec3 lightPos)
 {
     glLineWidth(2);
     unsigned int diffuseNr = 1;
@@ -29,8 +29,7 @@ void Mesh::Draw(Shader& shader, glm::mat4 projection, glm::mat4 view, glm::vec3 
             number = std::to_string(diffuseNr++);
         else if (name == "texture_specular")
             number = std::to_string(specularNr++);
-
-        shader.SetUniform(("material." + name + number).c_str(), i);
+		shader->PassShaderData("material." + name + number, i);
         glBindTexture(GL_TEXTURE_2D, textures[i].id);
     }
     glActiveTexture(GL_TEXTURE0);
@@ -42,7 +41,7 @@ void Mesh::Draw(Shader& shader, glm::mat4 projection, glm::mat4 view, glm::vec3 
     glLineWidth(1);
     glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
-    shader.Unuse();
+    shader->Unuse();
 }
 
 void Mesh::setupMesh()
@@ -73,7 +72,7 @@ void Mesh::setupMesh()
     glBindVertexArray(0);
 }
 
-void Mesh::SetUpUniforms(Shader target, glm::mat4 projection, glm::mat4 view, glm::vec3 lightPos)
+void Mesh::SetUpUniforms(Shader* target, glm::mat4 projection, glm::mat4 view, glm::vec3 lightPos) 
 {
     glm::mat4 model;
 
@@ -87,12 +86,7 @@ void Mesh::SetUpUniforms(Shader target, glm::mat4 projection, glm::mat4 view, gl
     /*glm::vec4 position = projection * view * glm::vec4(model[3]);
     std::cout << position.x << ", " << position.y << ", " << position.z << std::endl;*/
 
-    target.Use();
-    target.SetUniform("WorldProjection", projection);
-    target.SetUniform("WorldView", view);
-    target.SetUniform("WorldInverse", glm::inverse(view));
-    target.SetUniform("Model", model);
-    target.SetUniform("NormalTr", glm::inverse(model));
-    target.SetUniform("lightPos", lightPos);
+    target->Use();
+	target->PassShaderData("WorldProjection", projection, "WorldView", view, "WorldInverse", glm::inverse(view), "Model", model, "NormalTr", glm::inverse(model), "lightPos", lightPos);
 }
 

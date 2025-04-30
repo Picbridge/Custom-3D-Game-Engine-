@@ -1,0 +1,396 @@
+{
+    "completed_level": {
+        "GameObject": {
+            "Camera": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        ]
+                    },
+                    "CameraComponent": {
+                        "nearPlane": [
+                            "float",
+                            0.10000000149011612
+                        ],
+                        "fov": [
+                            "float",
+                            45.0
+                        ],
+                        "farPlane": [
+                            "float",
+                            1000.0
+                        ],
+                        "viewport": [
+                            "Viewport",
+                            [
+                                0,
+                                0,
+                                1,
+                                1
+                            ]
+                        ]
+                    }
+                }
+            }
+        },
+        "UI": {
+            "Finished": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.21299999952316284,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                2.0999999046325684,
+                                0.0,
+                                0.0
+                            ]
+                        ]
+                    },
+                    "UITextComponent": {
+                        "text": [
+                            "const char*",
+                            "Finished!"
+                        ],
+                        "active": [
+                            "bool",
+                            true
+                        ],
+                        "color": [
+                            "vec3",
+                            [
+                                1.0,
+                                0.7300000190734863,
+                                0.0
+                            ]
+                        ],
+                        "font": [
+                            "const char*",
+                            "SuperShiny.ttf"
+                        ],
+                        "anchorLeft": [
+                            "bool",
+                            false
+                        ]
+                    }
+                }
+            },
+            "Next Level": {
+                "Children": {
+                    "Replay": {
+                        "Children": {},
+                        "Components": {
+                            "UIComponent": {
+                                "elementType": [
+                                    "int",
+                                    0
+                                ],
+                                "saveFilePath": [
+                                    "string",
+                                    "Resume"
+                                ],
+                                "color": [
+                                    "vec3",
+                                    [
+                                        0.2199999988079071,
+                                        0.3700000047683716,
+                                        0.5899999737739563
+                                    ]
+                                ],
+                                "font": [
+                                    "const char*",
+                                    "MouldyCheeseRegular.ttf"
+                                ]
+                            },
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        0.07199999690055847,
+                                        0.0
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        320.0,
+                                        60.0,
+                                        0.0
+                                    ]
+                                ]
+                            }
+                        }
+                    },
+                    "Back To Selection": {
+                        "Children": {},
+                        "Components": {
+                            "UIComponent": {
+                                "elementType": [
+                                    "int",
+                                    0
+                                ],
+                                "saveFilePath": [
+                                    "string",
+                                    "Level Selection"
+                                ],
+                                "color": [
+                                    "vec3",
+                                    [
+                                        0.2199999988079071,
+                                        0.3700000047683716,
+                                        0.5899999737739563
+                                    ]
+                                ],
+                                "font": [
+                                    "const char*",
+                                    "MouldyCheeseRegular.ttf"
+                                ]
+                            },
+                            "TransformComponent": {
+                                "position": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        0.14499999582767487,
+                                        0.0
+                                    ]
+                                ],
+                                "rotation": [
+                                    "vec3",
+                                    [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ]
+                                ],
+                                "scale": [
+                                    "vec3",
+                                    [
+                                        320.0,
+                                        60.0,
+                                        0.0
+                                    ]
+                                ]
+                            }
+                        }
+                    }
+                },
+                "Components": {
+                    "UIComponent": {
+                        "elementType": [
+                            "int",
+                            0
+                        ],
+                        "saveFilePath": [
+                            "string",
+                            "Next Level"
+                        ],
+                        "color": [
+                            "vec3",
+                            [
+                                0.2199999988079071,
+                                0.3700000047683716,
+                                0.5899999737739563
+                            ]
+                        ],
+                        "font": [
+                            "const char*",
+                            "MouldyCheeseRegular.ttf"
+                        ]
+                    },
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.5,
+                                0.4059999883174896,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                320.0,
+                                60.0,
+                                0.0
+                            ]
+                        ]
+                    }
+                }
+            },
+            "PB": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.5049999952316284,
+                                0.2919999957084656,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.800000011920929,
+                                -12.800000190734863,
+                                0.0
+                            ]
+                        ]
+                    },
+                    "UITextComponent": {
+                        "text": [
+                            "const char*",
+                            "Personal Best!"
+                        ],
+                        "active": [
+                            "bool",
+                            false
+                        ],
+                        "color": [
+                            "vec3",
+                            [
+                                0.9800000190734863,
+                                0.4000000059604645,
+                                0.25999999046325684
+                            ]
+                        ],
+                        "font": [
+                            "const char*",
+                            "MouldyCheeseRegular.ttf"
+                        ],
+                        "anchorLeft": [
+                            "bool",
+                            false
+                        ]
+                    }
+                }
+            },
+            "Time": {
+                "Children": {},
+                "Components": {
+                    "TransformComponent": {
+                        "position": [
+                            "vec3",
+                            [
+                                0.49900001287460327,
+                                0.32600000500679016,
+                                0.0
+                            ]
+                        ],
+                        "rotation": [
+                            "vec3",
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        ],
+                        "scale": [
+                            "vec3",
+                            [
+                                0.800000011920929,
+                                -12.800000190734863,
+                                0.0
+                            ]
+                        ]
+                    },
+                    "UITextComponent": {
+                        "text": [
+                            "const char*",
+                            "NA"
+                        ],
+                        "active": [
+                            "bool",
+                            true
+                        ],
+                        "color": [
+                            "vec3",
+                            [
+                                0.2199999988079071,
+                                0.3700000047683716,
+                                0.5899999737739563
+                            ]
+                        ],
+                        "font": [
+                            "const char*",
+                            "MouldyCheeseRegular.ttf"
+                        ],
+                        "anchorLeft": [
+                            "bool",
+                            false
+                        ]
+                    }
+                }
+            }
+        },
+        "Skybox": {
+            "SampleSkybox": {}
+        }
+    }
+}

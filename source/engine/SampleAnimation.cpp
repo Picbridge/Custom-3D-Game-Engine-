@@ -2,7 +2,8 @@
 #include "SampleAnimation.h"
 #include "Model.h"
 #include "ServiceLocator.h"
-#include "Camera.h"
+#include "cameramanager/CameraManager.h"
+#include "cameramanager/CameraComponent.h"
 
 void SampleAnimation::Init()
 {
@@ -25,7 +26,8 @@ void SampleAnimation::PostUpdate()
 
 void SampleAnimation::Render()
 {
-	root->DrawSkeleton(Camera::GetInstance()->m_worldProjection, Camera::GetInstance()->m_worldView, root->origin, glm::scale(glm::mat4(1), glm::vec3(0.05, 0.05, 0.05)));
+	auto camera = SERVICE_LOCATOR.GetCameraManager()->GetMainCamera();
+	root->DrawSkeleton(camera->GetProjectionMatrix(), camera->GetViewMatrix(), root->origin, glm::scale(glm::mat4(1), glm::vec3(0.05, 0.05, 0.05)));
 	//m_pSkybox->Render();
 	for (auto& go : m_gameObjects)
 		go->Render();

@@ -6,20 +6,25 @@
 
 void CollisionComponent::Init()
 {
-	defineMember();
-	SERVICE_LOCATOR.GetCollisionManager()->AddCollisionComponent(this);
+	MatchTransform();
 }
 
 void CollisionComponent::Update()
 {
-	this->GetCollisionShape()->SetPosition(pOwner->GetComponent<TransformComponent>()->GetPosition());
-	this->GetCollisionShape()->SetRotation(pOwner->GetComponent<TransformComponent>()->GetRotation());
-	//this->GetCollisionShape()->SetScale(pOwner->GetComponent<TransformComponent>()->GetScale());
+	MatchTransform();
+}
+
+void CollisionComponent::MatchTransform()
+{
+	auto transformComponent = pOwner->GetComponent<TransformComponent>();
+	auto collisionShape = GetCollisionShape();
+	collisionShape->SetPosition(transformComponent->GetPosition());
+	collisionShape->SetRotation(transformComponent->GetRotation());
+	collisionShape->SetScale(transformComponent->GetScale());
 }
 
 void CollisionComponent::Shutdown()
 {
-	SERVICE_LOCATOR.GetCollisionManager()->RemoveCollisionComponent(this);
 }
 
 bool CollisionComponent::CanCollideWith(const CollisionComponent* other) const
@@ -29,21 +34,32 @@ bool CollisionComponent::CanCollideWith(const CollisionComponent* other) const
     return (m_collisionLayer & other->GetCollisionMask()) != 0 && (other->GetCollisionLayer() & m_collisionMask) != 0;
 }
 
-glm::dvec3 CollisionComponent::Cast_LastAvailablePosition
+
+#pragma region ShapeCasts
+CollisionComponent CollisionComponent::Cast_LastAvailablePosition
 	(glm::dvec3 startPosition, glm::dvec3 endPosition, glm::dvec3 startRotation, glm::dvec3 endRotation, int iterations = 1)
 {
 	CollisionComponent tempComponent = *this;
 	tempComponent.GetCollisionShape()->SetPosition(startPosition);
+    tempComponent.GetCollisionShape()->SetRotation(startRotation);
 	glm::dvec3 lastPosition = startPosition;
+	glm::dvec3 lastRotation = startRotation;
+	glm::dvec3 moveVector = endPosition - startPosition;
+	glm::dvec3 rotateVector = endRotation - startRotation;
+
+	
 	for (int i = 1; i < iterations; i++)
 	{
 		glm::dvec3 newPosition = startPosition + ((endPosition - startPosition) * static_cast<double>(i / iterations));
-		tempComponent.GetCollisionShape()->SetPosition(newPosition);
+        glm::dvec3 newRotation = startRotation + ((endRotation - startRotation) * static_cast<double>(i / iterations));
+		CollisionComponent nextComponent = tempComponent;
+        nextComponent.GetCollisionShape()->SetPosition(newPosition);
+        nextComponent.GetCollisionShape()->SetRotation(newRotation);
 
-		if (SERVICE_LOCATOR.GetCollisionManager()->ShapeIsColliding(&tempComponent)) { break; }
-		lastPosition = newPosition;
+		if (SERVICE_LOCATOR.GetCollisionManager()->ShapeIsColliding(&nextComponent)) { break; }
+        tempComponent = nextComponent;
 	}
-	return lastPosition;
+	return tempComponent;
 }
 
 glm::dvec3 CollisionComponent::Cast_FirstAvailablePosition
@@ -62,7 +78,7 @@ glm::dvec3 CollisionComponent::Cast_FirstAvailablePosition
 }
 
 std::pair<CollisionComponent, CollisionComponent*> CollisionComponent::Cast_FirstCollision
-	(glm::dvec3 startPosition, glm::dvec3 endPosition, glm::dvec3 startRotation, glm::dvec3 endRotation, int iterations)
+	(glm::dvec3 startPosition, glm::dvec3 endPosition, glm::dvec3 startRotation, glm::dvec3 endRotation, int iterations) const
 {
 	assert(iterations > 0 && "Iterations must be greater than 0");
 	CollisionComponent tempComponent = *this;
@@ -70,16 +86,21 @@ std::pair<CollisionComponent, CollisionComponent*> CollisionComponent::Cast_Firs
 	glm::dvec3 lastRotation = startRotation;
 	glm::dvec3 moveVector = endPosition - startPosition;
 	glm::dvec3 rotateVector = endRotation - startRotation;
+    CollisionComponent* collidedObject = nullptr;
 	for (int i = 1; i <= iterations; i++)
 	{
 		glm::dvec3 newPosition = startPosition + (moveVector * static_cast<double>(i) / static_cast<double>(iterations));
 		glm::dvec3 newRotation = startRotation + (rotateVector * static_cast<double>(i) / static_cast<double>(iterations));
 		tempComponent.GetCollisionShape()->SetPosition(newPosition);
 		tempComponent.GetCollisionShape()->SetRotation(newRotation);
-		if (CollisionComponent* collidedObject = SERVICE_LOCATOR.GetCollisionManager()->ShapeIsColliding(this))
-		{
-			return std::make_pair(tempComponent, collidedObject);
-		}
+		if (collidedObject = SERVICE_LOCATOR.GetCollisionManager()->ShapeIsColliding(&tempComponent)) { break; }
 	}
-	return std::pair{ tempComponent, nullptr };
+	return std::pair{ tempComponent, collidedObject };
 }
+std::pair<CollisionComponent, CollisionComponent*> CollisionComponent::Cast_FirstCollision(glm::dvec3 endPosition, glm::dvec3 endRotation, int iterations) const
+{
+    glm::dvec3 StartPosition = pOwner->GetComponent<TransformComponent>()->GetPosition();
+    glm::dvec3 StartRotation = pOwner->GetComponent<TransformComponent>()->GetRotation();
+    return Cast_FirstCollision(StartPosition, endPosition, StartRotation, endRotation, iterations);
+}
+#pragma endregion

@@ -1,54 +1,68 @@
 #include "pch.h"
 #include "Engine.h"
 #include "headers.h"
+#include "scenemanager/SceneManager.h"
+#include "Image.h"
 
 std::unique_ptr<Engine> Engine::instance = nullptr;
 
 Engine* Engine::GetInstance()
 {
-    if (!instance) {
-        instance = std::unique_ptr<Engine>(new Engine());
-    }
-    return instance.get();
+	if (!instance) {
+		instance = std::unique_ptr<Engine>(new Engine());
+	}
+	return instance.get();
 }
 
 Engine::~Engine()
 {
-	for (auto& game : m_games)
-		delete(game);
+    delete m_pGame;
 }
 
 void Engine::SetGame(Game* game)
 {
-	if (!game)
-	{
-		std::cout << "No game set" << std::endl;
-		return;
-	}
+    assert(game && "Game is null");
 	m_pGame = game;
 	SERVICE_LOCATOR.GetWindowHandler()->Props = m_pGame->GetWindowProps();
 }
 
 void Engine::PushGame(Game* game)
 {
-	UI* ui = SERVICE_LOCATOR.GetUI();
-	m_games.push_back(game);
-	ui->PushGame(game->GetTitle());
-	if (!m_pGame)
-		SetGame(game);
+	SetGame(game);
 }
 
-Game* Engine::FindGame(std::string name)
+void Engine::DrawCredits()
 {
-	Game* game = NULL;
-	for (int i = 0; i < m_games.size(); ++i)
+	Image* digi = new Image("intro_digipen.jpg");
+	Image* fmod = new Image("intro_fmod.jpg");
+	std::vector<Image*> logos = { digi, fmod };
+	double startTime = glfwGetTime();
+	int texIndex = 0;
+	while (!glfwWindowShouldClose(SERVICE_LOCATOR.GetWindowHandler()->GetCurrentContext()))
 	{
-		if (strcmp(m_games[i]->GetTitle(), name.c_str()))
+		double elapsed = glfwGetTime() - startTime;
+		if (elapsed >= 3.0)
 		{
-			game = m_games[i];
+			if (texIndex >= 1)
+			{
+				break;
+			}
+			else
+				texIndex++;
+			startTime = glfwGetTime();
 		}
+
+		float alpha = 1.0f;
+		if (elapsed >= 2.0) {
+			alpha = static_cast<float>(3.0 - elapsed); // fade from 1 ? 0 over final second
+		}
+
+		logos[texIndex]->DrawImage(alpha);
 	}
-	return game;
+	for (auto& logo : logos)
+	{
+		delete logo;
+	}
 }
 
 void Engine::Run()
@@ -65,9 +79,13 @@ void Engine::Run()
 
 	init();
 
+#ifndef _DEBUG
+	DrawCredits();
+#endif
+
 	while (m_pGame->IsRunning())
 	{
- 		update();
+		update();
 		render();
 		postUpdate();
 	}
@@ -77,62 +95,76 @@ void Engine::Run()
 void Engine::init()
 {
 	GLFWwindow* context = nullptr;
+	SERVICE_LOCATOR.GetSystemSettings()->Init();
 	SERVICE_LOCATOR.GetTime()->Init(1.0f / 60.0f);
 	SERVICE_LOCATOR.GetWindowHandler()->Init();
 	SERVICE_LOCATOR.GetRenderer()->Init();
 	context = SERVICE_LOCATOR.GetWindowHandler()->GetCurrentContext();
 	SERVICE_LOCATOR.GetInput()->Init(context);
-	SERVICE_LOCATOR.GetAudioManager()->Init("../../content/code/json_files/Audio.json");
-	
-	UI* ui = SERVICE_LOCATOR.GetUI();
-	ui->Init(context);
-	ui->SetDebug(false);
+	SERVICE_LOCATOR.GetAudioManager()->Init();
+	SERVICE_LOCATOR.GetResourceFactory()->CreateDefaultResources();
+	SERVICE_LOCATOR.GetCameraManager()->Init();
+
+#ifdef _DEBUG// Initialize engine camera for debug mode
+	SERVICE_LOCATOR.GetCameraManager()->AddEngineCamera();
+#endif // DEBUG
 
 	initGames();
 
-    std::cout << "Engine Initialized" << std::endl;
+	UI* ui = SERVICE_LOCATOR.GetUI();
+	ui->Init(context);
+	ui->SetDebug(false);
+	ui->SetScenes();
+
+	std::cout << "Engine Initialized" << std::endl;
 }
 
 void Engine::update()
 {
 	Input* input = SERVICE_LOCATOR.GetInput();
 	UI* ui = SERVICE_LOCATOR.GetUI();
-	
+
+	SERVICE_LOCATOR.GetEventHandler()->Update();
 	SERVICE_LOCATOR.GetAudioManager()->Update();
 	SERVICE_LOCATOR.GetWindowHandler()->Update();
+	SERVICE_LOCATOR.GetCameraManager()->Update();
 	input->Update();
 
 #ifdef _DEBUG
-	if (input->IsKeyJustPressed(GLFW_KEY_P) ||
-		input->IsGamepadButtonJustPressed(0, GLFW_GAMEPAD_BUTTON_BACK)) {
-		ui->ToggleDebug();
-	}
-	ui->Update();
+	// Testing engine camera toggle
+	// TODO: needs to be add to UI 
+	if (input->IsKeyJustPressed(GLFW_KEY_L) && !ui->Interacting())
+		SERVICE_LOCATOR.GetCameraManager()->ToggleEngineCamera();
 #endif
 
+	ui->Update();
 	SERVICE_LOCATOR.GetTime()->Update();
 
 #ifdef _DEBUG
-	if (!ui->GetIsPaused())
+	if ((input->IsKeyJustPressed(GLFW_KEY_P) ||
+		input->IsGamepadButtonJustPressed(0, GLFW_GAMEPAD_BUTTON_BACK)) && !ui->Interacting()) {
+		ui->ToggleDebug();
+	}
+	if (!ui->GetIsPaused()) {
 #endif
-	SERVICE_LOCATOR.GetPhysicsManager()->Update(SERVICE_LOCATOR.GetTime()->GetDeltaTime());
 
+	SERVICE_LOCATOR.GetPhysicsManager()->Update(SERVICE_LOCATOR.GetTime()->GetDeltaTime());
 	SERVICE_LOCATOR.GetCollisionManager()->Update();
-	SERVICE_LOCATOR.GetEventHandler()->Update();
-	Camera::GetInstance()->Update();
 	SERVICE_LOCATOR.GetScriptManager()->Update(SERVICE_LOCATOR.GetTime()->GetDeltaTime());
+	SERVICE_LOCATOR.GetParticleManager()->Update(SERVICE_LOCATOR.GetTime()->GetDeltaTime());
+	m_pGame->Update();
 
 #ifdef _DEBUG
-	if (!ui->GetIsPaused())
+	}
 #endif
-	m_pGame->Update();
 }
 
 void Engine::render()
 {
-    //TODO: Should be replaced after the scene manager is implemented
+	//TODO: Should be replaced after the scene manager is implemented
 	SERVICE_LOCATOR.GetRenderer()->Render();
 	m_pGame->Render();
+	SERVICE_LOCATOR.GetParticleManager()->Render();
 	SERVICE_LOCATOR.GetUI()->Render();
 }
 
@@ -141,24 +173,28 @@ void Engine::postUpdate()
 	SERVICE_LOCATOR.GetInput()->GetInstance().PostUpdate();
 	SERVICE_LOCATOR.GetWindowHandler()->SwapBuffers();
 	m_pGame->PostUpdate();
-    if (SERVICE_LOCATOR.GetWindowHandler()->ShouldClose())
-        m_pGame->SetRunning(false);
+	if (SERVICE_LOCATOR.GetWindowHandler()->ShouldClose())
+		m_pGame->SetRunning(false);
 
-	unsigned int currGameIndex = SERVICE_LOCATOR.GetUI()->GetGameIndex();
-	if (m_prevGameIndex != currGameIndex)
+#ifdef _DEBUG
+	if (SERVICE_LOCATOR.GetUI()->GetSelectedSceneName().compare(SERVICE_LOCATOR.GetSceneManager()->GetCurrentScene()->GetName()) != 0)
 	{
-		SetGame(m_games[currGameIndex]);
-		m_prevGameIndex = currGameIndex;
+		SERVICE_LOCATOR.GetSceneManager()->SetCurrentScene(SERVICE_LOCATOR.GetUI()->GetSelectedSceneName());
 	}
+#endif
 }
 
 void Engine::shutdown()
 {
 	m_pGame->Shutdown();
 	SERVICE_LOCATOR.GetRenderer()->Shutdown();
+	SERVICE_LOCATOR.GetSceneManager()->Shutdown();
 	SERVICE_LOCATOR.GetUI()->Shutdown();
 	SERVICE_LOCATOR.GetWindowHandler()->Shutdown();
+	SERVICE_LOCATOR.GetCameraManager()->Shutdown();
+	SERVICE_LOCATOR.GetSystemSettings()->Shutdown();
 	SERVICE_LOCATOR.GetAudioManager()->Shutdown();
+
 	exit(EXIT_SUCCESS);
 	std::cout << "Engine Shutdown" << std::endl;
 	//delete instance;
@@ -166,7 +202,5 @@ void Engine::shutdown()
 
 void Engine::initGames()
 {
-	if (m_games.size() > 0)
-		for (auto& game : m_games)
-			game->Init();
+    m_pGame->Init();
 }

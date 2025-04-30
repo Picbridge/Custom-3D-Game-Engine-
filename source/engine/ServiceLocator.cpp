@@ -5,10 +5,11 @@
 #include "physics/PhysicsManager.h"
 #include "physics/CollisionManager.h"
 #include "events/EventHandler.h"
-#include "ScriptManager.h"
+#include "scripting/ScriptManager.h"
 #include "scenemanager/SceneManager.h"
 #include "AudioManager.h"
 
+#include "cameramanager/CameraManager.h"
 #include "resourcemanager/ResourceFactory.h"
 #include "resourcemanager/ResourceManager.h"
 #include "objectmanager/GameObjectFactory.h"
@@ -19,108 +20,127 @@ ServiceLocator SERVICE_LOCATOR;
 
 SceneManager* ServiceLocator::GetSceneManager() const
 {
-	if (!mp_SceneManager)
+	if (!m_pSceneManager)
 	{
-		mp_SceneManager = new SceneManager();
+		m_pSceneManager = new SceneManager();
 	}
-	return mp_SceneManager;
+	return m_pSceneManager;
 }
 
 ResourceFactory* ServiceLocator::GetResourceFactory() const
 {
-	if (!mp_ResourceFactory)
+	if (!m_pResourceFactory)
 	{
-		mp_ResourceFactory = new ResourceFactory();
+		m_pResourceFactory = new ResourceFactory();
 	}
-	return mp_ResourceFactory;
+	return m_pResourceFactory;
 }
 
 ResourceManager* ServiceLocator::GetResourceManager() const
 {
-	if (!mp_ResourceManager)
+	if (!m_pResourceManager)
 	{
-		mp_ResourceManager = new ResourceManager();
+		m_pResourceManager = new ResourceManager();
 	}
-	return mp_ResourceManager;
+	return m_pResourceManager;
 }
 
 GameObjectFactory* ServiceLocator::GetGameObjectFactory() const
 {
-	if (!mp_GameObjectFactory)
+	if (!m_pGameObjectFactory)
 	{
-		mp_GameObjectFactory = new GameObjectFactory();
+		m_pGameObjectFactory = new GameObjectFactory();
 	}
-	return mp_GameObjectFactory;
+	return m_pGameObjectFactory;
 }
 
 GameObjectManager* ServiceLocator::GetGameObjectManager() const
 {
-	if (!mp_GameObjectManager)
+	if (!m_pGameObjectManager)
 	{
-		mp_GameObjectManager = new GameObjectManager();
+		m_pGameObjectManager = new GameObjectManager();
 	}
-	return mp_GameObjectManager;
+	return m_pGameObjectManager;
+}
+
+SystemSettings* ServiceLocator::GetSystemSettings() const
+{
+	return m_pSystemSettings;
 }
 
 ServiceLocator::ServiceLocator() :
-	mp_WindowHandler(&WindowHandler::GetInstance()),
-	mp_Renderer(Renderer::GetInstance()),
-	mp_Input(&Input::GetInstance()),
-	mp_Ui(&UI::GetInstance()),
-	mp_Time(Time::GetInstance()),
-	mp_PhysicsManager(PhysicsManager::GetInstance()),
-	mp_EventHandler(EventHandler::GetInstance()),
-	mp_CollisionManager(CollisionManager::GetInstance()),
-	mp_ScriptManager(ScriptManager::GetInstance()),
-	mp_AudioManager(AudioManager::GetInstance())
-{}
+	m_pWindowHandler(&WindowHandler::GetInstance()),
+	m_pRenderer(Renderer::GetInstance()),
+	m_pInput(&Input::GetInstance()),
+	m_pUi(&UI::GetInstance()),
+	m_pTime(Time::GetInstance()),
+	m_pPhysicsManager(PhysicsManager::GetInstance()),
+	m_pEventHandler(EventHandler::GetInstance()),
+	m_pCollisionManager(CollisionManager::GetInstance()),
+	m_pScriptManager(ScriptManager::GetInstance()),
+	m_pAudioManager(AudioManager::GetInstance()),
+	m_pParticleManager(ParticleManager::GetInstance()),
+	m_pCameraManager(CameraManager::GetInstance()),
+	m_pSystemSettings(SystemSettings::GetInstance())
+{
+}
 
 WindowHandler* ServiceLocator::GetWindowHandler() const
 {
-	return mp_WindowHandler;
+	return m_pWindowHandler;
 }
 
 UI* ServiceLocator::GetUI() const
 {
-	return mp_Ui;
+	return m_pUi;
 }
 
 Renderer* ServiceLocator::GetRenderer() const
 {
-	return mp_Renderer;
+	return m_pRenderer;
 }
 
 Input* ServiceLocator::GetInput() const
 {
-	return mp_Input;
+	return m_pInput;
 }
 
 Time* ServiceLocator::GetTime() const
 {
-	return mp_Time;
+	return m_pTime;
 }
 
 PhysicsManager* ServiceLocator::GetPhysicsManager() const
 {
-	return mp_PhysicsManager;
+	return m_pPhysicsManager;
 }
 
 CollisionManager* ServiceLocator::GetCollisionManager() const
 {
-	return mp_CollisionManager;
+	return m_pCollisionManager;
 }
 
 EventHandler* ServiceLocator::GetEventHandler() const
 {
-	return mp_EventHandler;
+	return m_pEventHandler;
 }
 
 ScriptManager* ServiceLocator::GetScriptManager() const
 {
-	return mp_ScriptManager;
+	return m_pScriptManager;
 }
 
 AudioManager* ServiceLocator::GetAudioManager() const
 {
-	return mp_AudioManager;
+	return m_pAudioManager;
+}
+
+ParticleManager* ServiceLocator::GetParticleManager() const
+{
+	return m_pParticleManager;
+}
+
+CameraManager* ServiceLocator::GetCameraManager() const
+{
+	return m_pCameraManager;
 }

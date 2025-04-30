@@ -43,12 +43,47 @@ public:
 	//@return The normal of the collision shape at the point intercepted by the direction
 	virtual glm::dvec3 GetNormal(const glm::dvec3& dir) const = 0;
 
+    //@brief Get the Normal at the hit point of a ray from origin in direction
+    //@param origin : The origin of the ray
+    //@param direction : The direction of the ray
+    //@return The normal at the hit point
+	std::optional<const glm::dvec3> GetHitNormal(const glm::dvec3 origin, const glm::dvec3 direction) const;
+	//@brief Get the Normal at the hit point
+    //@param hitPoint : The hit point in world space
+	//@return The normal at the hit point
+	std::optional<const glm::dvec3> GetHitNormal(const glm::dvec3 hitPoint) const;
+	
+    //@brief Get the hit point of the collision shape of a ray from origin in direction
+    //@param origin : The origin of the ray
+    //@param direction : The direction of the ray
+    //@return The hit point of the collision shape in world space
+    virtual std::optional<glm::dvec3> GetHitPoint(const glm::dvec3 origin, const glm::dvec3 direction) const = 0;
+
+	//@brief Get the point on the edge of this shape in world space
+	//@param direction: The direction to find the intersection, from origin to out of the shape
+	//@return The point in world space
+	virtual const glm::dvec3 GetEdgePoint(const glm::dvec3 direction) const = 0;
 	virtual std::string GetShapeType() const = 0;
 
+    virtual std::vector<glm::dvec3> GetAxes() const = 0;
+    virtual std::vector<glm::dvec3> GetVertices() const = 0;
+	virtual std::pair<double, double> GetAxisInterval(const glm::dvec3 axis) const = 0;
+
+	const glm::dquat GetShapeRotationQuat() const;
 protected:
 	glm::dvec3 m_position;
 	glm::dvec3 m_rotation;
 	glm::dvec3 m_scale;
 
-	void defineMember() override {}
+	void defineMember() override 
+	{
+		m_setters["position"] = [this](std::any val) { this->SetPosition(std::any_cast<glm::dvec3>(val)); };
+		m_setters["rotation"] = [this](std::any val) { this->SetRotation(std::any_cast<glm::dvec3>(val)); };
+		m_setters["scale"] = [this](std::any val) { this->SetScale(std::any_cast<glm::dvec3>(val)); };
+
+		m_getters["position"] = [this]() -> std::any { return std::any(this->GetPosition()); };
+		m_getters["rotation"] = [this]() -> std::any { return std::any(this->GetRotation()); };
+		m_getters["scale"] = [this]() -> std::any { return std::any(this->GetScale()); };
+		m_getters["shapeType"] = [this]() -> std::any { return std::any(this->GetShapeType()); };
+	}
 };

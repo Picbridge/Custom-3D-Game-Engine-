@@ -1,0 +1,14 @@
+{
+    "Shader": "Cel",
+    "Textures": {
+        "Diffuse": "Brick_diff",
+        "Specular": "Brick_spec"
+    },
+    "Color": [
+        1.0,
+        0.7279999852180481,
+        1.0
+    ],
+    "Shininess": 0.0010000000474974513,
+    "Alpha": 1.0
+}

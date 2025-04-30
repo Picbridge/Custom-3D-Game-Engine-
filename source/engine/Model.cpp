@@ -4,7 +4,6 @@
 #include "resourcemanager/ResourceManager.h"
 #include "ServiceLocator.h"
 
-#define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
 
@@ -23,7 +22,7 @@ Model::~Model()
 }
 
 // Draw Mesh, no bone weight implementation
-void Model::Draw(Shader& shader, glm::mat4 projection, glm::mat4 view, glm::vec3 lightPos)
+void Model::Draw(Shader* shader, glm::mat4 projection, glm::mat4 view, glm::vec3 lightPos)
 {
     for (unsigned int i = 0; i < meshes.size(); i++)
         meshes[i].Draw(shader, projection, view, lightPos);
@@ -288,9 +287,7 @@ void Model::DrawLine(glm::vec3 startPoint, glm::vec3 endPoint, glm::mat4 project
 {
     shader = SERVICE_LOCATOR.GetResourceManager()->GetShader("Line");
     shader->Use();
-    shader->SetUniform("WorldProjection", projection);
-    shader->SetUniform("WorldView", view);
-
+	shader->PassShaderData("WorldProjection", projection, "WorldView", view);
     vertices[0] = startPoint;
     vertices[1] = endPoint;
 

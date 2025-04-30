@@ -4,6 +4,7 @@
 
 #include "pch.h"
 #include "Input.h"
+#include "ui/UI.h"
 
 float Input::m_zoom = 0.0f;
 float Input::m_scrollDiff = 0.0f;
@@ -41,6 +42,8 @@ void Input::Init(GLFWwindow* _window)
     glfwSetJoystickCallback(this->JoystickCallback);
     glfwSetInputMode(mp_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     m_lastRegisteredAnalogInputTime = std::chrono::high_resolution_clock::now();
+
+	m_eventListener.SubscribeToEvent("Invert Y-Axis", std::bind(&Input::InvertYAxis, this, std::placeholders::_1));
 }
 
 // Updates Input states
@@ -233,4 +236,11 @@ void Input::JoystickCallback(int jid, int event)
     Input& input = GetInstance();
     if (event == GLFW_CONNECTED) ++input.m_gamepadCount;
     if (event == GLFW_DISCONNECTED) --input.m_gamepadCount;
+}
+
+void Input::InvertYAxis(Event* event)
+{
+	std::cout << "Input::InvertYAxis" << std::endl;
+	bool state = static_cast<BoolEvent*>(event)->value;
+	SERVICE_LOCATOR.GetSystemSettings()->SetSetting("Invert Y-Axis", state);
 }

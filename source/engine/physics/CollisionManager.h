@@ -1,6 +1,8 @@
 #pragma once
+#include "Raycast.h"
 
 class CollisionComponent;
+class Collision;
 
 class CollisionManager
 {
@@ -21,18 +23,6 @@ public:
 	//@brief Checks if a collision component is colliding with another collision component
 	bool ShapeIsCollidingWith(CollisionComponent* component, CollisionComponent* other) const;
 
-// ****** Collision Response ****** //
-
-	//@brief Handles a collision between two collision components
-	void CollisionResponse(std::pair<CollisionComponent*, CollisionComponent*> collision);
-	void CollisionResponse(CollisionComponent* shape1, CollisionComponent* shape2);
-	//@brief Handles a collision between a static and dynamic collision component
-	void StaticDynamicResponse(CollisionComponent* staticObject, CollisionComponent* dynamicObject);
-	//@brief Handles a collision between two dynamic collision components
-	void DynamicDynamicCollision(CollisionComponent* component1, CollisionComponent* component2);
-	//@brief Handles a collision between two dynamic collision components
-	void DynamicBounce(CollisionComponent* shape1, CollisionComponent* shape2);
-
 // ****** CollisionComponent Management ****** //
 
 	// @brief Creates a collision component
@@ -47,11 +37,22 @@ public:
 	//@param component : The collision component to remove
 	void RemoveCollisionComponent(CollisionComponent* component);
 
+    // ****** Raycast ****** //
+    //@brief Cast a ray and return the first collision
+    //@param origin : The origin of the ray
+    //@param direction : The direction of the ray
+    //@param collisionMask : The collision mask of the ray  (default = -1: hit everything
+    //@param max_distance : The maximum distance of the ray (default = -1: no max)
+    //@return Raycast The raycast result
+    Raycast CastRay(glm::dvec3 origin, glm::dvec3 direction, int collisionMask = -1, double max_distance = -1);
+
+
+	EventListener* m_eventListener; // Event handler for the component
+	static CollisionManager* GetInstance();
 private:
 	CollisionManager();
 
 	//@brief Returns the instance of the collision manager
-	static CollisionManager* GetInstance();
 	static std::unique_ptr<CollisionManager> instance;
 
 	std::vector<CollisionComponent*> m_collisionComponents;

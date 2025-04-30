@@ -41,15 +41,27 @@ enum UV_TYPE
     PLANAR,
     CYLINDRICAL,
     SPHERICAL,
-    CUBE
+    CUBE,
+    UV_END
+};
+
+constexpr std::string_view UV_TYPE_STRINGS[UV_TYPE::UV_END] =
+{ 
+    "Planar", 
+    "Cylindrical", 
+    "Spherical", 
+    "Cube" 
 };
 
 enum IMGUI_ELEMENT_TYPE 
 {
-    BUTTON,
+    BUTTON_ACTION,
+    BUTTON_TOGGLE,
+    SLIDER,
+    TEXT,
     DROPDOWN_TOGGLE,
     DROPDOWN_SELECTION,
-	SLIDER,
+	DROPDOWN_ACTION,
     DROPDOWN_SLIDER,
     END
 };
@@ -58,16 +70,21 @@ struct IMGUI_ELEMENT
 {
     std::string name;
     std::string savePath;
+    std::string fontName;
+    glm::vec3 color;
     IMGUI_ELEMENT_TYPE type;
     unsigned short selected;
 
     IMGUI_ELEMENT()
-        : name(""), savePath(""), type(IMGUI_ELEMENT_TYPE::END), selected(0) {}
+        : name(""), savePath(""), fontName(""), color(glm::vec3(1.0f)), 
+        type(IMGUI_ELEMENT_TYPE::END), selected(0) {}
 
     IMGUI_ELEMENT(const char* _name)
         : IMGUI_ELEMENT() {
         name = _name;
     }
+
+	bool HasSavePath() const { return !savePath.empty() && type != IMGUI_ELEMENT_TYPE::TEXT; }
 
     virtual ~IMGUI_ELEMENT() = default;
 };
@@ -77,7 +94,7 @@ struct IMGUI_BUTTON : public IMGUI_ELEMENT
     IMGUI_BUTTON()
         : IMGUI_ELEMENT()
     {
-        type = IMGUI_ELEMENT_TYPE::BUTTON;
+        type = IMGUI_ELEMENT_TYPE::BUTTON_TOGGLE;
     }
 
     IMGUI_BUTTON(const char* _name)
@@ -86,24 +103,6 @@ struct IMGUI_BUTTON : public IMGUI_ELEMENT
     }
 
     ~IMGUI_BUTTON() = default;
-};
-
-struct IHasGettersSetters 
-{
-public:
-    //@brief Get the component setter functions
-    //@return std::unordered_map<std::string, std::function<void(std::any)>> : The setter functions
-    const std::unordered_map<std::string, std::function<void(std::any)>>& GetSetters() const { return m_setters; }
-
-    //@brief Get the component getter functions
-    //@return std::unordered_map<std::string, std::function<std::any()>> : The getter functions
-    const std::unordered_map<std::string, std::function<std::any()>>& GetGetters() const { return m_getters; }
-
-protected:
-    std::unordered_map<std::string, std::function<void(std::any)>> m_setters;
-    std::unordered_map<std::string, std::function<std::any()>> m_getters;
-
-	virtual void defineMember() = 0;
 };
 
 struct IMGUI_SLIDER : public IMGUI_ELEMENT
@@ -142,4 +141,48 @@ struct IMGUI_DROPDOWN_MENU : public IMGUI_ELEMENT
     }
 
     ~IMGUI_DROPDOWN_MENU() = default;
+};
+
+struct IMGUI_TEXT_ELEMENT : public IMGUI_ELEMENT 
+{
+	bool anchorLeft = false;
+
+    IMGUI_TEXT_ELEMENT()
+        : IMGUI_ELEMENT()
+    {
+        type = IMGUI_ELEMENT_TYPE::TEXT;
+    }
+
+    IMGUI_TEXT_ELEMENT(const char* _name)
+        : IMGUI_TEXT_ELEMENT() {
+        name = _name;
+    }
+
+    ~IMGUI_TEXT_ELEMENT() = default;
+};
+
+struct IHasGettersSetters
+{
+public:
+    //@brief Get the component setter functions
+    //@return std::unordered_map<std::string, std::function<void(std::any)>> : The setter functions
+    const std::unordered_map<std::string, std::function<void(std::any)>>& GetSetters() const { return m_setters; }
+
+    //@brief Get the component getter functions
+    //@return std::unordered_map<std::string, std::function<std::any()>> : The getter functions
+    const std::unordered_map<std::string, std::function<std::any()>>& GetGetters() const { return m_getters; }
+
+protected:
+    std::unordered_map<std::string, std::function<void(std::any)>> m_setters;
+    std::unordered_map<std::string, std::function<std::any()>> m_getters;
+
+    virtual void defineMember() = 0;
+};
+
+struct Viewport
+{
+    int X;
+    int Y;
+    int W;
+    int H;
 };

@@ -64,6 +64,7 @@ private:
     static void JoystickCallback(int jid, int event);
     static float m_zoom;
     static float m_scrollDiff;
+	EventListener m_eventListener;
 
     // Keyboard + Mouse
     bool m_keys[1024];
@@ -81,5 +82,7 @@ private:
     // Window(s)
     GLFWwindow* mp_window = nullptr; // Set on Initialize(). Rework this if we end up needing multiple windows!
     friend class ServiceLocator;
+
+    void InvertYAxis(Event* event);
 };
 

@@ -4,10 +4,10 @@
 class Event
 {
 public:
+	Event(std::string name) : name(name) {};
 	virtual std::string GetName() const { return this->name; }
 
 protected:
-	Event(std::string name) : name(name) {};
 	std::string name;
 };
 

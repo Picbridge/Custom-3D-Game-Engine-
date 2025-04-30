@@ -36,11 +36,6 @@ void WindowHandler::Init()
 	if (Props.Title.empty())
 		Props.Title = "Untitled";
 
-	if (Props.Height == 0)
-		Props.Height = 480;
-
-	if (Props.Width == 0)
-		Props.Width = 640;
 
 	// initialize glfw
 	if (glfwSuccess)
@@ -54,6 +49,17 @@ void WindowHandler::Init()
 		exit(EXIT_FAILURE);
 	glfwSuccess = true;
 
+
+	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+	const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+
+	if (Props.Height == 0)
+		Props.Height = mode->height;
+
+	if (Props.Width == 0)
+		Props.Width = mode->width;
+
+
 	// Initialize OpenGL Context
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -61,13 +67,29 @@ void WindowHandler::Init()
 	glfwWindowHint(GLFW_SAMPLES, 4);
 	glEnable(GL_MULTISAMPLE);
 	// Create window
+#ifdef _DEBUG
 	m_pWindow = glfwCreateWindow(Props.Width, Props.Height, Props.Title.c_str(), NULL, NULL);
+#else
+	glfwWindowHint(GLFW_RED_BITS, mode->redBits);
+	glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
+	glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
+	glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
+	m_pWindow = glfwCreateWindow(mode->width, mode->height, Props.Title.c_str(), glfwGetPrimaryMonitor(), NULL);
+#endif
 	if (!m_pWindow)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
 		exit(EXIT_FAILURE);
 	}
+
+#ifndef _DEBUG
+	//glfwSetWindowAttrib(m_pWindow, GLFW_DECORATED, GLFW_FALSE); // Remove borders/title bar
+	//glfwSetWindowAttrib(m_pWindow, GLFW_RESIZABLE, GLFW_FALSE); // Optional: prevent resizing
+#endif // !_DEBUG
+
+	// Move window to monitor's top-left corner
+	glfwSetWindowPos(m_pWindow, 0, 0);
 	glfwMakeContextCurrent(m_pWindow);
 
 	// Initialize glew (or other gl functions loader)
@@ -86,6 +108,7 @@ void WindowHandler::Init()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glDebugMessageCallback(MessageCallback, 0);
 
+	glfwGetFramebufferSize(m_pWindow, &FrameBuffer.Width, &FrameBuffer.Height);
 	std::cout << "Window Initialized" << std::endl;
 }
 
@@ -106,8 +129,8 @@ void WindowHandler::Update()
 
 	glfwPollEvents();
 
-	if (SERVICE_LOCATOR.GetInput()->GetInstance().IsKeyJustPressed(GLFW_KEY_ESCAPE))
-		glfwSetWindowShouldClose(this->m_pWindow, GLFW_TRUE);
+	//if (SERVICE_LOCATOR.GetInput()->GetInstance().IsKeyJustPressed(GLFW_KEY_ESCAPE))
+	//	glfwSetWindowShouldClose(this->m_pWindow, GLFW_TRUE);
 
 	if (glfwWindowShouldClose(m_pWindow))
 		shouldClose = true;

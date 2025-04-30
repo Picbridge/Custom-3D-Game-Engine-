@@ -3,8 +3,9 @@
 
 #include "pch.h"
 #include "AudioManager.h"
-#include "DeserializeJSON.h"
-#include "Camera.h"
+#include "cameramanager/CameraManager.h"
+#include "cameramanager/CameraComponent.h"
+#include "VectorCalculations.h"
 #include "ui/UI.h"
 #include "Input.h"
 
@@ -20,16 +21,17 @@ AudioManager* AudioManager::GetInstance()
 }
 
 // AudioManager constructor
-AudioManager::AudioManager() : m_initMaxVolume(1.0f), m_maxChannels(25)
-{}
+AudioManager::AudioManager() : m_pEventListener(new EventListener()), m_initMaxVolume(1.0f), m_maxChannels(25)
+{
+}
 
 // AudioManager destructor
-AudioManager::~AudioManager() {
-
+AudioManager::~AudioManager()
+{
 }
 
 // Initializes AudioManager via a JSON file
-void AudioManager::Init(const char* path) {
+void AudioManager::Init() {
 	FMOD_RESULT result;
 
 	result = FMOD::System_Create(&mp_system);
@@ -54,14 +56,29 @@ void AudioManager::Init(const char* path) {
 
 	m_masterVolume = m_musicVolume = m_sfxVolume = 0.5f;
 
-	DeserializeJSON::LoadAudio(path);
+	m_pEventListener->SubscribeToEvent("Master Volume", std::bind(&AudioManager::SetMaster, this, std::placeholders::_1));
+	m_pEventListener->SubscribeToEvent("Music Volume", std::bind(&AudioManager::SetMusic, this, std::placeholders::_1));
+	m_pEventListener->SubscribeToEvent("SFX Volume", std::bind(&AudioManager::SetSFX, this, std::placeholders::_1));
+	m_pEventListener->SubscribeToEvent("Mute", std::bind(&AudioManager::MuteVolume, this, std::placeholders::_1));
+
+	SystemSettings* systemSettings = SERVICE_LOCATOR.GetSystemSettings();
+	m_masterVolume = std::any_cast<float>(*systemSettings->GetSetting("Master Volume"));
+	m_musicVolume = std::any_cast<float>(*systemSettings->GetSetting("Music Volume"));
+	m_sfxVolume = std::any_cast<float>(*systemSettings->GetSetting("SFX Volume"));
+	m_muted = std::any_cast<bool>(*systemSettings->GetSetting("Mute"));
+	SetMasterVolume(m_masterVolume * m_initMaxVolume);
+
+	std::filesystem::path audioPath = Utils::GetExecutableDirectory().parent_path().parent_path().parent_path() / "content" / "code" / "json_files" / "Audio.json";
+
+	DeserializeJSON::LoadAudio(audioPath.string().c_str());
+	std::cout << "AudioManager Initialized\n";
 }
 
 // Creates a sound given a file path, mode, and initial volume
 void AudioManager::CreateSound(std::string filePath, FMOD_MODE mode,
-	float volume) 
+	float volume)
 {
-	std::string file_path = std::string(mp_audioRootPath).append(filePath);
+	std::string file_path = (Utils::GetExecutableDirectory().parent_path().parent_path().parent_path() / "content" / "audio" / filePath).string();
 
 	FMOD::Sound* sample;
 	FMOD_RESULT result;
@@ -71,15 +88,12 @@ void AudioManager::CreateSound(std::string filePath, FMOD_MODE mode,
 		printf("FMOD error! (%d) %s\n", result, FMOD_ErrorString(result));
 	}
 	sample->set3DMinMaxDistance(1.0f, 60.0f);
-	m_soundMap.insert({ filePath, SoundData(sample, volume, mode)});
+	m_soundMap.insert({ filePath, SoundData(sample, volume, mode) });
 }
 
 // Plays a sound given a file path and optional sound position
 void AudioManager::PlaySound(std::string filePath, const glm::vec3* soundPos)
 {
-	if (m_muted)
-		return;
-
 	FMOD_RESULT result;
 
 	auto sound = m_soundMap.find(filePath);
@@ -97,7 +111,7 @@ void AudioManager::PlaySound(std::string filePath, const glm::vec3* soundPos)
 			channel->setVolume(sound->second.volume * m_sfxVolume);
 		else
 			channel->setVolume(sound->second.volume * m_musicVolume);
-		if (soundPos != nullptr) 
+		if (soundPos != nullptr)
 		{
 			FMOD_VECTOR sound_position = glmToFMOD(*soundPos);
 			channel->set3DAttributes(&sound_position, 0);
@@ -135,45 +149,48 @@ void AudioManager::ToggleMute() {
 // Sets mute
 void AudioManager::SetMute(bool mute)
 {
-	if (mute) 
+	m_muted = mute;
+	SERVICE_LOCATOR.GetSystemSettings()->SetSetting("Mute", m_muted);
+	if (mute)
 	{
 		SetMasterVolume(0.0f);
-		m_muted = true;
 	}
-	else 
+	else
 	{
-		SetMasterVolume(m_initMaxVolume);
-		m_muted = false;
+		float master = SERVICE_LOCATOR.GetSystemSettings()->GetFloatSetting("Master Volume");
+		std::cout << "setting master to: " << master * m_initMaxVolume << std::endl;
+		SetMasterVolume(master * m_initMaxVolume);
 	}
 }
 
 // Updates AudioManager
-void AudioManager::Update() 
+void AudioManager::Update()
 {
-#ifdef _DEBUG
-	if (SERVICE_LOCATOR.GetUI()->GetState("Mute", IMGUI_ELEMENT_TYPE::BUTTON))
-		SetMute(true);
-	else if (m_muted)
-		SetMute(false);
-#endif // _DEBUG
 	if (m_muted)
+	{
+		SetMasterVolume(0.0f);
 		return;
+	}
 
-	Camera* cam = Camera::GetInstance();
-	glm::vec3 lPos(cam->m_worldView[3]);
+	CameraManager* camManager = SERVICE_LOCATOR.GetCameraManager();
+
+	auto cam = SERVICE_LOCATOR.GetCameraManager()->GetMainCamera();
+	if (cam == nullptr)
+	{
+		//std::cout << "No Camera!!" << std::endl;
+		return;
+	}
+	auto view = cam->GetViewMatrix();
+	glm::vec3 lPos(view[3]);
 
 	// Forward vector normalized
-	glm::vec3 forwardVec(glm::normalize(glm::vec3(
-		cam->m_worldView[0][2],
-		cam->m_worldView[1][2],
-		cam->m_worldView[2][2]
-	)));
-	
+	glm::vec3 forwardVec = VectorCalculation::GetForwardVec(cam->GetRotation());
+
 	// Extract translation vector
-	glm::vec3 translation = glm::vec3(cam->m_worldView[3]);
+	glm::vec3 translation = glm::vec3(view[3]);
 
 	// Extract rotation matrix (upper-left 3x3 of worldView)
-	glm::mat3 rotation = glm::mat3(cam->m_worldView);
+	glm::mat3 rotation = glm::mat3(view);
 
 	// Invert rotation and apply to translation
 	glm::vec3 cameraPosition = -glm::transpose(rotation) * translation;
@@ -181,23 +198,18 @@ void AudioManager::Update()
 	FMOD_VECTOR listenerPos = glmToFMOD(cameraPosition);
 	FMOD_VECTOR listenerForward = glmToFMOD(forwardVec);
 	FMOD_VECTOR listenerUp = glmToFMOD(glm::normalize(glm::vec3(
-		cam->m_worldView[0][1], // Y-axis in the view matrix
-		cam->m_worldView[1][1],
-		cam->m_worldView[2][1]
+		view[0][1], // Y-axis in the view matrix
+		view[1][1],
+		view[2][1]
 	)));
 
 	// Set listener attributes
 	FMOD_RESULT result = mp_system->set3DListenerAttributes(0, &listenerPos, nullptr, &listenerForward, &listenerUp);
-	
-#ifdef _DEBUG
-	m_masterVolume = SERVICE_LOCATOR.GetUI()->GetSliderValue("Volume Settings", "Master");
-	m_musicVolume = SERVICE_LOCATOR.GetUI()->GetSliderValue("Volume Settings", "Music");
-	m_sfxVolume = SERVICE_LOCATOR.GetUI()->GetSliderValue("Volume Settings", "SFX");
+
 	SetMasterVolume(m_masterVolume * m_initMaxVolume);
-#endif // _DEBUG
 
 	UpdateActiveSoundChannels();
-	
+
 	// Update FMOD system
 	mp_system->update();
 }
@@ -207,6 +219,31 @@ void AudioManager::Shutdown() {
 	for (auto& sound_entry : m_soundMap) {
 		sound_entry.second.sound->release();
 	}
+	delete(m_pEventListener);
+}
+
+void AudioManager::SetMaster(Event* event)
+{
+	m_masterVolume = static_cast<FloatEvent*>(event)->value;
+	SERVICE_LOCATOR.GetSystemSettings()->SetSetting("Master Volume", m_masterVolume);
+}
+
+void AudioManager::SetMusic(Event* event)
+{
+	m_musicVolume = static_cast<FloatEvent*>(event)->value;
+	SERVICE_LOCATOR.GetSystemSettings()->SetSetting("Music Volume", m_musicVolume);
+}
+
+void AudioManager::SetSFX(Event* event)
+{
+	m_sfxVolume = static_cast<FloatEvent*>(event)->value;
+	SERVICE_LOCATOR.GetSystemSettings()->SetSetting("SFX Volume", m_sfxVolume);
+}
+
+void AudioManager::MuteVolume(Event* event)
+{
+	bool state = static_cast<BoolEvent*>(event)->value;
+	SetMute(state);
 }
 
 // Updates active sound channels and removes inactive ones

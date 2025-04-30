@@ -1,0 +1,14 @@
+{
+    "Shader": "Default",
+    "Textures": {
+        "Diffuse": "CementWall_diff",
+        "Specular": "CementWall_spec"
+    },
+    "Color": [
+        0.05000000074505806,
+        0.05000000074505806,
+        0.05000000074505806
+    ],
+    "Shininess": 0.30000001192092896,
+    "Alpha": 1.0
+}

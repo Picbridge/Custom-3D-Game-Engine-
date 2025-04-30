@@ -1,17 +1,10 @@
 #include "../pch.h"
 #include "GameObjectFactory.h"
 #include "GameObjectManager.h"
-#include "TransformComponent.h"
-#include "RenderComponent.h"
-#include "../physics/PhysicsComponent.h"
-#include "../physics/CollisionComponent.h"
-#include "../physics/CollisionManager.h"
-#include "../physics/CollisionShape_Sphere.h"
-#include "../ControllerComponent.h"
-#include "../ScriptComponent.h"
+#include "../physics/PhysicsManager.h"
+#include "../ComponentIncludes.h"
+#include "../scenemanager/SceneManager.h"
 #include "../SampleGame/SampleGame.h"
-
-
 
 std::unique_ptr<GameObjectFactory> GameObjectFactory::instance = nullptr;
 
@@ -24,67 +17,123 @@ GameObjectFactory* GameObjectFactory::GetInstance()
 
 void GameObjectFactory::CreateAllGameObjects(const rapidjson::Value& gameObjects)
 {
-	std::vector<std::thread> threads;
 	for (rapidjson::Value::ConstMemberIterator it = gameObjects.MemberBegin(); it != gameObjects.MemberEnd(); ++it)
-		threads.push_back(std::thread([this, it]() { this->createGameObject(it); }));
-		
-	for (auto& th : threads) 
-	{
-		if (th.joinable()) 
-		{ 
-			th.join(); 
-		}
-	}
+    {
+        this->createGameObject(it);
+    }
+}
+
+void GameObjectFactory::CreateAllUIObjects(const rapidjson::Value& uiObjects)
+{
+    for (rapidjson::Value::ConstMemberIterator it = uiObjects.MemberBegin(); it != uiObjects.MemberEnd(); ++it)
+    {
+        this->createUIObject(it);
+    }
 }
 
 void GameObjectFactory::createGameObject(rapidjson::Value::ConstMemberIterator member, GameObject* pParent)
 {
     GameObject* gameObject = new GameObject();
     gameObject->SetName(member->name.GetString());
-    if (pParent)
-		pParent->AddChild(gameObject);
+    
+    SERVICE_LOCATOR.GetGameObjectManager()->AddGameObject(gameObject, pParent);
 
     // Iterate through the components of the game object
     const rapidjson::Value& components = member->value["Components"];
     deserialize(components, gameObject);
-
   
 	const rapidjson::Value& children = member->value["Children"];
-  std::vector<std::thread> threads;
   
     for (rapidjson::Value::ConstMemberIterator it = children.MemberBegin(); it != children.MemberEnd(); ++it)
-        threads.push_back(std::thread([this, it, gameObject]() { this->createGameObject(it, gameObject); }));
-  
-    for (auto& th : threads) 
     {
-      if (th.joinable()) 
-      { 
-        th.join(); 
-      }
+        this->createGameObject(it, gameObject);
     }
-
-    SERVICE_LOCATOR.GetGameObjectManager()->AddGameObject(gameObject);
 }
 
-void GameObjectFactory::deserialize(const rapidjson::Value& components, GameObject* gameObject)
+void GameObjectFactory::createUIObject(rapidjson::Value::ConstMemberIterator member, Node* pParent)
+{   
+    Node* uiNode = new Node();
+    uiNode->SetName(member->name.GetString());
+    if (pParent)
+        pParent->AddChild(uiNode);
+    else
+	    SERVICE_LOCATOR.GetSceneManager()->GetCurrentScene()->GetUINode()->AddChild(uiNode);
+
+    // Iterate through the components of the game object
+    const rapidjson::Value& components = member->value["Components"];
+    deserialize(components, uiNode);
+
+    const rapidjson::Value& children = member->value["Children"];
+
+    for (rapidjson::Value::ConstMemberIterator it = children.MemberBegin(); it != children.MemberEnd(); ++it)
+    {
+        this->createUIObject(it, uiNode);
+    }
+
+	UIComponent* uiComp = uiNode->GetComponent<UIComponent>();
+    if (!uiComp)
+		uiComp = uiNode->GetComponent<UITextComponent>();
+    uiComp->CreateUIElement();
+}
+
+void GameObjectFactory::deserialize(const rapidjson::Value& components, Node* gameObject)
 {
     for (auto& comp : components.GetObject())
     {
         std::string componentName = comp.name.GetString();
 
         Component* component = nullptr;
-        if (componentName == GameObjectSystemComponentConstants::TRANSFORM_COMPONENT)
-            component = gameObject->AddComponent<TransformComponent>();
-        else if (componentName == GameObjectSystemComponentConstants::RENDER_COMPONENT)
+
+        if (componentName == ComponentNames::TRANSFORM_COMPONENT)
+        {
+            component = gameObject->GetComponent<TransformComponent>();
+        }
+        else if (componentName == ComponentNames::RENDER_COMPONENT)
+        {
             component = gameObject->AddComponent<RenderComponent>();
-        else if (componentName == GameObjectSystemComponentConstants::PHYSICS_COMPONENT)
+        }
+        else if (componentName == ComponentNames::PHYSICS_COMPONENT)
+        {
             component = gameObject->AddComponent<PhysicsComponent>();
-        else if (componentName == GameObjectSystemComponentConstants::COLLISION_COMPONENT)
+			SERVICE_LOCATOR.GetPhysicsManager()->AddPhysicsComponent(static_cast<PhysicsComponent*>(component));
+        }
+        else if (componentName == ComponentNames::COLLISION_COMPONENT)
+        {
             component = gameObject->AddComponent<CollisionComponent>();
-        else if (componentName == GameObjectSystemComponentConstants::CONTROLLER_COMPONENT)
-            component = gameObject->AddComponent<ControllerComponent>();
-        else if (componentName == GameObjectSystemComponentConstants::SCRIPT_COMPONENT)
+            SERVICE_LOCATOR.GetCollisionManager()->AddCollisionComponent(static_cast<CollisionComponent*>(component));
+        }
+        else if (componentName == ComponentNames::CONTROLLER_COMPONENT)
+        {
+            component = gameObject->AddComponent<CameraControllerComponent>();
+        }
+        else if (componentName == ComponentNames::SCRIPT_COMPONENT)
+        {
             component = gameObject->AddComponent<ScriptComponent>();
+        }
+        else if (componentName == ComponentNames::LIGHT_COMPONENT)
+        {
+            component = gameObject->AddComponent<LightComponent>();
+        }
+        else if (componentName == ComponentNames::PARTICLE_COMPONENT)
+        {
+            component = gameObject->AddComponent<ParticleComponent>();
+        }
+        else if (componentName == ComponentNames::CAMERA_COMPONENT)
+        {
+            component = gameObject->AddComponent<CameraComponent>();
+        }
+        else if (componentName == ComponentNames::GRAPPLE_COMPONENT)
+        {
+            component = gameObject->AddComponent<GrappleComponent>();
+        }
+        else if (componentName == ComponentNames::UI_TEXT_COMPONENT)
+        {
+            component = gameObject->AddComponent<UITextComponent>();
+        }
+        else if (componentName == ComponentNames::UI_COMPONENT) 
+        {
+			component = gameObject->AddComponent<UIComponent>();
+		}
         else
         {
             std::cerr << "Unknown component type: " << componentName << std::endl;
@@ -140,6 +189,11 @@ void GameObjectFactory::deserialize(const rapidjson::Value& components, GameObje
                         vec.w = array[3].GetFloat();
                         setters.at(variableName)(vec);
                     }
+                    else if constexpr (std::is_same_v<T, const char*>) 
+                    {
+                        const char* strValue = member.value[1].GetString();
+                        setters.at(variableName)(strValue);
+                    }
                     else if constexpr (std::is_same_v<T, std::string>)
                     {
                         std::string strValue = member.value[1].GetString();
@@ -175,8 +229,23 @@ void GameObjectFactory::deserialize(const rapidjson::Value& components, GameObje
                         auto collisionShape = parseCollisionShape(member.value[1].GetObject());
                         setters.at(variableName)(static_cast<CollisionShape*>(collisionShape));
                     }
-                    }, name2type->second);
+                    else if constexpr (std::is_same_v<T, Viewport>)
+                    {
+                        Viewport viewport;
+                        auto array = member.value[1].GetArray();
+                        viewport.X = array[0].GetInt();
+                        viewport.Y = array[1].GetInt();
+                        viewport.W = array[2].GetInt();
+                        viewport.H = array[3].GetInt();
+                        setters.at(variableName)(viewport);
+                    }
+                }, name2type->second);
             }
+        }
+        for (const auto& componentMap : gameObject->GetComponents())
+        {
+            Component* component = componentMap.second;
+            component->Init();
         }
     }
 }

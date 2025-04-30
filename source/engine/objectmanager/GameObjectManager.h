@@ -4,7 +4,7 @@ class GameObjectManager
 public:
 
 	//@brief Constructor
-	GameObjectManager() {}
+	GameObjectManager() : gbuffer(nullptr), m_shadowBuffer(nullptr), lightView(glm::mat4(1.0f)) {}
 
 	//@brief Destructor
 	~GameObjectManager();
@@ -18,21 +18,44 @@ public:
 	//@brief Renders the game objects
 	void Render();
 
-	// @brief deletes all game objects
+	// @brief deletes `all game objects
 	void Shutdown();
 
 	//@brief Adds game object to the list
 	//@param object : GameObject to add
-	void AddGameObject(GameObject* object);
+	//@param parent : Parent GameObject
+	void AddGameObject(GameObject* object, GameObject* parent = nullptr);
 
 	//@brief Deletes the game object from the list
 	//@param object : GameObject to delete
 	void DeleteGameObject(GameObject* object);
 
+	//@brief Clones node and adds it to current scene
+	//@param object : Node to duplicate
+	Node* CloneNode(Node* node);
+
 	//@brief Searches for the game object by name
 	//@param name : Name of the game object
 	//@return GameObject* : Game object
-    inline GameObject* GetGameObject(const std::string name) { return m_gameObjects[m_gameObjectMap[name]]; }
+    inline GameObject* GetGameObject(const std::string name) 
+	{ 
+		auto it = m_gameObjectMap.find(name);
+		if (it == m_gameObjectMap.end()) return nullptr;
+
+		auto* obj = m_gameObjects[it->second];
+		if (!obj)
+		{
+			std::cerr << "WARNING: Found null object pointer in m_gameObjects for: " << name << std::endl;
+			return nullptr;
+		}
+
+		if (obj->GetName() != name)
+		{
+			std::cerr << "WARNING: Mismatched GameObject name. Requested: " << name
+				<< ", but found object named: " << obj->GetName() << std::endl;
+		}
+		return obj;
+	}
 
 	//@brief Returns the list of game objects
 	//@return std::vector<GameObject*> : List of game objects
@@ -79,7 +102,6 @@ private:
 
 		return R * glm::translate(glm::mat4(1.0f), glm::vec3(-Eye.x, -Eye.y, -Eye.z));
 	}
-
 
 
 	// Allow adding, seraching and deleting game objects by name in constant time while mantaining the order of the game objects in memory

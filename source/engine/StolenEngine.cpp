@@ -1,16 +1,17 @@
 #include "pch.h"
 #include "headers.h"
 
+#ifdef _DEBUG
 int main()
+#else
+int WinMain()
+#endif
 {
 	Engine* engine = Engine::GetInstance();
 
 	std::unique_ptr<Game> game = nullptr;
-	std::unique_ptr<Game> anim = nullptr;
-	game = std::unique_ptr<Game>(new sample(1080, 1080, "Sample"));
-	anim = std::unique_ptr<Game>(new SampleAnimation(1080, 1080, "SampleAnim"));
-	engine->PushGame(game.get());
-	engine->PushGame(anim.get());
+	game = std::unique_ptr<Game>(new sample(0, 0, "Grappling With Ideas"));
+	engine->SetGame(game.get());
 
 	engine->Run();
 }

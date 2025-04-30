@@ -1,13 +1,17 @@
 #include "pch.h"
+#include "Node.h"
+#include "Component.h"
 #include "TransformComponent.h"
 #include "scenemanager/SceneManager.h"
+#include "physics/PhysicsComponent.h"
+#include "physics/CollisionComponent.h"
 
 Node::Node() : m_pParent(nullptr), m_needsDeletion(false), m_id(-1), m_name("")
 {
-	m_pTransform = std::unique_ptr<Transform>(new Transform());
+	m_pTransform = std::make_unique<Transform>();
 	GetWorldTransform();
 	// Add a transform component to the node as a default component
-	AddComponent<TransformComponent>();
+	AddComponent<TransformComponent>()->Init();
 }
 
 Node::~Node()
@@ -24,8 +28,6 @@ Node::~Node()
 
 void Node::AddChild(Node* node)
 {
-	// Remove the node from the scene graph in order to make the child node dependent on the parent node
-	SERVICE_LOCATOR.GetSceneManager()->GetCurrentScene()->RemoveNode(node);
 	node->m_pParent = this;
 	node->SetID(m_children.size());
 	m_children.push_back(node);
@@ -39,9 +41,10 @@ void Node::RemoveChild(Node* node)
 	size_t index = node->GetID();
 	size_t lastIndex = m_children.size() - 1;
 
+	m_children[index]->Destroy();
+
 	if (index == lastIndex)
 	{
-		m_children[index]->Destroy();
 		m_children.pop_back();
 	}
 	else
@@ -54,23 +57,35 @@ void Node::RemoveChild(Node* node)
 
 void Node::SetID(size_t id)
 {
-	m_id = id;
+m_id = id;
 }
 
 void Node::Destroy()
 {
-	m_needsDeletion = true;
+m_needsDeletion = true;
 }
 
-void Node::Flush()
+void Node::Flush(Node* parent)
 {
-	if (m_needsDeletion)
+	if (m_needsDeletion) 
+	{
+		if (parent) { parent->RemoveChild(this); }
+		else { SERVICE_LOCATOR.GetSceneManager()->GetCurrentScene()->DeleteNode(this); }
+
 		delete this;
+	}
 }
 
 void Node::SetName(std::string name)
 {
 	m_name = name;
+}
+
+void Node::RemoveComponent(std::unordered_map<std::string, Component*>::iterator compItr)
+{
+	Component* comp = compItr->second;
+	m_components.erase(compItr);
+	delete comp;
 }
 
 void Node::setOwner(Component* sub)
@@ -81,4 +96,16 @@ void Node::setOwner(Component* sub)
 void Node::initComponent(Component* sub)
 {
 	sub->Init();
+}
+
+void Node::addComponentToManager(Component* comp)
+{
+	if (PhysicsComponent* physicsComp = dynamic_cast<PhysicsComponent*>(comp); physicsComp)
+	{
+		SERVICE_LOCATOR.GetPhysicsManager()->AddPhysicsComponent(physicsComp);
+	}
+	else if (CollisionComponent* collisionComp = dynamic_cast<CollisionComponent*>(comp); collisionComp)
+	{
+		SERVICE_LOCATOR.GetCollisionManager()->AddCollisionComponent(collisionComp);
+	}
 }
